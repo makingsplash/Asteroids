@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviour
 
             AudioController.Instance.PlayOneSound(_shotSound);
         }
+        else
+            Debug.LogError("Не хватает лазеров в пуле для выстрела");
     }
 
     void ReturnLazerToPool(GameObject lazer)

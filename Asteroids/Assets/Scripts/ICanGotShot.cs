@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface ICanGotShot
 {
+	/// ? Переименовать в IDamageble? и мб добавить IDamager
+	
     void WasShooted();
 }
