@@ -46,11 +46,13 @@ public class LazerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        IDamagable enemyToDamage = collision.gameObject.GetComponent<IDamagable>();
+
+        if (enemyToDamage != null)
         {
             AudioController.Instance.PlayOneSound(_enemyExplotion);
 
-            collision.gameObject.GetComponent<ICanGotShot>().WasShooted();
+            enemyToDamage.GotDamage();
 
             if (GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
                 OnNoMoreEnemies();

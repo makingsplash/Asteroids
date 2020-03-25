@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UFOController : MonoBehaviour, ICanGotShot
+public class UFOController : MonoBehaviour, IDamagable
 {
     public static Action OnUFOTouchedPlayer;    // Нло коснулся игрока
     public static Action<int> OnUFOWasShooted;  // Начисление очков за подстреленный нло
@@ -77,7 +77,7 @@ public class UFOController : MonoBehaviour, ICanGotShot
         this._player = player;
     }
 
-    public void WasShooted()
+    public void GotDamage()
     {
         OnUFOWasShooted(40);
         Destroy(gameObject);
