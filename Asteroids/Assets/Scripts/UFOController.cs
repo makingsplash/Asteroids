@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UFOController : MonoBehaviour, IDamagable
+public class UFOController : MonoBehaviour, IDamageable
 {
     public static Action OnUFOTouchedPlayer;    // Нло коснулся игрока
     public static Action<int> OnUFOWasShooted;  // Начисление очков за подстреленный нло
@@ -21,7 +21,7 @@ public class UFOController : MonoBehaviour, IDamagable
         if (_player == null)
             _player = GameObject.FindWithTag("Player");
 
-        PlayerController.OnPlayerEnabled += SearchForPlayer;
+        PlayerController.OnPlayerEnabled += SetPlayerGameObject;
 
         rigidbody = GetComponent<Rigidbody2D>();
 
@@ -34,7 +34,7 @@ public class UFOController : MonoBehaviour, IDamagable
 
     private void OnDisable()
     {
-        PlayerController.OnPlayerEnabled -= SearchForPlayer;
+        PlayerController.OnPlayerEnabled -= SetPlayerGameObject;
     }
 
     private void Update()
@@ -72,7 +72,7 @@ public class UFOController : MonoBehaviour, IDamagable
             OnUFOTouchedPlayer();
     }
 
-    void SearchForPlayer(GameObject player)
+    void SetPlayerGameObject(GameObject player)
     {
         this._player = player;
     }

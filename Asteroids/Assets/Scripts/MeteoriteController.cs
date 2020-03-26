@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteoriteController : MonoBehaviour, IDamagable
+public class MeteoriteController : MonoBehaviour, IDamageable
 {
     public static Action OnMeteoriteTouchedPlayer;    // Метеорит коснулся игрока
     public static Action<int> OnMeteoriteWasShooted;  // Начисление очков за подстреленный метеорит
