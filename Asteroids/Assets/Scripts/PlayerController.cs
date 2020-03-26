@@ -12,11 +12,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotateSpeed;
 
-    [SerializeField] private GameObject _lazerPrefab;
     [SerializeField] private AudioClip _shotSound;
     [SerializeField] private AudioClip _rocketExplosionSound;
-    private const int _lazerPoolSize = 40;
 
+    [SerializeField] private GameObject _lazerPrefab;
+
+    private readonly int _lazerPoolSize = 40;
     private Queue<GameObject> _lazersQueue; // Пул подготовленных к выстрелу лазеров
     private float _horizontal;
     private float _vertical;
@@ -98,6 +99,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void GotDamage()
     {
-        throw new NotImplementedException();
+        SceneManager.Instance.PlayerDead();
     }
 }
