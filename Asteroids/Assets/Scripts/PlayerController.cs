@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     // Инициализируем чтобы не получить NullRef при вызове в UFOController без подписчиков
     // Тк Player включается в первый раз раньше, чем UFO и подписывается
@@ -94,5 +94,10 @@ public class PlayerController : MonoBehaviour
     void ReturnLazerToPool(GameObject lazer)
     {
         _lazersQueue.Enqueue(lazer);
+    }
+
+    public void GotDamage()
+    {
+        throw new NotImplementedException();
     }
 }

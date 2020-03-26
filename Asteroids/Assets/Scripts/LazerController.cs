@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazerController : MonoBehaviour
+public class LazerController : MonoBehaviour, IDamager
 {
     public static Action<GameObject> ReturnToPool;
     public static Action OnNoMoreEnemies;          // Если не осталось врагов - игрок победил
@@ -33,6 +33,7 @@ public class LazerController : MonoBehaviour
             SendToPool();
         }
     }
+
     private void LateUpdate()
     {
         rigidbody.velocity = transform.up * _speed * Time.deltaTime;
@@ -46,15 +47,21 @@ public class LazerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            AudioController.Instance.PlayOneSound(_enemyExplotion);
+        IDamageable enemy = collision.gameObject.GetComponent<IDamageable>();
 
-            collision.gameObject.GetComponent<ICanGotShot>().WasShooted();
+        DoDamage(enemy);
+    }
+    void NoMoreEnemiesCheck()
+    {
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
+            OnNoMoreEnemies();
+    }
 
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
-                OnNoMoreEnemies();
-        }
+    public void DoDamage(IDamageable damageable)
+    {
+        AudioController.Instance.PlayOneSound(_enemyExplotion);
+        damageable.GotDamage();
+        NoMoreEnemiesCheck();
         SendToPool();
     }
 }

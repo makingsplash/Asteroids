@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UFOController : MonoBehaviour, ICanGotShot
+public class UFOController : MonoBehaviour, IDamageable
 {
     public static Action OnUFOTouchedPlayer;    // Нло коснулся игрока
     public static Action<int> OnUFOWasShooted;  // Начисление очков за подстреленный нло
@@ -21,7 +21,7 @@ public class UFOController : MonoBehaviour, ICanGotShot
         if (_player == null)
             _player = GameObject.FindWithTag("Player");
 
-        PlayerController.OnPlayerEnabled += SearchForPlayer;
+        PlayerController.OnPlayerEnabled += SetPlayerGameObject;
 
         rigidbody = GetComponent<Rigidbody2D>();
 
@@ -34,7 +34,7 @@ public class UFOController : MonoBehaviour, ICanGotShot
 
     private void OnDisable()
     {
-        PlayerController.OnPlayerEnabled -= SearchForPlayer;
+        PlayerController.OnPlayerEnabled -= SetPlayerGameObject;
     }
 
     private void Update()
@@ -72,12 +72,12 @@ public class UFOController : MonoBehaviour, ICanGotShot
             OnUFOTouchedPlayer();
     }
 
-    void SearchForPlayer(GameObject player)
+    void SetPlayerGameObject(GameObject player)
     {
         this._player = player;
     }
 
-    public void WasShooted()
+    public void GotDamage()
     {
         OnUFOWasShooted(40);
         Destroy(gameObject);

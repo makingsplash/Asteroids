@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteoriteController : MonoBehaviour, ICanGotShot
+public class MeteoriteController : MonoBehaviour, IDamageable, IDamager
 {
     public static Action OnMeteoriteTouchedPlayer;    // Метеорит коснулся игрока
     public static Action<int> OnMeteoriteWasShooted;  // Начисление очков за подстреленный метеорит
@@ -35,11 +35,18 @@ public class MeteoriteController : MonoBehaviour, ICanGotShot
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-            OnMeteoriteTouchedPlayer();
+        IDamageable player = collision.gameObject.GetComponent<IDamageable>();
+        if (player != null)
+            DoDamage(player);
     }
 
-    public void WasShooted()
+    public void DoDamage(IDamageable damageable)
+    {
+        //damageable.GotDamage();
+        OnMeteoriteTouchedPlayer();
+    }
+
+    public void GotDamage()
     {
         switch (_meteoriteType)
         {

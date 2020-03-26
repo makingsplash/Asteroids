@@ -78,23 +78,27 @@ public class GameManager : MonoBehaviour
 
     void PlayerWasTouched()
     {
+        // UI Manager
         ChangeScore(-40);
         _messageText.text = "Respawning..";
         _messageText.gameObject.SetActive(true);
-
-        _player.SetActive(false);
         _lifes--;
         _lifesUI[_lifes].SetActive(false);
+
+        // PlayerController
+        _player.SetActive(false);
         if (_lifes > 0)
             StartCoroutine(PlayerRespawn());
         else
         {
+            // UI/Game Manager
             _messageText.text = "Game over" + "\n" + "Press R to restart";
             _messageText.gameObject.SetActive(true);
             _gameOver = true;
         }
     }
 
+    // PlayerController
     IEnumerator PlayerRespawn()
     {
         yield return new WaitForSeconds(2);
