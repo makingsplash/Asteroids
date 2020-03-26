@@ -10,24 +10,16 @@ public class GameManager : MonoBehaviour
     private bool _gameOver = false;
     private EnemySpawner _enemySpawner;
 
-    // UI
-    [SerializeField] private TextMeshProUGUI _messageText;
-    [SerializeField] private TextMeshProUGUI _currentScore;
-    [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
     private int _lifes = 3;
 
     private void Awake()
     {
-        _currentScore.text = "0";
         _player.SetActive(false);
     }
     private void OnEnable()
     {
         MeteoriteController.OnMeteoriteTouchedPlayer += PlayerWasTouched;
         UFOController.OnUFOTouchedPlayer += PlayerWasTouched;
-
-        MeteoriteController.OnMeteoriteWasShooted += ChangeScore;
-        UFOController.OnUFOWasShooted += ChangeScore;
 
         LazerController.OnNoMoreEnemies += GameWin;
     }
@@ -36,9 +28,6 @@ public class GameManager : MonoBehaviour
     {
         MeteoriteController.OnMeteoriteTouchedPlayer -= PlayerWasTouched;
         UFOController.OnUFOTouchedPlayer -= PlayerWasTouched;
-
-        MeteoriteController.OnMeteoriteWasShooted -= ChangeScore;
-        UFOController.OnUFOWasShooted -= ChangeScore;
 
         LazerController.OnNoMoreEnemies -= GameWin;
     }
@@ -70,30 +59,23 @@ public class GameManager : MonoBehaviour
         StartCoroutine(_enemySpawner.SpawnUFO());
     }
 
-    void ChangeScore(int score)
-    {
-        int changing = Mathf.Clamp((int.Parse(_currentScore.text) + score), 0, int.MaxValue);
-        _currentScore.text = changing.ToString();
-    }
-
     void PlayerWasTouched()
     {
-        // UI Manager
-        ChangeScore(-40);
-        _messageText.text = "Respawning..";
-        _messageText.gameObject.SetActive(true);
-        _lifes--;
-        _lifesUI[_lifes].SetActive(false);
-
         // PlayerController
         _player.SetActive(false);
-        if (_lifes > 0)
+        if (_lifes > 1)
+        {
+            // PlayerController
             StartCoroutine(PlayerRespawn());
+
+            _lifes--;
+            UIManager.Instance.PlayerDead();
+        }
         else
         {
-            // UI/Game Manager
-            _messageText.text = "Game over" + "\n" + "Press R to restart";
-            _messageText.gameObject.SetActive(true);
+            UIManager.Instance.PlayerDead();
+
+            // Game Manager
             _gameOver = true;
         }
     }
@@ -102,14 +84,13 @@ public class GameManager : MonoBehaviour
     IEnumerator PlayerRespawn()
     {
         yield return new WaitForSeconds(2);
-        _messageText.gameObject.SetActive(false);
+        UIManager.Instance.PlayerRespawned();
         _player.SetActive(true);
     }
     
     void GameWin()
     {
         _gameOver = true;
-        _messageText.text = "You won";
-        _messageText.gameObject.SetActive(true);
+        UIManager.Instance.WinMessage();
     }
 }

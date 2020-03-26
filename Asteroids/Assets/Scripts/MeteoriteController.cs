@@ -6,7 +6,6 @@ using UnityEngine;
 public class MeteoriteController : MonoBehaviour, IDamageable, IDamager
 {
     public static Action OnMeteoriteTouchedPlayer;    // Метеорит коснулся игрока
-    public static Action<int> OnMeteoriteWasShooted;  // Начисление очков за подстреленный метеорит
 
     [SerializeField] private float _speed;
 
@@ -51,7 +50,8 @@ public class MeteoriteController : MonoBehaviour, IDamageable, IDamager
         switch (_meteoriteType)
         {
             case MeteoriteTypes.BigMeteorite:
-                OnMeteoriteWasShooted(10);
+                // Нужно заменить события на это и удалить везде подписки
+                UIManager.Instance.ChangeScore(10);
                 // Спавним 1-2 средних метеорита
                 for (int i = 0; i < UnityEngine.Random.Range(1, 3); i++)
                 {
@@ -75,7 +75,7 @@ public class MeteoriteController : MonoBehaviour, IDamageable, IDamager
                 break;
 
             case MeteoriteTypes.MediumMeteorite:
-                OnMeteoriteWasShooted(15);
+                UIManager.Instance.ChangeScore(15);
                 // Спавним 1 маленький метеорит
                 GameObject littleMeteorite = Instantiate(_littleMeteoritePrefab,
                             transform.position,
@@ -89,7 +89,7 @@ public class MeteoriteController : MonoBehaviour, IDamageable, IDamager
                 break;
 
             case MeteoriteTypes.LittleMeteorite:
-                OnMeteoriteWasShooted(25);
+                UIManager.Instance.ChangeScore(25);
                 break;
         }
         Destroy(gameObject);

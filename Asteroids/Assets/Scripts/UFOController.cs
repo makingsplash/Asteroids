@@ -6,7 +6,6 @@ using UnityEngine;
 public class UFOController : MonoBehaviour, IDamageable
 {
     public static Action OnUFOTouchedPlayer;    // Нло коснулся игрока
-    public static Action<int> OnUFOWasShooted;  // Начисление очков за подстреленный нло
 
     [SerializeField] private float _speed;
     private GameObject _player;
@@ -79,7 +78,7 @@ public class UFOController : MonoBehaviour, IDamageable
 
     public void GotDamage()
     {
-        OnUFOWasShooted(40);
+        UIManager.Instance.ChangeScore(40);
         Destroy(gameObject);
     }
 }
