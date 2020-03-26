@@ -10,26 +10,24 @@ public class GameManager : MonoBehaviour
     private bool _gameOver = false;
     private EnemySpawner _enemySpawner;
 
-    private int _lifes = 3;
-
     private void Awake()
     {
         _player.SetActive(false);
     }
     private void OnEnable()
     {
-        MeteoriteController.OnMeteoriteTouchedPlayer += PlayerWasTouched;
-        UFOController.OnUFOTouchedPlayer += PlayerWasTouched;
 
         LazerController.OnNoMoreEnemies += GameWin;
+
+        SceneManager.OnNoLifes += GameOver;
     }
 
     private void OnDisable()
     {
-        MeteoriteController.OnMeteoriteTouchedPlayer -= PlayerWasTouched;
-        UFOController.OnUFOTouchedPlayer -= PlayerWasTouched;
 
         LazerController.OnNoMoreEnemies -= GameWin;
+
+        SceneManager.OnNoLifes -= GameOver;
     }
 
     private void Start()
@@ -52,40 +50,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        StartCoroutine(PlayerRespawn());
+        StartCoroutine(SceneManager.Instance.RespawnPlayer());
         yield return new WaitForSeconds(5);
 
         StartCoroutine(_enemySpawner.SpawnBigMeteorites());
         StartCoroutine(_enemySpawner.SpawnUFO());
-    }
-
-    void PlayerWasTouched()
-    {
-        // PlayerController
-        _player.SetActive(false);
-        if (_lifes > 1)
-        {
-            // PlayerController
-            StartCoroutine(PlayerRespawn());
-
-            _lifes--;
-            UIManager.Instance.PlayerDead();
-        }
-        else
-        {
-            UIManager.Instance.PlayerDead();
-
-            // Game Manager
-            _gameOver = true;
-        }
-    }
-
-    // PlayerController
-    IEnumerator PlayerRespawn()
-    {
-        yield return new WaitForSeconds(2);
-        UIManager.Instance.PlayerRespawned();
-        _player.SetActive(true);
     }
     
     void GameWin()
@@ -93,4 +62,6 @@ public class GameManager : MonoBehaviour
         _gameOver = true;
         UIManager.Instance.WinMessage();
     }
+
+    void GameOver() => _gameOver = true;
 }

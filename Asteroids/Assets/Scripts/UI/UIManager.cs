@@ -30,7 +30,10 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         if (_instance != null && _instance != this)
-            Debug.LogError("More than one UIManager in the scene");
+        {
+            Debug.LogError("There is more than one UIManager in the scene");
+            return;
+        }
         if (_instance == null)
             _instance = this;
     }
@@ -44,21 +47,20 @@ public class UIManager : MonoBehaviour
 
     public void PlayerDead()
     {
-        if(_lifesAmount > 1)
+        if (_lifesAmount > 1)
         {
             ChangeScore(-40);
 
             _messageText.text = "Respawning..";
             _messageText.gameObject.SetActive(true);
-
-            _lifesAmount--;
-            _lifesUI[_lifesAmount].SetActive(false);
         }
         else
         {
             _messageText.text = "Game over" + "\n" + "Press R to restart";
             _messageText.gameObject.SetActive(true);
         }
+
+        _lifesUI[--_lifesAmount].SetActive(false);
     }
 
     public void PlayerRespawned()
