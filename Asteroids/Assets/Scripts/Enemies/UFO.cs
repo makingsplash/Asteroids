@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UFO : BaseEnemy, IDamageable, IDamager
+public class UFO : BaseEnemy
 {
 
     [SerializeField] private float _speed;
@@ -11,7 +11,7 @@ public class UFO : BaseEnemy, IDamageable, IDamager
     private float _nonAngryFlyTimer = 2;
     private Vector2 _nonAngryFlyDirection;
     private bool _isAngry = false;
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
 
 
     private void OnEnable()
@@ -73,17 +73,12 @@ public class UFO : BaseEnemy, IDamageable, IDamager
             DoDamage(player);
     }
 
-    public void DoDamage(IDamageable damageable)
-    {
-        damageable.GotDamage();
-    }
-
     void SetPlayerGameObject(GameObject player)
     {
         this._player = player;
     }
 
-    public void GotDamage()
+    public override void GotDamage()
     {
         UIManager.Instance.ChangeScore(40);
         Destroy(gameObject);

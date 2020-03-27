@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meteorite : BaseEnemy, IDamageable, IDamager
+public class Meteorite : BaseEnemy
 {
 
     [SerializeField] private float _speed;
@@ -38,12 +38,7 @@ public class Meteorite : BaseEnemy, IDamageable, IDamager
             DoDamage(player);
     }
 
-    public void DoDamage(IDamageable damageable)
-    {
-        damageable.GotDamage();
-    }
-
-    public void GotDamage()
+    public override void GotDamage()
     {
         switch (_meteoriteType)
         {
