@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -161,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7947627ae680f764180674fde2019da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1858724185}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -219,27 +217,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bigMeteoritePrefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
-    type: 3}
-  _bigMeteoritesAmount: 7
-  _bigMeteoritesSpawnRate: 2.5
-  _ufoPrefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
-    type: 3}
-  _ufoAmount: 4
-  _ufoSpawnChance: 50
-  _ufoSpawnRate: 4
 --- !u!1 &521694497
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +410,7 @@ Transform:
   m_Children:
   - {fileID: 1425877318}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817415823
 GameObject:
@@ -1133,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
@@ -1171,8 +1148,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425877318}
+  - component: {fileID: 1425877319}
   m_Layer: 0
-  m_Name: (empty)EnemySpawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1192,6 +1170,27 @@ Transform:
   m_Father: {fileID: 725239883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1425877319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425877317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bigMeteoritePrefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
+    type: 3}
+  _bigMeteoritesAmount: 7
+  _bigMeteoritesSpawnRate: 2.5
+  _ufoPrefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
+    type: 3}
+  _ufoAmount: 4
+  _ufoSpawnChance: 50
+  _ufoSpawnRate: 4
 --- !u!1 &1858724185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1879710610104850850, guid: 432318c68316f794bbd53f5e0220140b,

@@ -1,19 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
     private bool _gameOver = false;
-    private EnemySpawner _enemySpawner;
 
-    private void Awake()
-    {
-        _player.SetActive(false);
-    }
+    
     private void OnEnable()
     {
         BaseEnemy.OnNoOtherEnemies += GameWin;
@@ -31,7 +23,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Screen.fullScreen = false;
-        _enemySpawner = GetComponent<EnemySpawner>();
 
         StartCoroutine(StartGame());
     }
@@ -51,8 +42,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SceneManager.Instance.RespawnPlayer());
         yield return new WaitForSeconds(5);
 
-        StartCoroutine(_enemySpawner.SpawnBigMeteorites());
-        StartCoroutine(_enemySpawner.SpawnUFO());
+        SceneManager.Instance.StartEnemySpawner();
     }
     
     void GameWin()

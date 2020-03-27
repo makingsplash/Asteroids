@@ -28,6 +28,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject _player;
 
     private int _lifesAmount = 3;
+    private EnemySpawner _enemySpawner;
 
 
     private void Awake()
@@ -39,10 +40,17 @@ public class SceneManager : MonoBehaviour
         }
         else if (_instance != null)
             _instance = this;
+
+        _enemySpawner = GetComponentInChildren<EnemySpawner>();
     }
 
+    public void StartEnemySpawner()
+    {
+        StartCoroutine(_enemySpawner.SpawnBigMeteorites());
+        StartCoroutine(_enemySpawner.SpawnUFO());
+    }
 
-    public void PlayerDead()
+	public void PlayerDead()
     {
         if (_lifesAmount > 1)
         {
@@ -59,6 +67,7 @@ public class SceneManager : MonoBehaviour
 
         UIManager.Instance.PlayerDead();
     }
+
     public IEnumerator RespawnPlayer()
     {
         yield return new WaitForSeconds(2);
