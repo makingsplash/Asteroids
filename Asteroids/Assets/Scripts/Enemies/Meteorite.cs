@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meteorite : MonoBehaviour, IDamageable, IDamager
+public class Meteorite : BaseEnemy, IDamageable, IDamager
 {
 
     [SerializeField] private float _speed;

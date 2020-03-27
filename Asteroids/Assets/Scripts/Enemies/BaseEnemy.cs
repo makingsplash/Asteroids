@@ -1,19 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour
 {
-    private static int _enemyAmount;
-    // Тоже private ?
-    public static int EnemyAmount
-    {
-        get
-        {
-            return _enemyAmount;
-        }
+    public static Action OnNoOtherEnemies;
 
-        protected set
-        {
-            _enemyAmount = value;
-        }
+    private static int _enemyAmount = 0;
+
+
+    private void Awake()
+    {
+        _enemyAmount++;
+    }
+
+    protected void OnDisable()
+    {
+        _enemyAmount--;
+        if (_enemyAmount == 0)
+            OnNoOtherEnemies();
     }
 }

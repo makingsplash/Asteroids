@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UFO : MonoBehaviour, IDamageable, IDamager
+public class UFO : BaseEnemy, IDamageable, IDamager
 {
 
     [SerializeField] private float _speed;
@@ -30,8 +30,10 @@ public class UFO : MonoBehaviour, IDamageable, IDamager
             _nonAngryFlyDirection = transform.right;
     }
 
-    private void OnDisable()
+    private new void OnDisable()
     {
+        base.OnDisable();
+
         PlayerController.OnPlayerEnabled -= SetPlayerGameObject;
     }
 

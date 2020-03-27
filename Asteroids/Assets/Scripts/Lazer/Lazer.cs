@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazerController : MonoBehaviour, IDamager
+public class Lazer : MonoBehaviour, IDamager
 {
-    public static Action<GameObject> ReturnToPool;
-    public static Action OnNoMoreEnemies;          // Если не осталось врагов - игрок победил
+    public static Action<GameObject> ReturnToPool;  
 
     [SerializeField] private float _speed;
     [SerializeField] private float _lifeTime;
@@ -51,17 +50,11 @@ public class LazerController : MonoBehaviour, IDamager
 
         DoDamage(enemy);
     }
-    void NoMoreEnemiesCheck()
-    {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 2)
-            OnNoMoreEnemies();
-    }
 
     public void DoDamage(IDamageable damageable)
     {
         AudioController.Instance.PlayOneSound(_enemyExplotion);
         damageable.GotDamage();
-        NoMoreEnemiesCheck();
         SendToPool();
     }
 }

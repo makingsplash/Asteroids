@@ -16,16 +16,14 @@ public class GameManager : MonoBehaviour
     }
     private void OnEnable()
     {
-
-        LazerController.OnNoMoreEnemies += GameWin;
+        BaseEnemy.OnNoOtherEnemies += GameWin;
 
         SceneManager.OnNoLifes += GameOver;
     }
 
     private void OnDisable()
     {
-
-        LazerController.OnNoMoreEnemies -= GameWin;
+        BaseEnemy.OnNoOtherEnemies -= GameWin;
 
         SceneManager.OnNoLifes -= GameOver;
     }
