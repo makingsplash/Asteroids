@@ -64,9 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySpawner.cs" />
-    <Compile Include="Assets\Scripts\Enemies\MeteoriteController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\UFOController.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Meteorite.cs" />
+    <Compile Include="Assets\Scripts\Enemies\UFO.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamager.cs" />
