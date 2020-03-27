@@ -5,16 +5,20 @@ ScriptsOnlyBuild:
     - EnemySpawner
     - GameManager
     - LazerController
-    - MeteoriteController
+    - Meteorite
     - OverBorderShifting
     - PlayerController
-    - UFOController
+    - SceneManager
+    - UFO
+    - UIManager
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    Unity.Rider.Editor.dll:
+    - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
     - TMPro.TMP_ColorGradient
     - TMPro.TMP_FontAsset
@@ -25,6 +29,8 @@ ScriptsOnlyBuild:
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
+    - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -62,50 +68,56 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9692}
+      Script: {instanceID: 11180}
     - Class: 114
-      Script: {instanceID: 9752}
-    - Class: 114
-      Script: {instanceID: 9872}
-    - Class: 114
-      Script: {instanceID: 9900}
-    - Class: 114
-      Script: {instanceID: 10122}
-    - Class: 114
-      Script: {instanceID: 10210}
-    - Class: 114
-      Script: {instanceID: 10304}
-    - Class: 114
-      Script: {instanceID: 10326}
-    - Class: 114
-      Script: {instanceID: 10406}
-    - Class: 114
-      Script: {instanceID: 10466}
-    - Class: 114
-      Script: {instanceID: 10914}
-    - Class: 114
-      Script: {instanceID: 10928}
-    - Class: 114
-      Script: {instanceID: 10946}
-    - Class: 114
-      Script: {instanceID: 11056}
-    - Class: 114
-      Script: {instanceID: 11122}
-    - Class: 114
-      Script: {instanceID: 11188}
+      Script: {instanceID: 11246}
     - Class: 114
       Script: {instanceID: 11370}
     - Class: 114
-      Script: {instanceID: 11484}
+      Script: {instanceID: 11398}
     - Class: 114
-      Script: {instanceID: 11546}
+      Script: {instanceID: 11628}
     - Class: 114
-      Script: {instanceID: 11586}
+      Script: {instanceID: 11720}
+    - Class: 114
+      Script: {instanceID: 11818}
+    - Class: 114
+      Script: {instanceID: 11844}
+    - Class: 114
+      Script: {instanceID: 11934}
+    - Class: 114
+      Script: {instanceID: 11984}
+    - Class: 114
+      Script: {instanceID: 12000}
+    - Class: 114
+      Script: {instanceID: 12008}
+    - Class: 114
+      Script: {instanceID: 12486}
+    - Class: 114
+      Script: {instanceID: 12500}
+    - Class: 114
+      Script: {instanceID: 12520}
+    - Class: 114
+      Script: {instanceID: 12646}
+    - Class: 114
+      Script: {instanceID: 12716}
+    - Class: 114
+      Script: {instanceID: 12784}
+    - Class: 114
+      Script: {instanceID: 12968}
+    - Class: 114
+      Script: {instanceID: 13084}
+    - Class: 114
+      Script: {instanceID: 13148}
+    - Class: 114
+      Script: {instanceID: 13194}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -183,7 +195,7 @@ ScriptsOnlyBuild:
       Hash: 3cf156985df62fac63708d6bed3583bf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: UFOController
+    className: UFO
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -291,7 +303,7 @@ ScriptsOnlyBuild:
       Hash: f0a5a46fc1ea70c915536c700e87a1e6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MeteoriteController
+    className: Meteorite
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -360,10 +372,28 @@ ScriptsOnlyBuild:
     className: Benchmark01
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LazerFillQueueOrSmth
+  - hash:
+      serializedVersion: 2
       Hash: b717e852680b1af97d0272de30583d9e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LazerController
+  - hash:
+      serializedVersion: 2
+      Hash: dd835f0182d2f348a91d94e15c7c4c55
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIManager
+  - hash:
+      serializedVersion: 2
+      Hash: 95074457c11ea533b8247aab6901dcc6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SceneManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -522,7 +552,7 @@ ScriptsOnlyBuild:
     className: TMP_TextSelector_A
   - hash:
       serializedVersion: 2
-      Hash: c5acaf3a9317adb421b64905bc5c1b56
+      Hash: 95074457c11ea533b8247aab6901dcc6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -546,7 +576,7 @@ ScriptsOnlyBuild:
     className: TMP_TextInfoDebugTool
   - hash:
       serializedVersion: 2
-      Hash: 750f08d3e485fdf150270f5b8c1fe55f
+      Hash: e8961cd93399c87c6caec516e9102f17
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -732,7 +762,13 @@ ScriptsOnlyBuild:
     className: TMP_SubMesh
   - hash:
       serializedVersion: 2
-      Hash: 20eeaeae829475b5e354d1f626c51a2b
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestRunner.Utils
+    className: TestRunCallbackListener
+  - hash:
+      serializedVersion: 2
+      Hash: 4ef0f7d42cdb13479386e1f049c315aa
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner
     className: PlaymodeTestsController
@@ -781,4 +817,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/admin/Desktop/testBuild/Asteroids.exe
+  playerPath: C:/Users/admin/Desktop/Asteroids.exe

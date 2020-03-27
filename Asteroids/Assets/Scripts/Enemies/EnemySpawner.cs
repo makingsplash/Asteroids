@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        LazerController.OnNoMoreEnemies += OnGameOver;
+        BaseEnemy.OnNoOtherEnemies += OnGameOver;
 
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void OnDisable()
     {
-        LazerController.OnNoMoreEnemies -= OnGameOver;
+        BaseEnemy.OnNoOtherEnemies += OnGameOver;
     }
 
     void OnGameOver() => _gameOver = true;
