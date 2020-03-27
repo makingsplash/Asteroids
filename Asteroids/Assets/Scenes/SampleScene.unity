@@ -160,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7947627ae680f764180674fde2019da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1858724185}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -411,7 +410,7 @@ Transform:
   m_Children:
   - {fileID: 1425877318}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817415823
 GameObject:
@@ -1111,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
