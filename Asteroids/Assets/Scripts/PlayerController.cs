@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         // Не отписываемся в OnDisable тк при выключении объекта при смерти лазеры не смогут
         // Вернуться обратно в пул (получим NullRef)
-        LazerController.ReturnToPool += ReturnLazerToPool;
+        Lazer.ReturnToPool += ReturnLazerToPool;
     }
 
     private void OnDisable()
