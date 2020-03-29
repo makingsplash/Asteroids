@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5475956413155397406}
   - component: {fileID: 5240812586368480206}
   - component: {fileID: -6902423077545006040}
-  m_Layer: 10
-  m_Name: lazer
+  m_Layer: 11
+  m_Name: RocketLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lazer : MonoBehaviour, IDamager
+public class Laser : MonoBehaviour, IDamager
 {
     public static Action<GameObject> ReturnToPool;  
 
