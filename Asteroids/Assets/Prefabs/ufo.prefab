@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 681355794433723562}
   - component: {fileID: 681355794433723563}
   - component: {fileID: -8808730758651280636}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: ufo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -60,7 +60,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
