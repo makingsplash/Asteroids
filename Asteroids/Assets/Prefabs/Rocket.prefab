@@ -12,15 +12,16 @@ GameObject:
   - component: {fileID: 5749404981031793932}
   - component: {fileID: 6447163374110014461}
   - component: {fileID: 2458774055377844771}
-  - component: {fileID: 8628796169966668543}
   - component: {fileID: 1858724186}
-  m_Layer: 11
+  - component: {fileID: 8628796169966668543}
+  - component: {fileID: 4307419851373478933}
+  m_Layer: 12
   m_Name: Rocket
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &653468106724985743
 Transform:
   m_ObjectHideFlags: 0
@@ -159,6 +160,18 @@ PolygonCollider2D:
       - {x: -1.1875, y: -3.765625}
       - {x: -1.1875, y: -3.890625}
       - {x: -1.125, y: -3.984375}
+--- !u!114 &1858724186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879710610104850850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8628796169966668543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,9 +189,7 @@ MonoBehaviour:
   _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
   _rocketExplosionSound: {fileID: 8300000, guid: 57224491e0a29eb4db188c02fb50c8c6,
     type: 3}
-  _lazerPrefab: {fileID: 5475956413155397393, guid: 9201523707c2e104b9efb75d42e5d547,
-    type: 3}
---- !u!114 &1858724186
+--- !u!114 &4307419851373478933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,6 +198,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1879710610104850850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b609c66a33c3a04cb201383e014c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _laserPrefab: {fileID: 5475956413155397393, guid: 9201523707c2e104b9efb75d42e5d547,
+    type: 3}
