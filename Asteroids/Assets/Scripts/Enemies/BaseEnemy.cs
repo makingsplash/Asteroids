@@ -5,6 +5,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
 {
     public static Action OnNoOtherEnemies;
 
+    [SerializeField] private AudioClip _enemyExplotion;
+
     private static int _enemyAmount = 0;
 
 
@@ -18,6 +20,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
         _enemyAmount--;
         if (_enemyAmount == 0)
             OnNoOtherEnemies();
+
+        AudioController.Instance.PlayOneSound(_enemyExplotion);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

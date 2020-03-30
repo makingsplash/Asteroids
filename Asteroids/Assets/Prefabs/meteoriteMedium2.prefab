@@ -60,7 +60,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -122,7 +121,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 8, y: 8}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -151,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ff622453bd9d04ea09e0b2a6e9a5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyExplotion: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
   _speed: 100
   _mediumMeteoritPrefabs: []
   _littleMeteoritePrefab: {fileID: 2990826428107403900, guid: 9a950d92beb9d2a469422213bce121d2,

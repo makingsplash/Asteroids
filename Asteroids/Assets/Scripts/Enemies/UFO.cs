@@ -6,24 +6,27 @@ using UnityEngine;
 public class UFO : BaseEnemy
 {
 
+    [SerializeField] private AudioClip _shotSound;
     [SerializeField] private float _speed;
+    [SerializeField] private float _fireRate = 0.5f;
     private GameObject _player;
     private float _nonAngryFlyTimer = 2;
     private Vector2 _nonAngryFlyDirection;
     private bool _isAngry = false;
-    private new Rigidbody2D rigidbody;
+    private new Rigidbody2D _rigidbody;
+    private LaserPool _laserPool;
+    
 
 
     private void OnEnable()
     {
         if (_player == null)
-            _player = GameObject.FindWithTag("Player");
-
+            _player = GameObject.FindGameObjectWithTag("Player");
         PlayerController.OnPlayerEnabled += SetPlayerGameObject;
 
-        rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _laserPool = GetComponent<LaserPool>();
 
-        // Если заспавнились справа - летим влево и наоборот
         if (transform.position.x > 0)
             _nonAngryFlyDirection = -transform.right;
         else
@@ -39,30 +42,29 @@ public class UFO : BaseEnemy
 
     private void Update()
     {
-        // Переход из свободного полёта в преследование
         if (!_isAngry)
         {
             _nonAngryFlyTimer -= Time.deltaTime;
             if (_nonAngryFlyTimer < 0)
+            {
                 _isAngry = true;
+                StartCoroutine(LaserShots());
+            }
         }
     }
 
     private void LateUpdate()
     {
-        if(!_isAngry)
+        if (!_isAngry)
         {
-            // Свободный полёт
-            rigidbody.velocity = _nonAngryFlyDirection * _speed * Time.deltaTime;
+            _rigidbody.velocity = _nonAngryFlyDirection * _speed * Time.deltaTime;
         }
         else
         {
-            // Если игрок жив, преследуем
             if (_player != null && _player.activeSelf)
-                rigidbody.velocity = (_player.transform.position - transform.position).normalized * _speed * Time.deltaTime;
-            // Если игрок в процессе возрождения, летим вверх
+                _rigidbody.velocity = (_player.transform.position - transform.position).normalized * _speed * Time.deltaTime;
             else
-                rigidbody.velocity = transform.up * _speed * Time.deltaTime;
+                _rigidbody.velocity = transform.up * _speed * Time.deltaTime;
         }
     }
 
@@ -82,5 +84,24 @@ public class UFO : BaseEnemy
     {
         UIManager.Instance.ChangeScore(40);
         Destroy(gameObject);
+    }
+
+    IEnumerator LaserShots()
+    {
+        while (true)
+        {
+            if (_player != null && _player.activeSelf)
+            {
+                Vector3 position = -transform.up / 1.5f + transform.position;
+
+                Vector3 direction = _player.transform.position - position;
+                float eulerAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+
+                _laserPool.LaunchLaser(position, eulerAngle);
+
+                AudioController.Instance.PlayOneSound(_shotSound);
+            }
+            yield return new WaitForSeconds(1 / _fireRate);
+        }
     }
 }

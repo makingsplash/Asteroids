@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5475956413155397392}
   - component: {fileID: 5475956413155397405}
   - component: {fileID: 5475956413155397406}
-  - component: {fileID: 5240812586368480206}
   - component: {fileID: -6902423077545006040}
+  - component: {fileID: 5240812586368480206}
   m_Layer: 11
   m_Name: RocketLaser
   m_TagString: Untagged
@@ -135,6 +135,18 @@ PolygonCollider2D:
       - {x: -0.3132802, y: -3.8972344}
       - {x: 0.0070383805, y: -3.9950655}
       - {x: 0.3348107, y: -3.8442304}
+--- !u!114 &-6902423077545006040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475956413155397393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5240812586368480206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,16 +161,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 500
   _lifeTime: 1.8
+  _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
   _enemyExplotion: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
---- !u!114 &-6902423077545006040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475956413155397393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

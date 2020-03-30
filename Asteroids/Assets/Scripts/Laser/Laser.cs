@@ -7,11 +7,10 @@ public class Laser : MonoBehaviour, IDamager
 {
     public static Action<GameObject> ReturnToPool;  
 
-    [SerializeField] private float _speed;
+    [SerializeField] private float _speed = 250;
     [SerializeField] private float _lifeTime;
-    [SerializeField] private AudioClip _enemyExplotion;
 
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     private float _currentLifeTime;
 
 
@@ -53,7 +52,6 @@ public class Laser : MonoBehaviour, IDamager
 
     public void DoDamage(IDamageable damageable)
     {
-        AudioController.Instance.PlayOneSound(_enemyExplotion);
         damageable.GotDamage();
         SendToPool();
     }
