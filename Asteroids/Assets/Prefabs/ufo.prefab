@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 681355794433723573}
   - component: {fileID: 681355794433723561}
   - component: {fileID: 681355794433723562}
-  - component: {fileID: 681355794433723563}
   - component: {fileID: -8808730758651280636}
+  - component: {fileID: 681355794433723563}
+  - component: {fileID: 4309899127543186945}
   m_Layer: 9
   m_Name: ufo
   m_TagString: Enemy
@@ -211,19 +212,6 @@ PolygonCollider2D:
       - {x: 0.359375, y: -2.609375}
       - {x: 0.546875, y: -2.5625}
       - {x: 0.765625, y: -2.484375}
---- !u!114 &681355794433723563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681355794433723574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03df29b15f11eb1468187b365fe4bbdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 100
 --- !u!82 &-8808730758651280636
 AudioSource:
   m_ObjectHideFlags: 0
@@ -329,3 +317,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &681355794433723563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681355794433723574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03df29b15f11eb1468187b365fe4bbdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyExplotion: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
+  _speed: 30
+  _fireRate: 1.5
+--- !u!114 &4309899127543186945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681355794433723574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b609c66a33c3a04cb201383e014c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolSize: 20
+  _laserPrefab: {fileID: 3183045210313738148, guid: acf0a6fc4114f6d4c981c0e6eae01ee6,
+    type: 3}

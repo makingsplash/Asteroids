@@ -8,7 +8,7 @@ public class Meteorite : BaseEnemy
 
     [SerializeField] private float _speed;
 
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
 
     [SerializeField] private List<GameObject> _mediumMeteoritPrefabs;
     [SerializeField] private GameObject _littleMeteoritePrefab;

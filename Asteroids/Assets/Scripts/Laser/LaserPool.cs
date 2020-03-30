@@ -6,7 +6,7 @@ public class LaserPool : MonoBehaviour
 {
     public Queue<GameObject> Pool;
 
-    [SerializeField] private readonly int _laserPoolSize = 40;
+    [SerializeField] private int _poolSize = 40;
     [SerializeField] private GameObject _laserPrefab;
     
 
@@ -18,7 +18,7 @@ public class LaserPool : MonoBehaviour
         FillLaserPool();
     }
 
-    public void LaunchLaser(Vector2 launchPosition, Quaternion rotation)
+    public void LaunchLaser(Vector2 launchPosition, float rotationEulerAngle)
     {
         if (Pool.Count > 0)
         {
@@ -26,7 +26,7 @@ public class LaserPool : MonoBehaviour
             laser.SetActive(true);
             laser.transform.position = launchPosition;
 
-            laser.transform.rotation = rotation;
+            laser.transform.eulerAngles = Vector3.forward * rotationEulerAngle;
         }
         else
             Debug.LogError("В пуле нет свободных лазеров для выстрела");
@@ -38,7 +38,7 @@ public class LaserPool : MonoBehaviour
         {
             // Заполняем ObjectPool лазеров
             Pool = new Queue<GameObject>();
-            for (int i = 0; i < _laserPoolSize; i++)
+            for (int i = 0; i < _poolSize; i++)
             {
                 GameObject laserObj = GameObject.Instantiate(_laserPrefab);
                 laserObj.transform.SetParent(transform);

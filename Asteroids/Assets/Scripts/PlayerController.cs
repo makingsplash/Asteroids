@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     public static Action<GameObject> OnPlayerEnabled = delegate (GameObject g) { };
 
     [Header("Movement")]
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _rotateSpeed;
+    [SerializeField] private float _moveSpeed = 250;
+    [SerializeField] private float _rotateSpeed = 350;
 
     [Header("Sounds")]
     [SerializeField] private AudioClip _shotSound;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private float _horizontal;
     private float _vertical;
     private Vector2 _moveVertical;
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     private LaserPool _laserPool;
 
     
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         _laserPool.LaunchLaser(
             transform.up / 1.7f + transform.position,
-            transform.rotation);
+            transform.rotation.eulerAngles.z);
 
         AudioController.Instance.PlayOneSound(_shotSound);
     }
