@@ -17,7 +17,6 @@ public class UFO : BaseEnemy
     private LaserPool _laserPool;
     
 
-
     private void OnEnable()
     {
         if (_player == null)
@@ -92,7 +91,7 @@ public class UFO : BaseEnemy
         {
             if (_player != null && _player.activeSelf)
             {
-                Vector3 position = -transform.up / 1.5f + transform.position;
+                Vector3 position = -transform.up / 2.5f + transform.position;
 
                 Vector3 direction = _player.transform.position - position;
                 float eulerAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;

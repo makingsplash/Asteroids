@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public static Action OnNoLifes;
-
     private static SceneManager _instance;
     public static SceneManager Instance
     {
@@ -28,6 +26,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject _player;
 
     private int _lifesAmount = 3;
+    private bool _gameOver = false;
     private EnemySpawner _enemySpawner;
 
 
@@ -41,7 +40,34 @@ public class SceneManager : MonoBehaviour
         else if (_instance != null)
             _instance = this;
 
+
+        BaseEnemy.OnNoOtherEnemies += GameWin;
         _enemySpawner = GetComponentInChildren<EnemySpawner>();
+    }
+
+    private void Start()
+    {
+        Screen.fullScreen = false;
+
+        StartCoroutine(StartGame());
+    }
+
+    private void Update()
+    {
+        if (_gameOver)
+            if (Input.GetKeyDown(KeyCode.R))
+                UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
+
+    IEnumerator StartGame()
+    {
+        StartCoroutine(SpawnPlayer());
+        yield return new WaitForSeconds(5);
+
+        StartEnemySpawner();
     }
 
     public void StartEnemySpawner()
@@ -56,11 +82,11 @@ public class SceneManager : MonoBehaviour
         {
             _lifesAmount--;
 
-            StartCoroutine(RespawnPlayer());
+            StartCoroutine(SpawnPlayer());
         }
         else
         {
-            OnNoLifes();
+            GameOver();
         }
 
         _player.SetActive(false);
@@ -68,10 +94,18 @@ public class SceneManager : MonoBehaviour
         UIManager.Instance.PlayerDead();
     }
 
-    public IEnumerator RespawnPlayer()
+    public IEnumerator SpawnPlayer()
     {
         yield return new WaitForSeconds(2);
-        UIManager.Instance.PlayerRespawned();
+        UIManager.Instance.DisableMessage();
         _player.SetActive(true);
     }
+
+    void GameWin()
+    {
+        _gameOver = true;
+        UIManager.Instance.WinMessage();
+    }
+
+    void GameOver() => _gameOver = true;
 }
