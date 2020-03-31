@@ -63,10 +63,7 @@ public class UIManager : MonoBehaviour
         _lifesUI[--_lifesAmount].SetActive(false);
     }
 
-    public void PlayerRespawned()
-    {
-        _messageText.gameObject.SetActive(false);
-    }
+    public void DisableMessage() => _messageText.gameObject.SetActive(false);
 
     public void WinMessage()
     {
