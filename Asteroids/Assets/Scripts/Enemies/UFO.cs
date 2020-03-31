@@ -34,8 +34,6 @@ public class UFO : BaseEnemy
 
     private new void OnDisable()
     {
-        base.OnDisable();
-
         PlayerController.OnPlayerEnabled -= SetPlayerGameObject;
     }
 
@@ -79,8 +77,10 @@ public class UFO : BaseEnemy
         this._player = player;
     }
 
-    public override void GotDamage()
+    public override void TakeDamage()
     {
+        base.TakeDamage();
+
         UIManager.Instance.ChangeScore(40);
         Destroy(gameObject);
     }

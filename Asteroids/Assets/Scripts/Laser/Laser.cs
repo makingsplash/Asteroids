@@ -52,7 +52,7 @@ public class Laser : MonoBehaviour, IDamager
 
     public void DoDamage(IDamageable damageable)
     {
-        damageable.GotDamage();
+        damageable.TakeDamage();
         SendToPool();
     }
 }

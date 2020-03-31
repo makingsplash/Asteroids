@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         AudioController.Instance.PlayOneSound(_shotSound);
     }
 
-    public void GotDamage()
+    public void TakeDamage()
     {
         SceneManager.Instance.PlayerDead();
     }

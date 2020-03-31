@@ -38,7 +38,7 @@ public class Meteorite : BaseEnemy
             DoDamage(player);
     }
 
-    public override void GotDamage()
+    public override void TakeDamage()
     {
         switch (_meteoriteType)
         {
@@ -85,6 +85,8 @@ public class Meteorite : BaseEnemy
                 UIManager.Instance.ChangeScore(25);
                 break;
         }
+
+        base.TakeDamage();
         Destroy(gameObject);
     }
 }
