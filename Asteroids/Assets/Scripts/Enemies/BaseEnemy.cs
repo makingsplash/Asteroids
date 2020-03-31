@@ -15,7 +15,14 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
         _enemyAmount++;
     }
 
-    protected void OnDisable()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IDamageable player = collision.gameObject.GetComponent<IDamageable>();
+        if (player != null)
+            DoDamage(player);
+    }
+
+    public virtual void TakeDamage()
     {
         _enemyAmount--;
         if (_enemyAmount == 0)
@@ -24,17 +31,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
         AudioController.Instance.PlayOneSound(_enemyExplotion);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        IDamageable player = collision.gameObject.GetComponent<IDamageable>();
-        if (player != null)
-            DoDamage(player);
-    }
-
-    public abstract void GotDamage();
-
     public void DoDamage(IDamageable damageable)
     {
-        damageable.GotDamage();
+        damageable.TakeDamage();
     }
 }
