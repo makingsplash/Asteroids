@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour, IDamager
 {
-    public static Action<GameObject> ReturnToPool;  
+    public LaserPool ParentPool;
 
     [SerializeField] private float _speed = 250;
     [SerializeField] private float _lifeTime;
@@ -28,7 +28,7 @@ public class Laser : MonoBehaviour, IDamager
         _currentLifeTime -= Time.deltaTime;
         if (_currentLifeTime < 0)
         {
-            SendToPool();
+            ReturnToPool();
         }
     }
 
@@ -37,10 +37,10 @@ public class Laser : MonoBehaviour, IDamager
         rigidbody.velocity = transform.up * _speed * Time.deltaTime;
     }
 
-    void SendToPool()
+    void ReturnToPool()
     {
         gameObject.SetActive(false);
-        ReturnToPool(gameObject);
+        ParentPool.Pool.Enqueue(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,6 +53,6 @@ public class Laser : MonoBehaviour, IDamager
     public void DoDamage(IDamageable damageable)
     {
         damageable.TakeDamage();
-        SendToPool();
+        ReturnToPool();
     }
 }

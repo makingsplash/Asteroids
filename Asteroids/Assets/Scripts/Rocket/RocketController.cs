@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable
+public class RocketController : MonoBehaviour, IDamageable
 {
     // Инициализируем чтобы не получить NullRef при вызове в UFOController без подписчиков
     // Тк Player включается в первый раз раньше, чем UFO и подписывается
