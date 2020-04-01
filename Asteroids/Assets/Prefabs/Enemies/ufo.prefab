@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 681355794433723562}
   - component: {fileID: -8808730758651280636}
   - component: {fileID: 681355794433723563}
-  - component: {fileID: 4309899127543186945}
   m_Layer: 9
   m_Name: ufo
   m_TagString: Enemy
@@ -333,18 +332,3 @@ MonoBehaviour:
   _shotSound: {fileID: 8300000, guid: a429aace0e22b804dac0a97959e6dc27, type: 3}
   _speed: 45
   _fireRate: 1
---- !u!114 &4309899127543186945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681355794433723574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b609c66a33c3a04cb201383e014c2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _poolSize: 20
-  _laserPrefab: {fileID: 3183045210313738148, guid: acf0a6fc4114f6d4c981c0e6eae01ee6,
-    type: 3}

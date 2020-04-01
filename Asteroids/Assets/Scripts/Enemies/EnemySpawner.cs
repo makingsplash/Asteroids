@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     private float _camOrtSize;  // Camera.main.orthographicSize
     private float _camAspect;   // Camera.main.aspect
 
-    // Meteorites
+    [Header("Meteorites")]
     [SerializeField] private GameObject _bigMeteoritePrefab;
     [Tooltip("Количество больших метеоритов, которое может быть заспавнено за игру")]
     [SerializeField] [Range(0, 10)] private int _bigMeteoritesAmount = 4;
@@ -17,8 +17,10 @@ public class EnemySpawner : MonoBehaviour
     [Tooltip("Таймер, по истечению которого может заспавниться большой метеорит")]
     [SerializeField] [Range(0, 10)] private float _bigMeteoritesSpawnRate;
 
-    // UFO
+    [Header("UFO")]
     [SerializeField] private GameObject _ufoPrefab;
+
+    [SerializeField] private GameObject _UFOLaserPoolPrefab;
 
     [Tooltip("Количество НЛО, которое может быть заспавнено за игру")]
     [SerializeField] [Range(0, 10)] private int _ufoAmount;
@@ -30,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] [Range(0, 10)] private float _ufoSpawnRate;
 
 
+
     private void OnEnable()
     {
         BaseEnemy.OnNoOtherEnemies += OnGameOver;
@@ -37,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
 
+        Instantiate(_UFOLaserPoolPrefab);
     }
     private void OnDisable()
     {
@@ -83,7 +87,7 @@ public class EnemySpawner : MonoBehaviour
                     new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
                     Quaternion.identity);
             }
-            yield return new WaitForSeconds(_ufoSpawnRate);
+            yield return new WaitForSeconds(1 /_ufoSpawnRate);
         }
     }   
 }

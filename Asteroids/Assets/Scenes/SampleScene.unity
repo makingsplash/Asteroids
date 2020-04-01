@@ -830,7 +830,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 31.6
+  m_fontSize: 28
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -996,9 +996,11 @@ MonoBehaviour:
   _bigMeteoritesSpawnRate: 2.5
   _ufoPrefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
     type: 3}
-  _ufoAmount: 4
-  _ufoSpawnChance: 50
-  _ufoSpawnRate: 4
+  _UFOLaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+    type: 3}
+  _ufoAmount: 7
+  _ufoSpawnChance: 100
+  _ufoSpawnRate: 6
 --- !u!1 &1537010212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,6 +1268,11 @@ PrefabInstance:
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458774055377844771, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

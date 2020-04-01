@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UFO : BaseEnemy
 {
-
     [SerializeField] private AudioClip _shotSound;
     [SerializeField] private float _speed;
     [SerializeField] private float _fireRate = 0.5f;
@@ -13,7 +12,7 @@ public class UFO : BaseEnemy
     private float _nonAngryFlyTimer = 2;
     private Vector2 _nonAngryFlyDirection;
     private bool _isAngry = false;
-    private new Rigidbody2D _rigidbody;
+    private Rigidbody2D _rigidbody;
     private LaserPool _laserPool;
     
 
@@ -21,10 +20,10 @@ public class UFO : BaseEnemy
     {
         if (_player == null)
             _player = GameObject.FindGameObjectWithTag("Player");
-        PlayerController.OnPlayerEnabled += SetPlayerGameObject;
+        RocketController.OnPlayerEnabled += SetPlayerGameObject;
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        _laserPool = GetComponent<LaserPool>();
+        _laserPool = FindObjectOfType<LaserPool>();
 
         if (transform.position.x > 0)
             _nonAngryFlyDirection = -transform.right;
@@ -32,9 +31,9 @@ public class UFO : BaseEnemy
             _nonAngryFlyDirection = transform.right;
     }
 
-    private new void OnDisable()
+    private void OnDisable()
     {
-        PlayerController.OnPlayerEnabled -= SetPlayerGameObject;
+        RocketController.OnPlayerEnabled -= SetPlayerGameObject;
     }
 
     private void Update()

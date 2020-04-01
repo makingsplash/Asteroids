@@ -8,13 +8,10 @@ public class LaserPool : MonoBehaviour
 
     [SerializeField] private int _poolSize = 40;
     [SerializeField] private GameObject _laserPrefab;
-    
 
 
     void Awake()
     {
-        Laser.ReturnToPool += ReturnLaserToPool;
-
         FillLaserPool();
     }
 
@@ -36,20 +33,15 @@ public class LaserPool : MonoBehaviour
     {
         if (Pool == null)
         {
-            // Заполняем ObjectPool лазеров
             Pool = new Queue<GameObject>();
             for (int i = 0; i < _poolSize; i++)
             {
-                GameObject laserObj = GameObject.Instantiate(_laserPrefab);
+                GameObject laserObj = Instantiate(_laserPrefab);
+                laserObj.GetComponent<Laser>().ParentPool = this;
                 laserObj.transform.SetParent(transform);
                 laserObj.SetActive(false);
                 Pool.Enqueue(laserObj);
             }
         }
-    }
-
-    void ReturnLaserToPool(GameObject laser)
-    {
-        Pool.Enqueue(laser);
     }
 }
