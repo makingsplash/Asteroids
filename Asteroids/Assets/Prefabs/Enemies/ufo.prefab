@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8808730758651280636}
   - component: {fileID: 681355794433723563}
   m_Layer: 9
-  m_Name: ufo
+  m_Name: Ufo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03df29b15f11eb1468187b365fe4bbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyExplotion: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
   _shotSound: {fileID: 8300000, guid: a429aace0e22b804dac0a97959e6dc27, type: 3}
   _speed: 45
   _fireRate: 1

@@ -6,8 +6,9 @@ using UnityEngine;
 public class UFO : BaseEnemy
 {
     [SerializeField] private AudioClip _shotSound;
-    [SerializeField] private float _speed;
+
     [SerializeField] private float _fireRate = 0.5f;
+    
     private GameObject _player;
     private float _nonAngryFlyTimer = 2;
     private Vector2 _nonAngryFlyDirection;

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2990826428107403907}
   - component: {fileID: 2990826428107403906}
   - component: {fileID: 2990826428107403901}
-  - component: {fileID: 2990826428107403905}
   - component: {fileID: 6467657899427379823}
+  - component: {fileID: 2990826428107403905}
   m_Layer: 8
-  m_Name: meteoriteLittle
+  m_Name: MeteoriteLittle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,22 +188,6 @@ PolygonCollider2D:
       - {x: 0.95204705, y: -1.6655498}
       - {x: 0.42770112, y: -2.2193196}
       - {x: -0.17198475, y: -2.6351922}
---- !u!114 &2990826428107403905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2990826428107403900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97ff622453bd9d04ea09e0b2a6e9a5a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyExplotion: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
-  _speed: 100
-  _mediumMeteoritPrefabs: []
-  _littleMeteoritePrefab: {fileID: 0}
 --- !u!114 &6467657899427379823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,3 +200,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2990826428107403905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990826428107403900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ff622453bd9d04ea09e0b2a6e9a5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  _speed: 200
+  _scorePoints: 40
+  _nextMeteoritePrefabs: []

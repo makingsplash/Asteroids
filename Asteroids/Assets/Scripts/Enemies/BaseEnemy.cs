@@ -5,14 +5,15 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
 {
     public static Action OnNoOtherEnemies;
 
-    [SerializeField] private AudioClip _enemyExplotion;
+    [SerializeField] protected float _speed;
+    [SerializeField] private AudioClip _dieSound;
 
-    private static int _enemyAmount = 0;
+    private static int _enemyCount = 0;
 
 
     private void Awake()
     {
-        _enemyAmount++;
+        _enemyCount++;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,11 +25,11 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
 
     public virtual void TakeDamage()
     {
-        _enemyAmount--;
-        if (_enemyAmount == 0)
+        _enemyCount--;
+        if (_enemyCount == 0)
             OnNoOtherEnemies();
 
-        AudioController.Instance.PlayOneSound(_enemyExplotion);
+        AudioController.Instance.PlayOneSound(_dieSound);
     }
 
     public void DoDamage(IDamageable damageable)
