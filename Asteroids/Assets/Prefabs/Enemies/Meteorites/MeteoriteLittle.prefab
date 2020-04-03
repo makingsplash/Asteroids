@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ff622453bd9d04ea09e0b2a6e9a5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  ScorePoints: 65
   _speed: 200
-  _scorePoints: 40
-  _nextMeteoritePrefabs: []
+  _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  _smallerMeteoritesPrefabs: []
