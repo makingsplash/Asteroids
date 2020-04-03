@@ -29,7 +29,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
         if (_enemyCount == 0)
             OnNoOtherEnemies();
 
-        AudioController.Instance.PlayOneSound(_dieSound);
+        AudioManager.Instance.PlayOneSound(_dieSound);
     }
 
     public void DoDamage(IDamageable damageable)

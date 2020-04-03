@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioController : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
     private bool _isQuitting = false;
     private AudioSource _audioSource;
 
-    private static AudioController _instance;
-    public static AudioController Instance
+    private static AudioManager _instance;
+    public static AudioManager Instance
     {
         get
         {
             if(_instance == null)
             {
-                _instance = FindObjectOfType<AudioController>();
+                _instance = FindObjectOfType<AudioManager>();
                 if(_instance == null)
                 {
-                    _instance = new GameObject().AddComponent<AudioController>();
+                    _instance = new GameObject().AddComponent<AudioManager>();
                     DontDestroyOnLoad(_instance.gameObject);
                 }
             }
