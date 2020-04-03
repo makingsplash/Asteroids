@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
                     Quaternion.Euler(0, 0, Random.Range(0, 180)));
             }
 
-            yield return new WaitForSeconds(1 / _bigMeteoritesSpawnRate);
+            yield return new WaitForSeconds(_bigMeteoritesSpawnRate);
         }
     }
 

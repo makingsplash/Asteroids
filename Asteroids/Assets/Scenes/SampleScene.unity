@@ -830,7 +830,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25.8
+  m_fontSize: 31.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -993,14 +993,14 @@ MonoBehaviour:
   _bigMeteoritePrefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
     type: 3}
   _bigMeteoritesAmount: 7
-  _bigMeteoritesSpawnRate: 1.5
+  _bigMeteoritesSpawnRate: 2.5
   _ufoPrefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
     type: 3}
   _UFOLaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
     type: 3}
-  _ufoAmount: 1
+  _ufoAmount: 7
   _ufoSpawnChance: 100
-  _ufoSpawnRate: 2.6
+  _ufoSpawnRate: 6
 --- !u!1 &1537010212
 GameObject:
   m_ObjectHideFlags: 0
