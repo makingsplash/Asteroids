@@ -5,6 +5,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
 {
     public static Action OnNoOtherEnemies;
 
+    public int ScorePoints;
+
     [SerializeField] protected float _speed;
     [SerializeField] private AudioClip _dieSound;
 

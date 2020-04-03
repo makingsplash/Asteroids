@@ -6,7 +6,6 @@ using UnityEngine;
 public class Meteorite : BaseEnemy
 {
     [Header("When destroyed")]
-    [SerializeField] private int _scorePoints;
     [SerializeField] private List<GameObject> _smallerMeteoritesPrefabs = new List<GameObject>();
 
     private new Rigidbody2D rigidbody;
@@ -31,8 +30,6 @@ public class Meteorite : BaseEnemy
 
     public override void TakeDamage()
     {
-        UIManager.Instance.ChangeScore(_scorePoints);
-
         if (_smallerMeteoritesPrefabs.Count > 0)
             SpawnSmallerMeteorites();
 

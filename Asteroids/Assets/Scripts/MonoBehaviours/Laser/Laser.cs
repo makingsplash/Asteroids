@@ -10,6 +10,10 @@ public class Laser : MonoBehaviour, IDamager
     [SerializeField] private float _speed = 250;
     [SerializeField] private float _lifeTime;
 
+    [SerializeField]
+    [Tooltip("If rocket laser, will add points to score for hit")]
+    private bool _isRocketLaser;
+
     private new Rigidbody2D rigidbody;
     private float _currentLifeTime;
 
@@ -17,10 +21,11 @@ public class Laser : MonoBehaviour, IDamager
     private void OnEnable()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        _currentLifeTime = _lifeTime;
     }
     private void OnDisable()
     {
-        _currentLifeTime = _lifeTime;
+        //_currentLifeTime = _lifeTime;
     }
 
     private void Update()
@@ -37,22 +42,28 @@ public class Laser : MonoBehaviour, IDamager
         rigidbody.velocity = transform.up * _speed * Time.deltaTime;
     }
 
-    void ReturnToPool()
-    {
-        gameObject.SetActive(false);
-        ParentPool.Pool.Enqueue(gameObject);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        IDamageable enemy = collision.gameObject.GetComponent<IDamageable>();
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
-        DoDamage(enemy);
+        if (_isRocketLaser)
+        {
+            BaseEnemy enemy = collision.gameObject.GetComponent<BaseEnemy>();
+            UIManager.Instance.ChangeScore(enemy.ScorePoints);
+            damageable = enemy.GetComponent<IDamageable>();
+        }
+
+        DoDamage(damageable);
     }
 
     public void DoDamage(IDamageable damageable)
     {
         damageable.TakeDamage();
         ReturnToPool();
+    }
+    void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+        ParentPool.Pool.Enqueue(gameObject);
     }
 }

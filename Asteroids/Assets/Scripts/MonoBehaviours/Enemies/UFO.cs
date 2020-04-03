@@ -81,7 +81,6 @@ public class UFO : BaseEnemy
     {
         base.TakeDamage();
 
-        UIManager.Instance.ChangeScore(40);
         Destroy(gameObject);
     }
 
