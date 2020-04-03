@@ -41,7 +41,7 @@ public class RocketController : MonoBehaviour, IDamageable
 
     private void OnDisable()
     {
-        AudioController.Instance.PlayOneSound(_rocketExplosionSound);
+        AudioManager.Instance.PlayOneSound(_rocketExplosionSound);
     }
 
     void Update()
@@ -66,7 +66,7 @@ public class RocketController : MonoBehaviour, IDamageable
             transform.up / 1.7f + transform.position,
             transform.rotation.eulerAngles.z);
 
-        AudioController.Instance.PlayOneSound(_shotSound);
+        AudioManager.Instance.PlayOneSound(_shotSound);
     }
 
     public void TakeDamage()

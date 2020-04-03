@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -56,7 +55,7 @@ public class SceneManager : MonoBehaviour
     {
         if (_gameOver)
             if (Input.GetKeyDown(KeyCode.R))
-                UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();

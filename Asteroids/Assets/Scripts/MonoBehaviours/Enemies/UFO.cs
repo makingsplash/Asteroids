@@ -98,7 +98,7 @@ public class UFO : BaseEnemy
 
                 _laserPool.LaunchLaser(position, eulerAngle);
 
-                AudioController.Instance.PlayOneSound(_shotSound);
+                AudioManager.Instance.PlayOneSound(_shotSound);
             }
             yield return new WaitForSeconds(1 / _fireRate);
         }
