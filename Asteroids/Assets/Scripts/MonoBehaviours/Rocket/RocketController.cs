@@ -39,11 +39,6 @@ public class RocketController : MonoBehaviour, IDamageable
         OnPlayerEnabled(gameObject);
     }
 
-    private void OnDisable()
-    {
-        AudioManager.Instance.PlayOneSound(_rocketExplosionSound);
-    }
-
     void Update()
     {
         _vertical = Input.GetAxis("Vertical");
@@ -71,6 +66,7 @@ public class RocketController : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
+        AudioManager.Instance.PlayOneSound(_rocketExplosionSound);
         SceneManager.Instance.PlayerDead();
     }
 }
