@@ -63,19 +63,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AudioController.cs" />
-    <Compile Include="Assets\Scripts\Enemies\BaseEnemy.cs" />
-    <Compile Include="Assets\Scripts\Enemies\EnemySpawner.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Meteorite.cs" />
-    <Compile Include="Assets\Scripts\Enemies\UFO.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamager.cs" />
-    <Compile Include="Assets\Scripts\Laser\Laser.cs" />
-    <Compile Include="Assets\Scripts\Laser\LaserPool.cs" />
-    <Compile Include="Assets\Scripts\OverBorderShifting.cs" />
-    <Compile Include="Assets\Scripts\Rocket\RocketController.cs" />
-    <Compile Include="Assets\Scripts\SceneManager.cs" />
-    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\BaseEnemy.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\UFO.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Laser\Laser.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Laser\LaserPool.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Managers\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Managers\SceneManager.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\OverBorderShifting.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
