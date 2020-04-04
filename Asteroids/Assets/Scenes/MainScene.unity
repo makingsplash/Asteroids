@@ -990,17 +990,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyWaves: {fileID: 11400000, guid: a8bec994c1d9426428c58597187e13fa, type: 2}
   _bigMeteoritePrefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
     type: 3}
-  _bigMeteoritesAmount: 7
-  _bigMeteoritesSpawnRate: 1.5
+  _mediumMeteoritePrefab: {fileID: 3816838287345253960, guid: af4f4b75832ac534db11d5c3329f2f96,
+    type: 3}
+  _littleMeteoritePrefab: {fileID: 2990826428107403900, guid: 9a950d92beb9d2a469422213bce121d2,
+    type: 3}
   _ufoPrefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
     type: 3}
   _UFOLaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
     type: 3}
-  _ufoAmount: 0
-  _ufoSpawnChance: 100
-  _ufoSpawnRate: 2.6
 --- !u!1 &1537010212
 GameObject:
   m_ObjectHideFlags: 0

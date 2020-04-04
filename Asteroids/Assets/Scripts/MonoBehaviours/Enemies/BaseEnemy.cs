@@ -3,20 +3,13 @@ using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
 {
-    public static Action OnNoOtherEnemies;
+    public static Action EnemyKilled;
 
     public int ScorePoints;
 
     [SerializeField] protected float _speed;
     [SerializeField] private AudioClip _dieSound;
 
-    private static int _enemyCount = 0;
-
-
-    private void Awake()
-    {
-        _enemyCount++;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,9 +20,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
 
     public virtual void TakeDamage()
     {
-        _enemyCount--;
-        if (_enemyCount == 0)
-            OnNoOtherEnemies();
+        EnemyKilled();
 
         AudioManager.Instance.PlayOneSound(_dieSound);
     }

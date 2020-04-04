@@ -40,7 +40,6 @@ public class SceneManager : MonoBehaviour
             _instance = this;
 
 
-        BaseEnemy.OnNoOtherEnemies += GameWin;
         _enemySpawner = GetComponentInChildren<EnemySpawner>();
     }
 
@@ -66,14 +65,10 @@ public class SceneManager : MonoBehaviour
         StartCoroutine(SpawnPlayer());
         yield return new WaitForSeconds(5);
 
-        StartEnemySpawner();
+        StartEnemyWaveSpawning();
     }
 
-    public void StartEnemySpawner()
-    {
-        StartCoroutine(_enemySpawner.SpawnBigMeteorites());
-        StartCoroutine(_enemySpawner.SpawnUFO());
-    }
+    public void StartEnemyWaveSpawning() => _enemySpawner.NextWave();
 
 	public void PlayerDead()
     {
@@ -100,7 +95,7 @@ public class SceneManager : MonoBehaviour
         _player.SetActive(true);
     }
 
-    void GameWin()
+    public void GameWin()
     {
         _gameOver = true;
         UIManager.Instance.WinMessage();
