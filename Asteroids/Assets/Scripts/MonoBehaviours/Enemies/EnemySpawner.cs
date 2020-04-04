@@ -4,41 +4,48 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private bool _gameOver = false;
-
-    private float _camOrtSize;  // Camera.main.orthographicSize
-    private float _camAspect;   // Camera.main.aspect
-
     [SerializeField] private EnemyWaves_SO _enemyWaves;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject _UFOLaserPoolPrefab;
 
+    private bool _gameOver = false;
+
+    private float _camOrtSize;
+    private float _camAspect;
+
+    private int _currentWave = 0;
+    private int _enemiesToSpawn;
+    private int _enemiesKilled;
+
 
     private void OnEnable()
     {
-        //BaseEnemy.OnNoOtherEnemies += OnGameOver;
-        BaseEnemy.OnNoOtherEnemies += NextWave;
+        BaseEnemy.EnemyKilled += CheckForNextWave;
 
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
 
         Instantiate(_UFOLaserPoolPrefab);
+
     }
     private void OnDisable()
     {
-        //BaseEnemy.OnNoOtherEnemies -= OnGameOver;
-        BaseEnemy.OnNoOtherEnemies -= NextWave;
+        BaseEnemy.EnemyKilled -= CheckForNextWave;
     }
 
-    //void OnGameOver() => _gameOver = true; /// ВРОДЕ ТЕПЕРЬ ЛИШНЕЕ, КОНТРОЛИМ В SCENEMANAGER
-
-
-    public IEnumerator SpawnWave()
+    //\\ 
+    private void Update()
     {
-        foreach(EnemyWaves_SO.Wave wave in _enemyWaves.WavesArray)
+        if (Input.GetKeyDown(KeyCode.Q))
+            NextWave();
+    }
+
+    private IEnumerator SpawnWave()
+    {
+        if (_currentWave < _enemyWaves.WavesArray.Length)
         {
-            Debug.Log("Спавним метеориты");
+            EnemyWaves_SO.Wave wave = _enemyWaves.WavesArray[_currentWave];
 
             // Spawn meteorites
             foreach (EnemyWaves_SO.EnemySpawnInfo meteoriteInfo in wave.meteoriteTypes)
@@ -47,9 +54,10 @@ public class EnemySpawner : MonoBehaviour
                     meteoriteInfo.Amount, meteoriteInfo.SpawnRate, meteoriteInfo.Prefab,
                     new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1, Random.Range(-_camOrtSize, _camOrtSize)),
                     Quaternion.Euler(0, 0, Random.Range(0, 180))));
-            }
 
-            Debug.Log("Спавним нло");
+                _enemiesToSpawn += meteoriteInfo.Amount;
+            }
+        
             // Spawn Ufos
             if (wave.ufoInfo.Amount > 0)
             {
@@ -60,14 +68,16 @@ public class EnemySpawner : MonoBehaviour
                     wave.ufoInfo.Amount, wave.ufoInfo.SpawnRate, wave.ufoInfo.Prefab,
                     new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
                     Quaternion.identity));
+
+                _enemiesToSpawn += wave.ufoInfo.Amount;
             }
 
-            Debug.Log("Волна заспавнена, жду следующего вызова");
-
-            yield return null;
+            _currentWave++;
         }
+        else
+            SceneManager.Instance.GameWin();
 
-        SceneManager.Instance.GameWin();
+        yield return null;
     }
 
     private IEnumerator SpawnEnemy(int amount, float spawnRate, GameObject prefab, Vector2 position, Quaternion rotation)
@@ -85,9 +95,17 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void NextWave()
+    public void NextWave() => StartCoroutine(SpawnWave());
+
+    private void CheckForNextWave()
     {
-        Debug.Log("Следующая волна?");
-        SpawnWave();
+        _enemiesKilled++;
+        if (_enemiesKilled == _enemiesToSpawn)
+        {
+            _enemiesKilled = 0;
+            _enemiesToSpawn = 0;
+
+            NextWave();
+        }
     }
 }
