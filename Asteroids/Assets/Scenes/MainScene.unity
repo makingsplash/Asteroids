@@ -779,7 +779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.008626017, y: 0.88500005}
   m_AnchorMax: {x: 0.14262602, y: 0.9513042}
-  m_AnchoredPosition: {x: -0.3600006, y: 0.3449707}
+  m_AnchoredPosition: {x: -0.36001587, y: 0.3449707}
   m_SizeDelta: {x: 0.13000107, y: 0.69000006}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &915848312
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 27.95
+  m_fontSize: 31.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -998,7 +998,7 @@ MonoBehaviour:
     type: 3}
   _UFOLaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
     type: 3}
-  _ufoAmount: 1
+  _ufoAmount: 0
   _ufoSpawnChance: 100
   _ufoSpawnRate: 2.6
 --- !u!1 &1537010212
