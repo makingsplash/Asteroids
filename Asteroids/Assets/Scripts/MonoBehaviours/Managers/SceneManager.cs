@@ -66,13 +66,12 @@ public class SceneManager : MonoBehaviour
         StartCoroutine(SpawnPlayer());
         yield return new WaitForSeconds(5);
 
-        StartEnemySpawner();
+        StartEnemyWaveSpawning();
     }
 
-    public void StartEnemySpawner()
+    public void StartEnemyWaveSpawning()
     {
-        StartCoroutine(_enemySpawner.SpawnBigMeteorites());
-        StartCoroutine(_enemySpawner.SpawnUFO());
+        _enemySpawner.SpawnWave();
     }
 
 	public void PlayerDead()

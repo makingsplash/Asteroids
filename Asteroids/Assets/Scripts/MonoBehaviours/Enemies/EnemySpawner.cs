@@ -9,28 +9,15 @@ public class EnemySpawner : MonoBehaviour
     private float _camOrtSize;  // Camera.main.orthographicSize
     private float _camAspect;   // Camera.main.aspect
 
-    [Header("Meteorites")]
+    [SerializeField] private EnemyWaves_SO _enemyWaves;
+
+    [Header("Prefabs")]
     [SerializeField] private GameObject _bigMeteoritePrefab;
-    [Tooltip("Количество больших метеоритов, которое может быть заспавнено за игру")]
-    [SerializeField] [Range(0, 10)] private int _bigMeteoritesAmount = 4;
+    [SerializeField] private GameObject _mediumMeteoritePrefab;
+    [SerializeField] private GameObject _littleMeteoritePrefab;
 
-    [Tooltip("Таймер, по истечению которого может заспавниться большой метеорит")]
-    [SerializeField] [Range(0, 10)] private float _bigMeteoritesSpawnRate;
-
-    [Header("UFO")]
     [SerializeField] private GameObject _ufoPrefab;
-
     [SerializeField] private GameObject _UFOLaserPoolPrefab;
-
-    [Tooltip("Количество НЛО, которое может быть заспавнено за игру")]
-    [SerializeField] [Range(0, 10)] private int _ufoAmount;
-
-    [Tooltip("Вероятность того, что НЛО будет заспавнен по истечению таймера")]
-    [SerializeField] [Range(0, 100)] private int _ufoSpawnChance;
-
-    [Tooltip("Таймер, по истечению которого может заспавниться НЛО")]
-    [SerializeField] [Range(0, 10)] private float _ufoSpawnRate;
-
 
 
     private void OnEnable()
@@ -49,45 +36,88 @@ public class EnemySpawner : MonoBehaviour
 
     void OnGameOver() => _gameOver = true;
 
-    public IEnumerator SpawnBigMeteorites()
+    /*
+     * Использовать для спавна корутину, которая будет ждать очистки предыдущей волны
+     * И потом продолжать свою работу(спавнить новую)
+     * 
+     * 
+     * 
+     */
+
+    public void SpawnWave()
     {
-        while (!_gameOver && _bigMeteoritesAmount > 0)
+        //StartSpawnBigMeteorites();
+        //StartSpawnMediumMeteorites();
+        //StartSpawnLittleMeteorites();
+        //StartSpawnUFO();
+    }
+
+    // Написать общую функцию для именно спавна объекта
+    private IEnumerator SpawnEnemy(int amount, float spawnRate, GameObject prefab, Vector2 position, Quaternion rotation)
+    {
+        WaitForSeconds frequency = new WaitForSeconds(10 / spawnRate);
+
+        for (int i = 0; i < amount; i++)
         {
-            _bigMeteoritesAmount--;
-
-            // Спавн метеоритов с правой стороны
-            if (_bigMeteoritesAmount % 2 == 0)
+            if (!_gameOver)
             {
-                Instantiate(_bigMeteoritePrefab,
-                    new Vector2(_camOrtSize * _camAspect - 1, Random.Range(-_camOrtSize, _camOrtSize)),
-                    Quaternion.Euler(0, 0, Random.Range(0, 180)));
+                Instantiate(prefab, position, rotation);
+                yield return frequency;
             }
-            // Спавн метеоритов с левой стороны
-            else
-            {
-                Instantiate(_bigMeteoritePrefab,
-                    new Vector2(-_camOrtSize * _camAspect + 1, Random.Range(-_camOrtSize, _camOrtSize)),
-                    Quaternion.Euler(0, 0, Random.Range(0, 180)));
-            }
-
-            yield return new WaitForSeconds(1 / _bigMeteoritesSpawnRate);
+            else yield break;
         }
     }
 
-    public IEnumerator SpawnUFO()
-    {
-        while (!_gameOver && _ufoAmount > 0)
-        {
-            if (Random.Range(0, 101) <= _ufoSpawnChance)
-            {
-                _ufoAmount--;
+    // Переписать в более обобщённую для метеоритов
+    //public void StartSpawnBigMeteorites()
+    //{
+    //    int amount = _enemyWaves.EnemyWaves[0].BigMeteoriteAmount;
+    //    if(amount > 0)
+    //    {
+    //        StartCoroutine(SpawnEnemy(
+    //            amount, _enemyWaves.EnemyWaves[0].MeteoritesSpawnRate,
+    //            _bigMeteoritePrefab,
+    //            new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1, Random.Range(-_camOrtSize, _camOrtSize)),
+    //            Quaternion.Euler(0, 0, Random.Range(0, 180))));
+    //    }
+    //}
 
-                GameObject ufoObj = Instantiate(_ufoPrefab,
-                    // Нло может появиться и справа, и слева с одинаковым шансом
-                    new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
-                    Quaternion.identity);
-            }
-            yield return new WaitForSeconds(1 /_ufoSpawnRate);
-        }
-    }   
+    //public void StartSpawnMediumMeteorites()
+    //{
+    //    int amount = _enemyWaves.EnemyWaves[0].MediumMeteoriteAmount;
+    //    if (amount > 0)
+    //    {
+    //        StartCoroutine(SpawnEnemy(
+    //            amount, _enemyWaves.EnemyWaves[0].MeteoritesSpawnRate,
+    //            _mediumMeteoritePrefab,
+    //            new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1, Random.Range(-_camOrtSize, _camOrtSize)),
+    //            Quaternion.Euler(0, 0, Random.Range(0, 180))));
+    //    }
+    //}
+
+    //public void StartSpawnLittleMeteorites()
+    //{
+    //    int amount = _enemyWaves.EnemyWaves[0].LittleMeteoriteAmount;
+    //    if (amount > 0)
+    //    {
+    //        StartCoroutine(SpawnEnemy(
+    //            amount, _enemyWaves.EnemyWaves[0].MeteoritesSpawnRate,
+    //            _littleMeteoritePrefab,
+    //            new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1, Random.Range(-_camOrtSize, _camOrtSize)),
+    //            Quaternion.Euler(0, 0, Random.Range(0, 180))));
+    //    }
+    //}
+
+    //public void StartSpawnUFO()
+    //{
+    //    int amount = _enemyWaves.EnemyWaves[0].UfoAmount;
+    //    if(amount > 0)
+    //    {
+    //        StartCoroutine(SpawnEnemy(
+    //            amount, _enemyWaves.EnemyWaves[0].UfoSpawnRate,
+    //            _ufoPrefab,
+    //            new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
+    //             Quaternion.identity));
+    //    }
+    //}   
 }
