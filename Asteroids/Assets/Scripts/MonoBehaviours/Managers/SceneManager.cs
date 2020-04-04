@@ -27,6 +27,7 @@ public class SceneManager : MonoBehaviour
     private int _lifesAmount = 3;
     private bool _gameOver = false;
     private EnemySpawner _enemySpawner;
+    private Coroutine _spawnEnemyWavesCoroutine;
 
 
     private void Awake()
@@ -40,7 +41,6 @@ public class SceneManager : MonoBehaviour
             _instance = this;
 
 
-        BaseEnemy.OnNoOtherEnemies += GameWin;
         _enemySpawner = GetComponentInChildren<EnemySpawner>();
     }
 
@@ -71,7 +71,7 @@ public class SceneManager : MonoBehaviour
 
     public void StartEnemyWaveSpawning()
     {
-        _enemySpawner.SpawnWave();
+        _spawnEnemyWavesCoroutine = StartCoroutine(_enemySpawner.SpawnWave());
     }
 
 	public void PlayerDead()
@@ -99,11 +99,15 @@ public class SceneManager : MonoBehaviour
         _player.SetActive(true);
     }
 
-    void GameWin()
+    public void GameWin()
     {
         _gameOver = true;
         UIManager.Instance.WinMessage();
     }
 
-    void GameOver() => _gameOver = true;
+    void GameOver()
+    {
+        StopCoroutine(_spawnEnemyWavesCoroutine);
+        _gameOver = true;
+    }
 }

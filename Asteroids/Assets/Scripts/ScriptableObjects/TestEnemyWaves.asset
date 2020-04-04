@@ -12,24 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b2f19c947665c4d88ad11d3b2b1e7c, type: 3}
   m_Name: TestEnemyWaves
   m_EditorClassIdentifier: 
-  EnemyWaves:
-  - _name: TestWave1
+  WavesArray:
+  - _name: FirstTestWave
     meteoriteTypes:
     - Prefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
         type: 3}
       Amount: 2
-      SpawnRate: 3
-    - Prefab: {fileID: 2990826428107403900, guid: 9a950d92beb9d2a469422213bce121d2,
+      SpawnRate: 5
+    - Prefab: {fileID: 0}
+      Amount: 1
+      SpawnRate: 2
+    ufoInfo:
+      Prefab: {fileID: 0}
+      Amount: 0
+      SpawnRate: 0
+  - _name: SecondTestWave
+    meteoriteTypes:
+    - Prefab: {fileID: 3816838287345253960, guid: af4f4b75832ac534db11d5c3329f2f96,
+        type: 3}
+      Amount: 3
+      SpawnRate: 2
+    ufoInfo:
+      Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
       Amount: 1
-      SpawnRate: 4
-    ufoInfo:
-      Prefab: {fileID: 0}
-      Amount: 0
-      SpawnRate: 0
-  - _name: TestWave2
-    meteoriteTypes: []
-    ufoInfo:
-      Prefab: {fileID: 0}
-      Amount: 0
-      SpawnRate: 0
+      SpawnRate: 1
