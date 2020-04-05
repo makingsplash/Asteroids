@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private EnemyWaves_SO _enemyWaves;
-
-    [Header("Prefabs")]
-    [SerializeField] private GameObject _UFOLaserPoolPrefab;
+    [SerializeField] private WavesOfEmemies_SO _enemyWaves;
 
     private bool _gameOver = false;
 
@@ -18,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
     private int _enemiesToSpawn;
     private int _enemiesKilled;
 
+    private GameObject _UFOLaserPool;
+
 
     private void OnEnable()
     {
@@ -26,15 +25,13 @@ public class EnemySpawner : MonoBehaviour
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
 
-        Instantiate(_UFOLaserPoolPrefab);
-
     }
     private void OnDisable()
     {
         BaseEnemy.EnemyKilled -= CheckForNextWave;
     }
 
-    //\\ 
+    // Wave testing \\ 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -45,10 +42,10 @@ public class EnemySpawner : MonoBehaviour
     {
         if (_currentWave < _enemyWaves.WavesArray.Length)
         {
-            EnemyWaves_SO.Wave wave = _enemyWaves.WavesArray[_currentWave];
+            WavesOfEmemies_SO.Wave wave = _enemyWaves.WavesArray[_currentWave];
 
             // Spawn meteorites
-            foreach (EnemyWaves_SO.EnemySpawnInfo meteoriteInfo in wave.meteoriteTypes)
+            foreach (WavesOfEmemies_SO.BaseEnemyInfo meteoriteInfo in wave.meteoriteTypes)
             {
                 StartCoroutine(SpawnEnemy(
                     meteoriteInfo.Amount, meteoriteInfo.SpawnRate, meteoriteInfo.Prefab,
@@ -61,8 +58,11 @@ public class EnemySpawner : MonoBehaviour
             // Spawn Ufos
             if (wave.ufoInfo.Amount > 0)
             {
-                //\\
-                //\\ Не сразу создавать пул лазеров?
+                if (_UFOLaserPool == null)
+                {
+                    _UFOLaserPool = Instantiate(wave.ufoInfo.LaserPoolPrefab);
+                    _UFOLaserPool.SetActive(true);
+                }
 
                 StartCoroutine(SpawnEnemy(
                     wave.ufoInfo.Amount, wave.ufoInfo.SpawnRate, wave.ufoInfo.Prefab,

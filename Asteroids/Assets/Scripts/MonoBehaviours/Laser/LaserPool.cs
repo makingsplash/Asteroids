@@ -12,7 +12,7 @@ public class LaserPool : MonoBehaviour
 
     void Awake()
     {
-        FillLaserPool();
+        StartCoroutine(FillLaserPool());
     }
 
     public void LaunchLaser(Vector2 launchPosition, float rotationEulerAngle)
@@ -29,7 +29,7 @@ public class LaserPool : MonoBehaviour
             Debug.LogError("В пуле нет свободных лазеров для выстрела");
     }
 
-    void FillLaserPool()
+    private IEnumerator FillLaserPool()
     {
         if (Pool == null)
         {
@@ -37,11 +37,14 @@ public class LaserPool : MonoBehaviour
             for (int i = 0; i < _poolSize; i++)
             {
                 GameObject laserObj = Instantiate(_laserPrefab);
+
                 laserObj.GetComponent<Laser>().ParentPool = this;
                 laserObj.transform.SetParent(transform);
                 laserObj.SetActive(false);
+
                 Pool.Enqueue(laserObj);
             }
         }
+        yield return null;
     }
 }

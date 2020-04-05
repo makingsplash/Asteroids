@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyWaves", menuName = "New EnemyWaves", order = 51)]
-public class EnemyWaves_SO : ScriptableObject
+[CreateAssetMenu(fileName = "WavesOfEnemy", menuName = "New Waves", order = 51)]
+public class WavesOfEmemies_SO : ScriptableObject
 {
     public Wave[] WavesArray;
 
     [Serializable]
-     public class EnemySpawnInfo
+     public class BaseEnemyInfo
      {
         public GameObject Prefab;
         public int Amount;
@@ -17,14 +17,20 @@ public class EnemyWaves_SO : ScriptableObject
      }
 
     [Serializable]
+    public class UfoInfo : BaseEnemyInfo
+    {
+        public GameObject LaserPoolPrefab;
+    }
+
+    [Serializable]
     public class Wave
     {
         [SerializeField] private string _name;
 
         [Header("Meteorites")]
-        public EnemySpawnInfo[] meteoriteTypes;
+        public BaseEnemyInfo[] meteoriteTypes;
 
         [Header("Ufo")]
-        public EnemySpawnInfo ufoInfo = new EnemySpawnInfo();
+        public UfoInfo ufoInfo = new UfoInfo();
     }
 }

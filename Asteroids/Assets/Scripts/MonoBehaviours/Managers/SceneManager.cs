@@ -63,12 +63,12 @@ public class SceneManager : MonoBehaviour
     IEnumerator StartGame()
     {
         StartCoroutine(SpawnPlayer());
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         StartEnemyWaveSpawning();
     }
 
-    public void StartEnemyWaveSpawning() => _enemySpawner.NextWave();
+    private void StartEnemyWaveSpawning() => _enemySpawner.NextWave();
 
 	public void PlayerDead()
     {

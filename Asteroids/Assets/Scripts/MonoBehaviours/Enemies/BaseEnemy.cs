@@ -10,7 +10,6 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
     [SerializeField] protected float _speed;
     [SerializeField] private AudioClip _dieSound;
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IDamageable player = collision.gameObject.GetComponent<IDamageable>();
