@@ -15,21 +15,19 @@ public class RocketSpawner : MonoBehaviour
         yield return new WaitForSeconds(_spawnTime);
         UIManager.Instance.DisableMessage();
 
-
         RectTransform rectTransform = _spawnPositionsFromUI[_positionIndex];
 
         Vector3[] corners = new Vector3[4];
         rectTransform.GetWorldCorners(corners);
 
-        Vector2 spawnWorldPos = Camera.main.ScreenToWorldPoint(corners[0]) +
+        Vector2 spawnPosition = Camera.main.ScreenToWorldPoint(corners[0]) +
             (Camera.main.ScreenToWorldPoint(corners[2]) - Camera.main.ScreenToWorldPoint(corners[0])) / 2;
 
-        _rocket.transform.position = spawnWorldPos;
+        _rocket.transform.position = spawnPosition;
         _rocket.transform.rotation = Quaternion.identity;
+        _rocket.SetActive(true);
 
         UIManager.Instance.DecreaseLifes();
-        _rocket.SetActive(true);
-        
 
         _positionIndex++;
     }

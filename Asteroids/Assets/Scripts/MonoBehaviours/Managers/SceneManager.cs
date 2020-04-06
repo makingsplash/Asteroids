@@ -78,13 +78,15 @@ public class SceneManager : MonoBehaviour
         {
             _lifesAmount--;
 
-            StartCoroutine(_rocketSpawner.SpawnRocket());
+            UIManager.Instance.ChangeScore(-40);
+            UIManager.Instance.ShowRespawnMessage();
 
+            StartCoroutine(_rocketSpawner.SpawnRocket());
         }
         else
         {
+            UIManager.Instance.GameOverMessage();
             GameOver();
-            UIManager.Instance.PlayerDead();
         }
 
         _player.SetActive(false);
