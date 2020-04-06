@@ -26,6 +26,7 @@ public class SceneManager : MonoBehaviour
 
     private int _lifesAmount = 3;
     private bool _gameOver = false;
+    private RocketSpawner _rocketSpawner;
     private EnemySpawner _enemySpawner;
 
 
@@ -40,6 +41,7 @@ public class SceneManager : MonoBehaviour
             _instance = this;
 
 
+        _rocketSpawner = GetComponentInChildren<RocketSpawner>();
         _enemySpawner = GetComponentInChildren<EnemySpawner>();
     }
 
@@ -62,8 +64,8 @@ public class SceneManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        StartCoroutine(SpawnPlayer());
-        yield return new WaitForSeconds(3);
+        StartCoroutine(_rocketSpawner.SpawnRocket());
+        yield return new WaitForSeconds(1);
 
         StartEnemyWaveSpawning();
     }
@@ -76,23 +78,16 @@ public class SceneManager : MonoBehaviour
         {
             _lifesAmount--;
 
-            StartCoroutine(SpawnPlayer());
+            StartCoroutine(_rocketSpawner.SpawnRocket());
+
         }
         else
         {
             GameOver();
+            UIManager.Instance.PlayerDead();
         }
 
         _player.SetActive(false);
-
-        UIManager.Instance.PlayerDead();
-    }
-
-    public IEnumerator SpawnPlayer()
-    {
-        yield return new WaitForSeconds(2);
-        UIManager.Instance.DisableMessage();
-        _player.SetActive(true);
     }
 
     public void GameWin()

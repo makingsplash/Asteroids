@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\OverBorderShifting.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketController.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketSpawner.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\WavesOfEmemies_SO.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

@@ -34,7 +34,6 @@ public class RocketController : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         _vertical = 0;
-        transform.position = new Vector2(0, 0);
 
         OnPlayerEnabled(gameObject);
     }
