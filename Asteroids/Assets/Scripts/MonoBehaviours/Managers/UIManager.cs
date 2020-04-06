@@ -45,29 +45,24 @@ public class UIManager : MonoBehaviour
         _currentScore.text = points.ToString();
     }
 
-    public void PlayerDead()
+    public void ShowRespawnMessage()
     {
-        if (_lifesAmount > 1)
-        {
-            ChangeScore(-40);
-
-            _messageText.text = "Respawning..";
-            _messageText.gameObject.SetActive(true);
-        }
-        else
-        {
-            _messageText.text = "Game over" + "\n" + "Press R to restart";
-            _messageText.gameObject.SetActive(true);
-        }
-
-        _lifesUI[--_lifesAmount].SetActive(false);
+        _messageText.text = "Respawning..";
+        _messageText.gameObject.SetActive(true);
     }
-
     public void DisableMessage() => _messageText.gameObject.SetActive(false);
+
+    public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
 
     public void WinMessage()
     {
         _messageText.text = "You won";
+        _messageText.gameObject.SetActive(true);
+    }
+
+    public void GameOverMessage()
+    {
+        _messageText.text = "Game over" + "\n" + "Press R to restart";
         _messageText.gameObject.SetActive(true);
     }
 }
