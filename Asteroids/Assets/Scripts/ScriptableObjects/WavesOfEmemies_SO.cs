@@ -11,9 +11,7 @@ public class WavesOfEmemies_SO : ScriptableObject
      {
         public GameObject Prefab;
         public int Amount;
-
-        [Tooltip("Frequency = 10 / SpawnRate")]
-        public float SpawnRate;
+        public float Frequency;
      }
 
     [Serializable]

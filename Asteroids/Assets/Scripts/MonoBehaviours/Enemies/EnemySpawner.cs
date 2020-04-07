@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static int EnemiesToSpawn;
+
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
 
-    private bool _gameOver = false;
+    private static bool _gameOver = false;
 
     private float _camOrtSize;
     private float _camAspect;
 
     private int _currentWave = 0;
-    private int _enemiesToSpawn;
     private int _enemiesKilled;
 
     private GameObject _UFOLaserPool;
@@ -24,18 +25,10 @@ public class EnemySpawner : MonoBehaviour
 
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
-
     }
     private void OnDisable()
     {
         BaseEnemy.EnemyKilled -= CheckForNextWave;
-    }
-
-    // Wave testing \\ 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-            NextWave();
     }
 
     private IEnumerator SpawnWave()
@@ -47,12 +40,8 @@ public class EnemySpawner : MonoBehaviour
             // Spawn meteorites
             foreach (WavesOfEmemies_SO.BaseEnemyInfo meteoriteInfo in wave.meteoriteTypes)
             {
-                StartCoroutine(SpawnEnemy(
-                    meteoriteInfo.Amount, meteoriteInfo.SpawnRate, meteoriteInfo.Prefab,
-                    new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1, Random.Range(-_camOrtSize, _camOrtSize)),
-                    Quaternion.Euler(0, 0, Random.Range(0, 180))));
-
-                _enemiesToSpawn += meteoriteInfo.Amount;
+                StartCoroutine(StartSpawnMeteorites(
+                    meteoriteInfo.Amount, meteoriteInfo.Frequency, meteoriteInfo.Prefab));
             }
         
             // Spawn Ufos
@@ -64,15 +53,13 @@ public class EnemySpawner : MonoBehaviour
                     _UFOLaserPool.SetActive(true);
                 }
 
-                StartCoroutine(SpawnEnemy(
-                    wave.ufoInfo.Amount, wave.ufoInfo.SpawnRate, wave.ufoInfo.Prefab,
-                    new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
-                    Quaternion.identity));
-
-                _enemiesToSpawn += wave.ufoInfo.Amount;
+                StartCoroutine(StartSpawnUfos(
+                    wave.ufoInfo.Amount, wave.ufoInfo.Frequency, wave.ufoInfo.Prefab));
             }
 
             _currentWave++;
+
+            Debug.Log("Волна " + _currentWave + " из " + _enemyWaves.WavesArray.Length);
         }
         else
             SceneManager.Instance.GameWin();
@@ -80,30 +67,66 @@ public class EnemySpawner : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator SpawnEnemy(int amount, float spawnRate, GameObject prefab, Vector2 position, Quaternion rotation)
+    private IEnumerator StartSpawnMeteorites(int amount, float frequency, GameObject prefab)
     {
-        WaitForSeconds frequency = new WaitForSeconds(10 / spawnRate);
-
+        EnemiesToSpawn += amount;
         for (int i = 0; i < amount; i++)
         {
-            if (!_gameOver)
-            {
-                Instantiate(prefab, position, rotation);
-                yield return frequency;
-            }
-            else yield break;
+            yield return StartCoroutine(SpawnEnemy(frequency, prefab,
+                new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1.5f, Random.Range(-_camOrtSize, _camOrtSize)),
+                Quaternion.Euler(0, 0, Random.Range(0, 360))));
         }
     }
+
+    private IEnumerator StartSpawnUfos(int amount, float frequency, GameObject prefab)
+    {
+        EnemiesToSpawn += amount;
+        for (int i = 0; i < amount; i++)
+        {
+            yield return StartCoroutine(SpawnEnemy(frequency, prefab,
+                new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
+                    Quaternion.identity));
+        }
+    }
+
+    public static IEnumerator SpawnEnemy(float frequency, GameObject prefab, Vector2 position, Quaternion rotation)
+    {
+        WaitForSeconds spawnFrequency = new WaitForSeconds(frequency);
+
+        if (!_gameOver)
+        {
+            Instantiate(prefab, position, rotation);
+            yield return spawnFrequency;
+        }
+        else yield break;
+    }
+
+    //public static IEnumerator SpawnEnemy(int amount, float frequency, GameObject prefab, Vector2 position, Quaternion rotation)
+    //{
+    //    EnemiesToSpawn += amount;
+
+    //    WaitForSeconds spawnFrequency = new WaitForSeconds(frequency);
+
+    //    for (int i = 0; i < amount; i++)
+    //    {
+    //        if (!_gameOver)
+    //        {
+    //            Instantiate(prefab, position, rotation);
+    //            yield return spawnFrequency;
+    //        }
+    //        else yield break;
+    //    }
+    //}
 
     public void NextWave() => StartCoroutine(SpawnWave());
 
     private void CheckForNextWave()
     {
         _enemiesKilled++;
-        if (_enemiesKilled == _enemiesToSpawn)
+        if (_enemiesKilled == EnemiesToSpawn)
         {
             _enemiesKilled = 0;
-            _enemiesToSpawn = 0;
+            EnemiesToSpawn = 0;
 
             NextWave();
         }

@@ -14,20 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WavesArray:
   - _name: FirstWaveTest
-    meteoriteTypes: []
-    ufoInfo:
-      Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
+    meteoriteTypes:
+    - Prefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
         type: 3}
-      Amount: 1
-      SpawnRate: 4
-      LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
-        type: 3}
-  - _name: SecondWaveTest
-    meteoriteTypes: []
+      Amount: 3
+      Frequency: 0.5
     ufoInfo:
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
       Amount: 2
-      SpawnRate: 5
+      Frequency: 3
+      LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}
+  - _name: SecondWaveTest
+    meteoriteTypes:
+    - Prefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
+        type: 3}
+      Amount: 1
+      Frequency: 0
+    ufoInfo:
+      Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
+        type: 3}
+      Amount: 2
+      Frequency: 0
       LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
         type: 3}

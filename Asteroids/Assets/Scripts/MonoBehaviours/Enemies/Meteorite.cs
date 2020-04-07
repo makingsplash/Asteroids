@@ -6,17 +6,10 @@ public class Meteorite : BaseEnemy
     [Header("When destroyed")]
     [SerializeField] private List<GameObject> _smallerMeteoritesPrefabs = new List<GameObject>();
 
-    private new Rigidbody2D rigidbody;
-
-
-    private void OnEnable()
-    {
-        rigidbody = GetComponent<Rigidbody2D>();
-    }
 
     private void LateUpdate()
     {
-        rigidbody.velocity = transform.up * _speed * Time.deltaTime;
+        transform.Translate(Vector3.up * _speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,6 +37,8 @@ public class Meteorite : BaseEnemy
                 _smallerMeteoritesPrefabs[UnityEngine.Random.Range(0, _smallerMeteoritesPrefabs.Count)],
                 transform.position + Vector3.right * UnityEngine.Random.Range(-0.2f, 0.2f) + Vector3.up * UnityEngine.Random.Range(-0.2f, 0.2f),
                 Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + UnityEngine.Random.Range(-15, 15)));
+
+            EnemySpawner.EnemiesToSpawn++;
         }
     }
 }

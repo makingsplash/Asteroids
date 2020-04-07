@@ -13,7 +13,6 @@ public class UFO : BaseEnemy
     private float _nonAngryFlyTimer = 2;
     private Vector2 _nonAngryFlyDirection;
     private bool _isAngry = false;
-    private Rigidbody2D _rigidbody;
     private LaserPool _laserPool;
     
 
@@ -23,7 +22,6 @@ public class UFO : BaseEnemy
             _player = GameObject.FindGameObjectWithTag("Player");
         RocketController.OnPlayerEnabled += SetPlayerGameObject;
 
-        _rigidbody = GetComponent<Rigidbody2D>();
         _laserPool = FindObjectOfType<LaserPool>();
 
         if (transform.position.x > 0)
@@ -54,14 +52,14 @@ public class UFO : BaseEnemy
     {
         if (!_isAngry)
         {
-            _rigidbody.velocity = _nonAngryFlyDirection * _speed * Time.deltaTime;
+            transform.Translate(_nonAngryFlyDirection * _speed * Time.deltaTime);
         }
         else
         {
             if (_player != null && _player.activeSelf)
-                _rigidbody.velocity = (_player.transform.position - transform.position).normalized * _speed * Time.deltaTime;
+                transform.Translate((_player.transform.position - transform.position).normalized * _speed * Time.deltaTime);
             else
-                _rigidbody.velocity = transform.up * _speed * Time.deltaTime;
+                transform.Translate(transform.up * _speed * Time.deltaTime);
         }
     }
 
