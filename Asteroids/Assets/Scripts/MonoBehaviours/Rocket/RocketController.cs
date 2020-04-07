@@ -58,7 +58,7 @@ public class RocketController : MonoBehaviour, IDamageable
     {
         _laserPool.LaunchLaser(
             transform.up / 1.7f + transform.position,
-            transform.rotation.eulerAngles.z);
+            0 + transform.rotation.eulerAngles.z);
 
         AudioManager.Instance.PlayOneSound(_shotSound);
     }

@@ -23,10 +23,6 @@ public class Laser : MonoBehaviour, IDamager
         rigidbody = GetComponent<Rigidbody2D>();
         _currentLifeTime = _lifeTime;
     }
-    private void OnDisable()
-    {
-        //_currentLifeTime = _lifeTime;
-    }
 
     private void Update()
     {
