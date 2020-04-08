@@ -21,37 +21,87 @@ public class RocketController : MonoBehaviour, IDamageable
     private float _horizontal;
     private float _vertical;
     private Vector2 _moveVertical;
-    private new Rigidbody2D rigidbody;
+    
+    private float invulnerabilityTimerMax = 3f;
+    private float invulnerabilityTimerCurrent;
+    private bool isInvulnerability = false;
+
+    private new Rigidbody2D _rigidbody;
+    private PolygonCollider2D _polygonCollider;
+    private Animator _animator;
     private LaserPool _laserPool;
 
     
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _polygonCollider = GetComponent<PolygonCollider2D>();
+        _animator = GetComponent<Animator>();
         _laserPool = GetComponent<LaserPool>();
+
+        invulnerabilityTimerCurrent = invulnerabilityTimerMax;
+        MakeInvulnerability();
     }
 
     private void OnEnable()
     {
         _vertical = 0;
 
+        MakeInvulnerability();
+
         OnPlayerEnabled(gameObject);
     }
 
     void Update()
     {
+        //\\ Если нажата W, добавляем форс и всё ? иначе тормозим например
+        
+
         _vertical = Input.GetAxis("Vertical");
-        if (_vertical >= 0)
+        if (_vertical > 0)
+        {
             _moveVertical = Vector2.up * Input.GetAxis("Vertical");
+        }
         _horizontal = Input.GetAxis("Horizontal");
+
+        if (Input.GetKey(KeyCode.W))
+            _animator.SetBool("isMoving", true);
+        else
+            _animator.SetBool("isMoving", false);
+        
         if (Input.GetKeyDown(KeyCode.L))
-            LaserShot();            
+            LaserShot();
+
+        if (isInvulnerability)
+            InvulnerabilityCouner();
+    }
+
+
+    /// <summary>
+    ///  После респавна не работает анимация неуязвимость
+    /// </summary>
+    private void MakeInvulnerability()
+    {
+        isInvulnerability = true;
+        _polygonCollider.enabled = false;
+        _animator.SetBool("invulnerability", true);
+
+    }
+
+    private void InvulnerabilityCouner()
+    {
+        invulnerabilityTimerCurrent -= Time.deltaTime;
+        if(invulnerabilityTimerCurrent < 0)
+        {
+            _animator.SetBool("invulnerability", false);
+            _polygonCollider.enabled = true;
+        }
     }
 
     private void LateUpdate()
     {
-        rigidbody.AddRelativeForce(_moveVertical * _moveSpeed * Time.deltaTime);
-        rigidbody.rotation -= _horizontal * _rotateSpeed * Time.deltaTime;
+        _rigidbody.AddRelativeForce(_moveVertical * _moveSpeed * Time.deltaTime);
+        _rigidbody.rotation -= _horizontal * _rotateSpeed * Time.deltaTime;
     }
 
     void LaserShot()
