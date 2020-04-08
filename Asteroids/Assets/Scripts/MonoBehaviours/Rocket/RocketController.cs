@@ -40,14 +40,14 @@ public class RocketController : MonoBehaviour, IDamageable
         _laserPool = GetComponent<LaserPool>();
 
         invulnerabilityTimerCurrent = invulnerabilityTimerMax;
-        isInvulnerability = true;
-        _polygonCollider.enabled = false;
-        _animator.SetBool("invulnerability", true);
+        MakeInvulnerability();
     }
 
     private void OnEnable()
     {
         _vertical = 0;
+
+        MakeInvulnerability();
 
         OnPlayerEnabled(gameObject);
     }
@@ -74,6 +74,18 @@ public class RocketController : MonoBehaviour, IDamageable
 
         if (isInvulnerability)
             InvulnerabilityCouner();
+    }
+
+
+    /// <summary>
+    ///  После респавна не работает анимация неуязвимость
+    /// </summary>
+    private void MakeInvulnerability()
+    {
+        isInvulnerability = true;
+        _polygonCollider.enabled = false;
+        _animator.SetBool("invulnerability", true);
+
     }
 
     private void InvulnerabilityCouner()

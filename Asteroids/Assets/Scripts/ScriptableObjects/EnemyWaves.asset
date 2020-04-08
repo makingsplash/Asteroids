@@ -17,7 +17,7 @@ MonoBehaviour:
     meteoriteTypes:
     - Prefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
         type: 3}
-      Amount: 3
+      Amount: 1
       Frequency: 0.5
     ufoInfo:
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
