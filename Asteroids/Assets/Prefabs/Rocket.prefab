@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5749404981031793932}
   - component: {fileID: 6447163374110014461}
   - component: {fileID: 2458774055377844771}
+  - component: {fileID: 6851249775527279398}
   - component: {fileID: 1858724186}
   - component: {fileID: 8628796169966668543}
   - component: {fileID: 4307419851373478933}
-  - component: {fileID: 6851249775527279398}
   m_Layer: 12
   m_Name: Rocket
   m_TagString: Player
@@ -123,7 +123,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.67}
     oldSize: {x: 3.234375, y: 4.78125}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
@@ -150,6 +150,25 @@ PolygonCollider2D:
       - {x: -0.9989672, y: -0.18786763}
       - {x: -0.9962328, y: -0.8740093}
       - {x: -0.30530152, y: -0.33664986}
+--- !u!95 &6851249775527279398
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879710610104850850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a2a71cc6f31b524db48b54d02d16dae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1858724186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +198,9 @@ MonoBehaviour:
   _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
   _rocketExplosionSound: {fileID: 8300000, guid: 57224491e0a29eb4db188c02fb50c8c6,
     type: 3}
+  _animator: {fileID: 6851249775527279398}
+  _polygonCollider: {fileID: 2458774055377844771}
+  _fireRate: 0.2
 --- !u!114 &4307419851373478933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,22 +216,3 @@ MonoBehaviour:
   _poolSize: 40
   _laserPrefab: {fileID: 5475956413155397393, guid: 9201523707c2e104b9efb75d42e5d547,
     type: 3}
---- !u!95 &6851249775527279398
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879710610104850850}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3a2a71cc6f31b524db48b54d02d16dae, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

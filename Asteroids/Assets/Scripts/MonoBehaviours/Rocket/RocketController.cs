@@ -17,17 +17,23 @@ public class RocketController : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip _shotSound;
     [SerializeField] private AudioClip _rocketExplosionSound;
     
+    [Header("Invulnerability")]
+    [SerializeField] private Animator _animator;
+    [SerializeField] private PolygonCollider2D _polygonCollider;
+
+    [SerializeField] private float _fireRate;
+    private bool _canShot;
+
     private float _horizontal;
     private float _vertical;
     private Vector2 _moveVertical;
+
     
     private float invulnerabilityTimerMax = 5f;
     private float invulnerabilityTimerCurrent;
     private bool isInvulnerability = false;
 
     private Rigidbody2D _rigidbody;
-    private PolygonCollider2D _polygonCollider;
-    private Animator _animator;
     private LaserPool _laserPool;
 
     
@@ -39,13 +45,11 @@ public class RocketController : MonoBehaviour, IDamageable
 
     private void OnEnable()
     {
-        if(_polygonCollider == null)
-            _polygonCollider = GetComponent<PolygonCollider2D>();
-        if(_animator == null)
-            _animator = GetComponent<Animator>();
         MakeInvulnerability();
 
         _vertical = 0;
+
+        _canShot = true;
 
         OnPlayerEnabled(gameObject);
     }
@@ -59,7 +63,7 @@ public class RocketController : MonoBehaviour, IDamageable
         }
         _horizontal = Input.GetAxis("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKey(KeyCode.L))
             LaserShot();
 
         if (Input.GetKey(KeyCode.W))
@@ -96,13 +100,25 @@ public class RocketController : MonoBehaviour, IDamageable
         _rigidbody.rotation -= _horizontal * _rotateSpeed * Time.deltaTime;
     }
 
+    private IEnumerator LaserReload()
+    {
+        yield return new WaitForSeconds(_fireRate);
+        _canShot = true;
+    }
+
     void LaserShot()
     {
-        _laserPool.LaunchLaser(
-            transform.up / 1.7f + transform.position,
-            0 + transform.rotation.eulerAngles.z);
+        if (_canShot)
+        {
+            _laserPool.LaunchLaser(
+                transform.up / 1.7f + transform.position,
+                0 + transform.rotation.eulerAngles.z);
 
-        AudioManager.Instance.PlayOneSound(_shotSound);
+            AudioManager.Instance.PlayOneSound(_shotSound);
+
+            _canShot = false;
+            StartCoroutine(LaserReload());
+        }
     }
 
     public void TakeDamage()

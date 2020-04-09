@@ -150,6 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentPool: {fileID: 0}
-  _speed: 150
+  _speed: 200
   _lifeTime: 3.01
   _isRocketLaser: 0
