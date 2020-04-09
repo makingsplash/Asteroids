@@ -16,17 +16,16 @@ public class RocketController : MonoBehaviour, IDamageable
     [Header("Sounds")]
     [SerializeField] private AudioClip _shotSound;
     [SerializeField] private AudioClip _rocketExplosionSound;
-
     
     private float _horizontal;
     private float _vertical;
     private Vector2 _moveVertical;
     
-    private float invulnerabilityTimerMax = 3f;
+    private float invulnerabilityTimerMax = 5f;
     private float invulnerabilityTimerCurrent;
     private bool isInvulnerability = false;
 
-    private new Rigidbody2D _rigidbody;
+    private Rigidbody2D _rigidbody;
     private PolygonCollider2D _polygonCollider;
     private Animator _animator;
     private LaserPool _laserPool;

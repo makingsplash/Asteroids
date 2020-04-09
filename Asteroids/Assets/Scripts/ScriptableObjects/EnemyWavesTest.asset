@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b2f19c947665c4d88ad11d3b2b1e7c, type: 3}
+  m_Name: EnemyWavesTest
+  m_EditorClassIdentifier: 
+  WavesArray:
+  - _name: FirstWaveTest
+    meteoriteTypes:
+    - Prefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
+        type: 3}
+      Amount: 1
+      Frequency: 0.5
+    ufoInfo:
+      Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
+        type: 3}
+      Amount: 0
+      Frequency: 3
+      LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}
+  - _name: SecondWaveTest
+    meteoriteTypes:
+    - Prefab: {fileID: 4718865033537516008, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
+        type: 3}
+      Amount: 1
+      Frequency: 0
+    ufoInfo:
+      Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
+        type: 3}
+      Amount: 2
+      Frequency: 0
+      LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}

@@ -65,7 +65,7 @@ public class SceneManager : MonoBehaviour
     IEnumerator StartGame()
     {
         StartCoroutine(_rocketSpawner.SpawnRocket());
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.5f);
 
         StartEnemyWaveSpawning();
     }

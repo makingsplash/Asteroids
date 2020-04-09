@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScorePoints: 45
-  _speed: 1
+  _speed: 1.5
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
   _shotSound: {fileID: 8300000, guid: a429aace0e22b804dac0a97959e6dc27, type: 3}
   _fireRate: 1
