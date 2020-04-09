@@ -35,57 +35,50 @@ public class RocketController : MonoBehaviour, IDamageable
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _polygonCollider = GetComponent<PolygonCollider2D>();
-        _animator = GetComponent<Animator>();
         _laserPool = GetComponent<LaserPool>();
-
-        invulnerabilityTimerCurrent = invulnerabilityTimerMax;
-        MakeInvulnerability();
     }
 
     private void OnEnable()
     {
-        _vertical = 0;
-
+        if(_polygonCollider == null)
+            _polygonCollider = GetComponent<PolygonCollider2D>();
+        if(_animator == null)
+            _animator = GetComponent<Animator>();
         MakeInvulnerability();
+
+        _vertical = 0;
 
         OnPlayerEnabled(gameObject);
     }
 
     void Update()
     {
-        //\\ Если нажата W, добавляем форс и всё ? иначе тормозим например
-        
-
         _vertical = Input.GetAxis("Vertical");
-        if (_vertical > 0)
+        if (_vertical >= 0)
         {
             _moveVertical = Vector2.up * Input.GetAxis("Vertical");
         }
         _horizontal = Input.GetAxis("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.L))
+            LaserShot();
 
         if (Input.GetKey(KeyCode.W))
             _animator.SetBool("isMoving", true);
         else
             _animator.SetBool("isMoving", false);
         
-        if (Input.GetKeyDown(KeyCode.L))
-            LaserShot();
 
         if (isInvulnerability)
             InvulnerabilityCouner();
     }
 
-
-    /// <summary>
-    ///  После респавна не работает анимация неуязвимость
-    /// </summary>
     private void MakeInvulnerability()
     {
+        invulnerabilityTimerCurrent = invulnerabilityTimerMax;
         isInvulnerability = true;
         _polygonCollider.enabled = false;
         _animator.SetBool("invulnerability", true);
-
     }
 
     private void InvulnerabilityCouner()
