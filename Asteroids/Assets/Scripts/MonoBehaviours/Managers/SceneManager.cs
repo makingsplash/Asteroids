@@ -24,7 +24,7 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private GameObject _player;
 
-    private int _lifesAmount = 3;
+    private byte _lifesAmount = 3;
     private bool _gameOver = false;
     private RocketSpawner _rocketSpawner;
     private EnemySpawner _enemySpawner;

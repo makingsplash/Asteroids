@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb2c87b76f971f418dfa26fbdb15d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 450
+  _moveSpeed: 510
   _rotateSpeed: 350
   _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
   _rocketExplosionSound: {fileID: 8300000, guid: 57224491e0a29eb4db188c02fb50c8c6,

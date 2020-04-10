@@ -10,7 +10,7 @@ public class WavesOfEmemies_SO : ScriptableObject
      public class BaseEnemyInfo
      {
         public GameObject Prefab;
-        public int Amount;
+        public byte Amount;
         public float Frequency;
      }
 

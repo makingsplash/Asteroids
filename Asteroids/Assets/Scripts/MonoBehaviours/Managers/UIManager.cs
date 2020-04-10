@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _currentScore;
     [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
 
-    private int _lifesAmount = 3;
+    private byte _lifesAmount = 3;
 
     private void Awake()
     {
