@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static int EnemiesToSpawn;
+    public static byte EnemiesToSpawn;
 
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
 
@@ -13,8 +13,8 @@ public class EnemySpawner : MonoBehaviour
     private float _camOrtSize;
     private float _camAspect;
 
-    private int _currentWave = 0;
-    private int _enemiesKilled;
+    private byte _currentWave = 0;
+    private byte _enemiesKilled;
 
     private GameObject _UFOLaserPool;
 
@@ -69,10 +69,10 @@ public class EnemySpawner : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator StartSpawnMeteorites(int amount, float frequency, GameObject prefab)
+    private IEnumerator StartSpawnMeteorites(byte amount, float frequency, GameObject prefab)
     {
         EnemiesToSpawn += amount;
-        for (int i = 0; i < amount; i++)
+        for (byte i = 0; i < amount; i++)
         {
             yield return StartCoroutine(SpawnEnemy(frequency, prefab,
                 new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1.5f, Random.Range(-_camOrtSize, _camOrtSize)),
@@ -80,10 +80,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator StartSpawnUfos(int amount, float frequency, GameObject prefab)
+    private IEnumerator StartSpawnUfos(byte amount, float frequency, GameObject prefab)
     {
         EnemiesToSpawn += amount;
-        for (int i = 0; i < amount; i++)
+        for (byte i = 0; i < amount; i++)
         {
             yield return StartCoroutine(SpawnEnemy(frequency, prefab,
                 new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),

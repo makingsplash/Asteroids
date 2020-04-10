@@ -5,9 +5,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
 {
     public static Action EnemyKilled;
 
-    public int ScorePoints;
+    public byte ScorePoints;
 
-    [SerializeField] protected float _speed;
+    [SerializeField] protected ushort _speed;
     [SerializeField] private AudioClip _dieSound;
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -8,8 +8,8 @@ public class RocketController : MonoBehaviour, IDamageable
     public static Action<GameObject> OnPlayerEnabled;
 
     [Header("Movement")]
-    [SerializeField] private float _moveSpeed = 250;
-    [SerializeField] private float _rotateSpeed = 350;
+    [SerializeField] private ushort _moveSpeed = 250;
+    [SerializeField] private ushort _rotateSpeed = 350;
 
     [Header("Sounds")]
     [SerializeField] private AudioClip _shotSound;

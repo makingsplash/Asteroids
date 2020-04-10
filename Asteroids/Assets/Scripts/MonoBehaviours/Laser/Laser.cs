@@ -7,7 +7,7 @@ public class Laser : MonoBehaviour, IDamager
 {
     public LaserPool ParentPool;
 
-    [SerializeField] private float _speed = 250;
+    [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
 
     [SerializeField]
