@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class RocketController : MonoBehaviour, IDamageable
 {
-    // Инициализируем чтобы не получить NullRef при вызове в UFOController без подписчиков
-    // Тк Player включается в первый раз раньше, чем UFO и подписывается
-    public static Action<GameObject> OnPlayerEnabled = delegate (GameObject g) { };
+    public static Action<GameObject> OnPlayerEnabled;
 
     [Header("Movement")]
     [SerializeField] private ushort _moveSpeed = 250;
@@ -29,7 +27,7 @@ public class RocketController : MonoBehaviour, IDamageable
     private Vector2 _moveVertical;
 
     
-    private float invulnerabilityTimerMax = 5f;
+    private readonly float invulnerabilityTimerMax = 5f;
     private float invulnerabilityTimerCurrent;
     private bool isInvulnerability = false;
 
@@ -51,7 +49,7 @@ public class RocketController : MonoBehaviour, IDamageable
 
         _canShot = true;
 
-        OnPlayerEnabled(gameObject);
+        OnPlayerEnabled?.Invoke(gameObject);
     }
 
     void Update()

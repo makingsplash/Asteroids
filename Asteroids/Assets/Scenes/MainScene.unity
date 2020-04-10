@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyWaves: {fileID: 11400000, guid: a040a97ba5148ed42862b26227d6f960, type: 2}
+  _enemyWaves: {fileID: 11400000, guid: a8bec994c1d9426428c58597187e13fa, type: 2}
 --- !u!1 &1537010212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1318,11 @@ PrefabInstance:
     - target: {fileID: 2458774055377844771, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458774055377844771, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

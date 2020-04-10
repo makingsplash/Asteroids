@@ -14,13 +14,13 @@ public class Laser : MonoBehaviour, IDamager
     [Tooltip("If rocket laser, will add points to score for hit")]
     private bool _isRocketLaser;
 
-    private new Rigidbody2D rigidbody;
+    private new Rigidbody2D _rigidbody;
     private float _currentLifeTime;
 
 
     private void OnEnable()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _currentLifeTime = _lifeTime;
     }
 
@@ -35,10 +35,10 @@ public class Laser : MonoBehaviour, IDamager
 
     private void LateUpdate()
     {
-        rigidbody.velocity = transform.up * _speed * Time.deltaTime;
+        _rigidbody.velocity = transform.up * _speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 

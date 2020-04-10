@@ -25,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
+
+        EnemiesToSpawn = 0;
     }
     private void OnDisable()
     {
