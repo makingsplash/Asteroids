@@ -830,7 +830,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 31.6
+  m_fontSize: 29.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1255,11 +1255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
-    - target: {fileID: 1879710610104850850, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1313,16 +1308,6 @@ PrefabInstance:
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458774055377844771, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458774055377844771, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
