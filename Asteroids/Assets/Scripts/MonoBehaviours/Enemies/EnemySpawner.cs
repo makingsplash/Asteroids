@@ -4,7 +4,33 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static byte EnemiesToSpawn;
+    private static byte _enemiesSpawned;
+    public static byte EnemiesSpawned
+    {
+        get
+        {
+            return _enemiesSpawned;
+        }
+        set
+        {
+            _enemiesSpawned = value;
+            UIManager.Instance.SetEnemyWaveBarMaxValue();
+        }
+    }
+
+    private static byte _enemiesKilled;
+    public static byte EnemiesKilled 
+    {
+        get
+        {
+            return _enemiesKilled;
+        }
+        private set
+        {
+            _enemiesKilled = value;
+            UIManager.Instance.SetEnemyWaveBarCurrentValue();
+        } 
+    }
 
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
 
@@ -14,7 +40,6 @@ public class EnemySpawner : MonoBehaviour
     private float _camAspect;
 
     private byte _currentWave = 0;
-    private byte _enemiesKilled;
 
     private GameObject _UFOLaserPool;
 
@@ -26,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
 
-        EnemiesToSpawn = 0;
+        EnemiesSpawned = 0;
     }
     private void OnDisable()
     {
@@ -71,7 +96,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator StartSpawnMeteorites(byte amount, float frequency, GameObject prefab)
     {
-        EnemiesToSpawn += amount;
+        EnemiesSpawned += amount;
         for (byte i = 0; i < amount; i++)
         {
             yield return StartCoroutine(SpawnEnemy(frequency, prefab,
@@ -82,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator StartSpawnUfos(byte amount, float frequency, GameObject prefab)
     {
-        EnemiesToSpawn += amount;
+        EnemiesSpawned += amount;
         for (byte i = 0; i < amount; i++)
         {
             yield return StartCoroutine(SpawnEnemy(frequency, prefab,
@@ -107,11 +132,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void CheckForNextWave()
     {
-        _enemiesKilled++;
-        if (_enemiesKilled == EnemiesToSpawn)
+        EnemiesKilled++;
+        if (EnemiesKilled == EnemiesSpawned)
         {
-            _enemiesKilled = 0;
-            EnemiesToSpawn = 0;
+            EnemiesKilled = 0;
+            EnemiesSpawned = 0;
 
             NextWave();
         }
