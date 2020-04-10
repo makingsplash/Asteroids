@@ -25,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
+
+        EnemiesToSpawn = 0;
     }
     private void OnDisable()
     {
@@ -100,23 +102,6 @@ public class EnemySpawner : MonoBehaviour
         }
         else yield break;
     }
-
-    //public static IEnumerator SpawnEnemy(int amount, float frequency, GameObject prefab, Vector2 position, Quaternion rotation)
-    //{
-    //    EnemiesToSpawn += amount;
-
-    //    WaitForSeconds spawnFrequency = new WaitForSeconds(frequency);
-
-    //    for (int i = 0; i < amount; i++)
-    //    {
-    //        if (!_gameOver)
-    //        {
-    //            Instantiate(prefab, position, rotation);
-    //            yield return spawnFrequency;
-    //        }
-    //        else yield break;
-    //    }
-    //}
 
     public void NextWave() => StartCoroutine(SpawnWave());
 
