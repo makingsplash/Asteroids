@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _currentScore;
     [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
+    [SerializeField] private EnemyWaveBar _enemyWaveBar;
 
     private byte _lifesAmount = 3;
 
@@ -65,4 +66,7 @@ public class UIManager : MonoBehaviour
         _messageText.text = "Game over" + "\n" + "Press R to restart";
         _messageText.gameObject.SetActive(true);
     }
+
+    public void SetEnemyWaveBarMaxValue() => _enemyWaveBar.SetMaxValue();
+    public void SetEnemyWaveBarCurrentValue() => _enemyWaveBar.SetCurrentValue();
 }

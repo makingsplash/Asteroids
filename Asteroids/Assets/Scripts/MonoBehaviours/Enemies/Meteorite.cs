@@ -38,7 +38,7 @@ public class Meteorite : BaseEnemy
                 transform.position + Vector3.right * UnityEngine.Random.Range(-0.2f, 0.2f) + Vector3.up * UnityEngine.Random.Range(-0.2f, 0.2f),
                 Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + UnityEngine.Random.Range(-15, 15)));
 
-            EnemySpawner.EnemiesToSpawn++;
+            EnemySpawner.EnemiesSpawned++;
         }
     }
 }
