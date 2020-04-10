@@ -8,7 +8,7 @@ public class RocketSpawner : MonoBehaviour
     [SerializeField] private float _spawnTime;
     [SerializeField] private RectTransform[] _spawnPositionsFromUI = new RectTransform[3];
 
-    private int _positionIndex = 0;
+    private byte _positionIndex = 0;
 
     public IEnumerator SpawnRocket()
     {

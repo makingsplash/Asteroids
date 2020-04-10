@@ -6,7 +6,7 @@ public class LaserPool : MonoBehaviour
 {
     public Queue<GameObject> Pool;
 
-    [SerializeField] private int _poolSize = 40;
+    [SerializeField] private byte _poolSize = 40;
     [SerializeField] private GameObject _laserPrefab;
 
 
