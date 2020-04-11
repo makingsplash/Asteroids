@@ -1,10 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private static byte _enemiesSpawned;
+    private static byte _enemiesSpawned = 0;
     public static byte EnemiesSpawned
     {
         get
@@ -14,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
         set
         {
             _enemiesSpawned = value;
-            UIManager.Instance.SetEnemyWaveBarMaxValue();
+            UIManager.Instance.ResizeWaveBarMaxValue();
         }
     }
 
@@ -28,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
         private set
         {
             _enemiesKilled = value;
-            UIManager.Instance.SetEnemyWaveBarCurrentValue();
+            UIManager.Instance.DecreaseWaveBarCurrentValue();
         } 
     }
 
@@ -50,8 +49,6 @@ public class EnemySpawner : MonoBehaviour
 
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
-
-        EnemiesSpawned = 0;
     }
     private void OnDisable()
     {
@@ -86,7 +83,8 @@ public class EnemySpawner : MonoBehaviour
 
             _currentWave++;
 
-            Debug.Log("Волна " + _currentWave + " из " + _enemyWaves.WavesArray.Length);
+            UIManager.Instance.ResizeWaveBarMaxValue();
+            UIManager.Instance.ChangeWaveCounter(_currentWave);
         }
         else
             SceneManager.Instance.GameWin();

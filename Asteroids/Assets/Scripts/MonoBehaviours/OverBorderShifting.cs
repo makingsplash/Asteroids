@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OverBorderShifting : MonoBehaviour
 {
-    // Коррекция позиции при выходе лазера за границы камеры 
-    // Без неё мы будем постоянно перемещать вышедший за границу камеры лазер на границу камеры
+    // Коррекция позиции при выходе за границы камеры 
+    // Без неё мы будем постоянно перемещать вышедший объект на границу камеры
     private const float _shiftCorrection = 0.2f;
 
     private float _camOrtSize;  // Camera.main.orthographicSize
@@ -23,13 +21,13 @@ public class OverBorderShifting : MonoBehaviour
         _posX = transform.position.x;
         _posY = transform.position.y;
 
-        if (_posY > _camOrtSize)                        // Лазер вышел сверху
+        if (_posY > _camOrtSize)                        // Объект вышел сверху
             transform.position = new Vector2(_posX, -_posY + _shiftCorrection);
-        if (_posY < -_camOrtSize)                       // Лазер вышел снизу
+        if (_posY < -_camOrtSize)                       // Объект вышел снизу
             transform.position = new Vector2(_posX, -_posY - _shiftCorrection);
-        if (_posX > _camOrtSize * Camera.main.aspect)   // Лазер вышел справа
+        if (_posX > _camOrtSize * Camera.main.aspect)   // Объект вышел справа
             transform.position = new Vector2(-_posX + _shiftCorrection, _posY);
-        if (_posX < -_camOrtSize * Camera.main.aspect)  // Лазер вышел слева
+        if (_posX < -_camOrtSize * Camera.main.aspect)  // Объект вышел слева
             transform.position = new Vector2(-_posX - _shiftCorrection, _posY);
     }
 }

@@ -53,7 +53,7 @@ MonoBehaviour:
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
       Amount: 3
-      Frequency: 5
+      Frequency: 2.5
       LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
         type: 3}
   - _name: Ufos&meteorites

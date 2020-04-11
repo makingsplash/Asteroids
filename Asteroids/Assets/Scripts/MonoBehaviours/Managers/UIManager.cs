@@ -23,8 +23,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _currentScore;
+
     [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
+
     [SerializeField] private EnemyWaveBar _enemyWaveBar;
+    [SerializeField] private TextMeshProUGUI _waveCounter;
 
     private byte _lifesAmount = 3;
 
@@ -67,6 +70,12 @@ public class UIManager : MonoBehaviour
         _messageText.gameObject.SetActive(true);
     }
 
-    public void SetEnemyWaveBarMaxValue() => _enemyWaveBar.SetMaxValue();
-    public void SetEnemyWaveBarCurrentValue() => _enemyWaveBar.SetCurrentValue();
+    public void ChangeWaveCounter(byte waveNumber)
+    {
+        _waveCounter.text = "Wave: " + waveNumber;
+    }
+
+    public void DecreaseWaveBarCurrentValue() => StartCoroutine(_enemyWaveBar.DecreaseCurrentValue());
+
+    public void ResizeWaveBarMaxValue() => _enemyWaveBar.ResizeMaxValue();
 }
