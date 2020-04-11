@@ -10,11 +10,12 @@ public class UFO : BaseEnemy
     [SerializeField] private float _fireRate = 0.5f;
     
     private GameObject _player;
+    private LaserPool _laserPool;
+
     private float _nonAngryFlyTimer = 2;
     private Vector2 _nonAngryFlyDirection;
     private bool _isAngry = false;
-    private LaserPool _laserPool;
-    
+    private float _deadTimer = 10f;
 
     private void OnEnable()
     {
@@ -59,7 +60,12 @@ public class UFO : BaseEnemy
             if (_player != null && _player.activeSelf)
                 transform.Translate((_player.transform.position - transform.position).normalized * _speed * Time.deltaTime);
             else
+            {
                 transform.Translate(transform.up * _speed * Time.deltaTime);
+                _deadTimer -= Time.deltaTime;
+                if (_deadTimer < 0)
+                    Destroy(gameObject);
+            }
         }
     }
 
