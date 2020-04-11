@@ -502,7 +502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7848124, y: 0.072000004}
   m_AnchorMax: {x: 0.8335625, y: 0.13632712}
-  m_AnchoredPosition: {x: -1.607193, y: 0.923996}
+  m_AnchoredPosition: {x: -1.607193, y: 0.9239807}
   m_SizeDelta: {x: 1.6477051, y: 1.0499878}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &489414863
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20.05
+  m_fontSize: 29.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 31
+  m_fontSize: 31.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1432,12 +1432,12 @@ PrefabInstance:
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.155
       objectReference: {fileID: 0}
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.623
       objectReference: {fileID: 0}
     - target: {fileID: 653468106724985743, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
@@ -1649,7 +1649,7 @@ PrefabInstance:
     - target: {fileID: 5436956736359913275, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5436956736359913275, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}
@@ -1674,7 +1674,7 @@ PrefabInstance:
     - target: {fileID: 5436956736359913275, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.64100647
+      value: -0.6409912
       objectReference: {fileID: 0}
     - target: {fileID: 5436956736359913275, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}
