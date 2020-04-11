@@ -1484,6 +1484,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7271767654442375129, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: m_Name
+      value: InvulnerabilityAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875146385837599048, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: m_Name
+      value: MovingFireAnim
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}
 --- !u!1 &1963824295 stripped
@@ -1649,7 +1659,7 @@ PrefabInstance:
     - target: {fileID: 5436956736359913275, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5436956736359913275, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}

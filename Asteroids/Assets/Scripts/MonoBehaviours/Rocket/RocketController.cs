@@ -7,6 +7,8 @@ public class RocketController : MonoBehaviour, IDamageable
 {
     public static Action<GameObject> OnPlayerEnabled;
 
+    [SerializeField] private float _fireRate;
+
     [Header("Movement")]
     [SerializeField] private ushort _moveSpeed = 250;
     [SerializeField] private ushort _rotateSpeed = 350;
@@ -16,16 +18,17 @@ public class RocketController : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip _rocketExplosionSound;
     
     [Header("Invulnerability")]
-    [SerializeField] private Animator _animator;
     [SerializeField] private PolygonCollider2D _polygonCollider;
 
-    [SerializeField] private float _fireRate;
+    [Header("Animations")]
+    [SerializeField] private GameObject _movingFireAnim;
+    [SerializeField] private GameObject _invulnerabilityAnim;
+
     private bool _canShot;
 
     private float _horizontal;
     private float _vertical;
     private Vector2 _moveVertical;
-
     
     private readonly float invulnerabilityTimerMax = 5f;
     private float invulnerabilityTimerCurrent;
@@ -65,10 +68,10 @@ public class RocketController : MonoBehaviour, IDamageable
             LaserShot();
 
         if (Input.GetKey(KeyCode.W))
-            _animator.SetBool("isMoving", true);
+            _movingFireAnim.SetActive(true);
         else
-            _animator.SetBool("isMoving", false);
-        
+            _movingFireAnim.SetActive(false);
+
 
         if (isInvulnerability)
             InvulnerabilityCouner();
@@ -79,7 +82,7 @@ public class RocketController : MonoBehaviour, IDamageable
         invulnerabilityTimerCurrent = invulnerabilityTimerMax;
         isInvulnerability = true;
         _polygonCollider.enabled = false;
-        _animator.SetBool("invulnerability", true);
+        _invulnerabilityAnim.SetActive(true);
     }
 
     private void InvulnerabilityCouner()
@@ -87,7 +90,7 @@ public class RocketController : MonoBehaviour, IDamageable
         invulnerabilityTimerCurrent -= Time.deltaTime;
         if(invulnerabilityTimerCurrent < 0)
         {
-            _animator.SetBool("invulnerability", false);
+            _invulnerabilityAnim.SetActive(false);
             _polygonCollider.enabled = true;
         }
     }
