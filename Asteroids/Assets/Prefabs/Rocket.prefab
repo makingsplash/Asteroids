@@ -11,17 +11,17 @@ GameObject:
   - component: {fileID: 653468106724985743}
   - component: {fileID: 5749404981031793932}
   - component: {fileID: 6447163374110014461}
-  - component: {fileID: 2458774055377844771}
   - component: {fileID: 1858724186}
   - component: {fileID: 8628796169966668543}
   - component: {fileID: 4307419851373478933}
+  - component: {fileID: 7804060633092792116}
   m_Layer: 12
   m_Name: Rocket
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &653468106724985743
 Transform:
   m_ObjectHideFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1879710610104850850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.002, z: 0}
-  m_LocalScale: {x: 0.21261634, y: 0.21261634, z: 0.21261634}
+  m_LocalScale: {x: 0.100642174, y: 0.100642174, z: 0.100642174}
   m_Children:
   - {fileID: 5238275852792251895}
   - {fileID: 1838084929282373862}
@@ -75,8 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2609261544922029906, guid: fb8a67cdd654fa0419629c6f5f9b0639,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67644c6664561d84e8ce9ee2c43b47c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,49 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &2458774055377844771
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879710610104850850}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.8}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.67}
-    oldSize: {x: 3.234375, y: 4.78125}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.47014165, y: -0.85675055}
-      - {x: 0.46670085, y: -0.8458336}
-      - {x: 0.37435803, y: -0.31870404}
-      - {x: 0.97489744, y: -0.8742605}
-      - {x: 0.99511683, y: -0.25797603}
-      - {x: 0.538798, y: 0.45904174}
-      - {x: 0.58714247, y: 0.75791174}
-      - {x: 0.5966125, y: 1.1044831}
-      - {x: 0.49759912, y: 1.6485928}
-      - {x: 0.29445526, y: 2.034222}
-      - {x: 0.0042591672, y: 2.409608}
-      - {x: -0.34572947, y: 1.9759407}
-      - {x: -0.5366727, y: 1.5732604}
-      - {x: -0.6079761, y: 1.0712565}
-      - {x: -0.5452902, y: 0.40744045}
-      - {x: -0.9989672, y: -0.18786763}
-      - {x: -0.9962328, y: -0.8740093}
-      - {x: -0.30530152, y: -0.33664986}
 --- !u!114 &1858724186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +137,7 @@ MonoBehaviour:
   _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
   _rocketExplosionSound: {fileID: 8300000, guid: 57224491e0a29eb4db188c02fb50c8c6,
     type: 3}
-  _polygonCollider: {fileID: 2458774055377844771}
+  _polygonCollider: {fileID: 0}
   _movingFireAnim: {fileID: 3875146385837599048}
   _invulnerabilityAnim: {fileID: 7271767654442375129}
 --- !u!114 &4307419851373478933
@@ -199,6 +155,49 @@ MonoBehaviour:
   _poolSize: 40
   _laserPrefab: {fileID: 5475956413155397393, guid: 9201523707c2e104b9efb75d42e5d547,
     type: 3}
+--- !u!60 &7804060633092792116
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879710610104850850}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8, y: 8}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.95620745, y: -2.6476219}
+      - {x: -2.434469, y: -4.064087}
+      - {x: -2.5021174, y: -2.544342}
+      - {x: -1.3565354, y: -0.7864232}
+      - {x: -1.4531232, y: -0.20667927}
+      - {x: -1.4235916, y: 1.5680208}
+      - {x: -1.0938507, y: 2.6596916}
+      - {x: -0.5302638, y: 3.5189908}
+      - {x: 0.029517403, y: 4.0381026}
+      - {x: 0.80276555, y: 3.112336}
+      - {x: 1.3186307, y: 2.1605964}
+      - {x: 1.5170287, y: 0.99837995}
+      - {x: 1.3433071, y: -0.7939625}
+      - {x: 2.457762, y: -2.3943777}
+      - {x: 2.4224737, y: -4.033687}
+      - {x: 0.83138746, y: -2.6507668}
+      - {x: 1.139431, y: -3.9952915}
+      - {x: -1.0678216, y: -3.97611}
 --- !u!1 &3875146385837599048
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,12 +210,12 @@ GameObject:
   - component: {fileID: 9128890297553126572}
   - component: {fileID: 7257102139080238949}
   m_Layer: 12
-  m_Name: MovingFire
+  m_Name: MovingFireAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5238275852792251895
 Transform:
   m_ObjectHideFlags: 0
@@ -225,8 +224,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3875146385837599048}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.01, y: -2.52, z: 0}
-  m_LocalScale: {x: -1.045, y: 1, z: 1}
+  m_LocalPosition: {x: -0.01, y: -5.88, z: 0}
+  m_LocalScale: {x: -2.350205, y: 2.249, z: 2.249}
   m_Children: []
   m_Father: {fileID: 653468106724985743}
   m_RootOrder: 0
@@ -310,12 +309,12 @@ GameObject:
   - component: {fileID: 2059478601297066228}
   - component: {fileID: 5744064239749568784}
   m_Layer: 12
-  m_Name: Invulnerability
+  m_Name: InvulnerabilityAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1838084929282373862
 Transform:
   m_ObjectHideFlags: 0
@@ -323,13 +322,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7271767654442375129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 15.026, y: 15.026, z: 15.026}
+  m_LocalRotation: {x: -0, y: -0, z: 0.09955665, w: 0.9950319}
+  m_LocalPosition: {x: 0.09000039, y: -0.54000056, z: 0}
+  m_LocalScale: {x: 33.973785, y: 33.973785, z: 33.973785}
   m_Children: []
   m_Father: {fileID: 653468106724985743}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.427001}
 --- !u!212 &2059478601297066228
 SpriteRenderer:
   m_ObjectHideFlags: 0

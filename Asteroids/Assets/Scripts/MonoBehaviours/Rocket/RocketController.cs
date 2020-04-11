@@ -46,6 +46,7 @@ public class RocketController : MonoBehaviour, IDamageable
 
     private void OnEnable()
     {
+        _polygonCollider = GetComponent<PolygonCollider2D>();
         MakeInvulnerability();
 
         _vertical = 0;
