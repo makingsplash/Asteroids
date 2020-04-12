@@ -70,27 +70,27 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9262}
+      Script: {instanceID: 9264}
     - Class: 114
-      Script: {instanceID: 9310}
+      Script: {instanceID: 9312}
     - Class: 114
-      Script: {instanceID: 9322}
+      Script: {instanceID: 9324}
     - Class: 114
-      Script: {instanceID: 9356}
-    - Class: 114
-      Script: {instanceID: 9362}
+      Script: {instanceID: 9358}
     - Class: 114
       Script: {instanceID: 9364}
     - Class: 114
-      Script: {instanceID: 9368}
+      Script: {instanceID: 9366}
     - Class: 114
-      Script: {instanceID: 9376}
+      Script: {instanceID: 9370}
     - Class: 114
-      Script: {instanceID: 9410}
+      Script: {instanceID: 9378}
     - Class: 114
       Script: {instanceID: 9412}
     - Class: 114
-      Script: {instanceID: 9652}
+      Script: {instanceID: 9414}
+    - Class: 114
+      Script: {instanceID: 9654}
     - Class: 114
       Script: {instanceID: 9704}
     - Class: 114
@@ -98,33 +98,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9814}
     - Class: 114
-      Script: {instanceID: 9850}
+      Script: {instanceID: 9848}
+    - Class: 114
+      Script: {instanceID: 9858}
     - Class: 114
       Script: {instanceID: 9860}
     - Class: 114
-      Script: {instanceID: 9862}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9876}
     - Class: 114
-      Script: {instanceID: 9878}
+      Script: {instanceID: 9894}
     - Class: 114
-      Script: {instanceID: 9896}
+      Script: {instanceID: 10132}
     - Class: 114
-      Script: {instanceID: 10134}
+      Script: {instanceID: 10142}
     - Class: 114
-      Script: {instanceID: 10144}
+      Script: {instanceID: 10258}
     - Class: 114
-      Script: {instanceID: 10260}
+      Script: {instanceID: 10294}
     - Class: 114
-      Script: {instanceID: 10296}
+      Script: {instanceID: 10420}
     - Class: 114
-      Script: {instanceID: 10422}
+      Script: {instanceID: 10550}
     - Class: 114
-      Script: {instanceID: 10552}
+      Script: {instanceID: 10628}
     - Class: 114
-      Script: {instanceID: 10630}
-    - Class: 114
-      Script: {instanceID: 10664}
+      Script: {instanceID: 10662}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1063,4 +1063,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/admin/Desktop/qweqwe.apk
+  playerPath: C:/Users/admin/Desktop/qweqweqweqwe.apk

@@ -55,7 +55,7 @@ public class SceneManager : MonoBehaviour
     private void Update()
     {
         if (_gameOver)
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(0))
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
 
         if (Input.GetKeyDown(KeyCode.Escape))
