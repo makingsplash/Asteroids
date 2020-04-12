@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScorePoints: 35
-  _speed: 3
+  _speed: 2
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
   _smallerMeteoritesPrefabs:
   - {fileID: 2990826428107403900, guid: 9a950d92beb9d2a469422213bce121d2, type: 3}

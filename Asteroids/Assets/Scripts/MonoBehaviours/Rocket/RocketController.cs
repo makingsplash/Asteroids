@@ -26,9 +26,7 @@ public class RocketController : MonoBehaviour, IDamageable
 
     private bool _canShot;
 
-    private float _horizontal;
-    private float _vertical;
-    private Vector2 _moveVertical;
+    private RocketInput _input;
     
     private readonly float invulnerabilityTimerMax = 5f;
     private float invulnerabilityTimerCurrent;
@@ -38,41 +36,32 @@ public class RocketController : MonoBehaviour, IDamageable
     private LaserPool _laserPool;
 
     
-    void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _laserPool = GetComponent<LaserPool>();
-    }
-
     private void OnEnable()
     {
         _polygonCollider = GetComponent<PolygonCollider2D>();
         MakeInvulnerability();
-
-        _vertical = 0;
 
         _canShot = true;
 
         OnPlayerEnabled?.Invoke(gameObject);
     }
 
+    void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _laserPool = GetComponent<LaserPool>();
+        _input = GetComponent<RocketInput>();
+    }
+
     void Update()
     {
-        _vertical = Input.GetAxis("Vertical");
-        if (_vertical >= 0)
-        {
-            _moveVertical = Vector2.up * Input.GetAxis("Vertical");
-        }
-        _horizontal = Input.GetAxis("Horizontal");
-
-        if (Input.GetKey(KeyCode.L))
-            LaserShot();
-
-        if (Input.GetKey(KeyCode.W))
+        if (!_movingFireAnim.activeSelf && _input.Vertical > 0.1f)
             _movingFireAnim.SetActive(true);
-        else
+        else if(_input.Vertical < 0.1f)
             _movingFireAnim.SetActive(false);
 
+        if (_input.IsShotTapDown)
+            LaserShot();
 
         if (isInvulnerability)
             InvulnerabilityCouner();
@@ -80,9 +69,10 @@ public class RocketController : MonoBehaviour, IDamageable
 
     private void MakeInvulnerability()
     {
+        _polygonCollider.enabled = false;
+
         invulnerabilityTimerCurrent = invulnerabilityTimerMax;
         isInvulnerability = true;
-        _polygonCollider.enabled = false;
         _invulnerabilityAnim.SetActive(true);
     }
 
@@ -91,34 +81,40 @@ public class RocketController : MonoBehaviour, IDamageable
         invulnerabilityTimerCurrent -= Time.deltaTime;
         if(invulnerabilityTimerCurrent < 0)
         {
-            _invulnerabilityAnim.SetActive(false);
             _polygonCollider.enabled = true;
+
+            _invulnerabilityAnim.SetActive(false);
+            isInvulnerability = false;
         }
     }
 
     private void LateUpdate()
     {
-        _rigidbody.AddRelativeForce(_moveVertical * _moveSpeed * Time.deltaTime);
-        _rigidbody.rotation -= _horizontal * _rotateSpeed * Time.deltaTime;
+        if(_input.Vertical >= 0)
+        {
+            _rigidbody.AddRelativeForce(
+                Vector2.up * _input.Vertical * _moveSpeed * Time.deltaTime);
+        }
+        _rigidbody.rotation -= _input.Horizontal * _rotateSpeed * Time.deltaTime;
     }
 
     private IEnumerator LaserReload()
     {
+        _canShot = false;
         yield return new WaitForSeconds(_fireRate);
         _canShot = true;
     }
 
-    void LaserShot()
+    private void LaserShot()
     {
         if (_canShot)
         {
             _laserPool.LaunchLaser(
                 transform.up / 1.7f + transform.position,
-                0 + transform.rotation.eulerAngles.z);
+                transform.rotation.eulerAngles.z);
 
             AudioManager.Instance.PlayOneSound(_shotSound);
 
-            _canShot = false;
             StartCoroutine(LaserReload());
         }
     }

@@ -11,17 +11,18 @@ GameObject:
   - component: {fileID: 653468106724985743}
   - component: {fileID: 5749404981031793932}
   - component: {fileID: 6447163374110014461}
-  - component: {fileID: 1858724186}
-  - component: {fileID: 8628796169966668543}
-  - component: {fileID: 4307419851373478933}
   - component: {fileID: 7804060633092792116}
+  - component: {fileID: 1858724186}
+  - component: {fileID: 4307419851373478933}
+  - component: {fileID: 8628796169966668543}
+  - component: {fileID: 2803379129444176636}
   m_Layer: 12
   m_Name: Rocket
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &653468106724985743
 Transform:
   m_ObjectHideFlags: 0
@@ -30,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879710610104850850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.002, z: 0}
-  m_LocalScale: {x: 0.100642174, y: 0.100642174, z: 0.100642174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.07196947, y: 0.07196947, z: 0.07196947}
   m_Children:
   - {fileID: 5238275852792251895}
   - {fileID: 1838084929282373862}
@@ -107,54 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1858724186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879710610104850850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8628796169966668543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879710610104850850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb2c87b76f971f418dfa26fbdb15d81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fireRate: 0.2
-  _moveSpeed: 510
-  _rotateSpeed: 350
-  _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
-  _rocketExplosionSound: {fileID: 8300000, guid: 57224491e0a29eb4db188c02fb50c8c6,
-    type: 3}
-  _polygonCollider: {fileID: 0}
-  _movingFireAnim: {fileID: 3875146385837599048}
-  _invulnerabilityAnim: {fileID: 7271767654442375129}
---- !u!114 &4307419851373478933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879710610104850850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b609c66a33c3a04cb201383e014c2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _poolSize: 40
-  _laserPrefab: {fileID: 5475956413155397393, guid: 9201523707c2e104b9efb75d42e5d547,
-    type: 3}
 --- !u!60 &7804060633092792116
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -198,6 +151,70 @@ PolygonCollider2D:
       - {x: 0.83138746, y: -2.6507668}
       - {x: 1.139431, y: -3.9952915}
       - {x: -1.0678216, y: -3.97611}
+--- !u!114 &1858724186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879710610104850850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4307419851373478933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879710610104850850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b609c66a33c3a04cb201383e014c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolSize: 40
+  _laserPrefab: {fileID: 5475956413155397393, guid: 9201523707c2e104b9efb75d42e5d547,
+    type: 3}
+--- !u!114 &8628796169966668543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879710610104850850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb2c87b76f971f418dfa26fbdb15d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fireRate: 0.2
+  _moveSpeed: 420
+  _rotateSpeed: 270
+  _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
+  _rocketExplosionSound: {fileID: 8300000, guid: 57224491e0a29eb4db188c02fb50c8c6,
+    type: 3}
+  _polygonCollider: {fileID: 0}
+  _movingFireAnim: {fileID: 3875146385837599048}
+  _invulnerabilityAnim: {fileID: 7271767654442375129}
+--- !u!114 &2803379129444176636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879710610104850850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2e510747737d34795371fad998bf86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vertical: 0
+  Horizontal: 0
+  IsShotTapDown: 0
+  keyboardInput: 0
 --- !u!1 &3875146385837599048
 GameObject:
   m_ObjectHideFlags: 0
