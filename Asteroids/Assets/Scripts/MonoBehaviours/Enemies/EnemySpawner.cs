@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private static byte _enemiesSpawned = 0;
+    private static byte _enemiesSpawned;
     public static byte EnemiesSpawned
     {
         get
@@ -49,6 +49,9 @@ public class EnemySpawner : MonoBehaviour
 
         _camOrtSize = Camera.main.orthographicSize;
         _camAspect = Camera.main.aspect;
+
+        _enemiesSpawned = 0;
+        _enemiesKilled = 0;
     }
     private void OnDisable()
     {
