@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamager.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IPoolObject.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\SceneManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\OverBorderShifting.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketInput.cs" />
