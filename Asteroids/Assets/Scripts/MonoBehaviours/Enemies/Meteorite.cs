@@ -5,11 +5,12 @@ public class Meteorite : BaseEnemy
 {
     [Header("When destroyed")]
     [SerializeField] private List<GameObject> _smallerMeteoritesPrefabs = new List<GameObject>();
+    public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
 
 
     private void LateUpdate()
     {
-        transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        transform.Translate(Vector3.up * Speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +31,8 @@ public class Meteorite : BaseEnemy
 
     void SpawnSmallerMeteorites()
     {
+        Debug.Log("Переписать под SO");
+
         for (int i = 0; i < UnityEngine.Random.Range(1, 3); i++)
         {
             // pick random prefab, apply random offset and rotation

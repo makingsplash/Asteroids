@@ -53,15 +53,15 @@ public class UFO : BaseEnemy
     {
         if (!_isAngry)
         {
-            transform.Translate(_nonAngryFlyDirection * _speed * Time.deltaTime);
+            transform.Translate(_nonAngryFlyDirection * Speed * Time.deltaTime);
         }
         else
         {
             if (_player != null && _player.activeSelf)
-                transform.Translate((_player.transform.position - transform.position).normalized * _speed * Time.deltaTime);
+                transform.Translate((_player.transform.position - transform.position).normalized * Speed * Time.deltaTime);
             else
             {
-                transform.Translate(transform.up * _speed * Time.deltaTime);
+                transform.Translate(transform.up * Speed * Time.deltaTime);
                 _deadTimer -= Time.deltaTime;
                 if (_deadTimer < 0)
                     Destroy(gameObject);

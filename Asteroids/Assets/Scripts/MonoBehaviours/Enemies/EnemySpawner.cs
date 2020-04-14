@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -31,7 +32,10 @@ public class EnemySpawner : MonoBehaviour
         } 
     }
 
+    [Header("EnemyWaves")]
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
+    [Header("Meteorites")]
+    [SerializeField] private GameObject _baseMeteorite;
 
     private static bool _gameOver = false;
 
@@ -65,10 +69,12 @@ public class EnemySpawner : MonoBehaviour
             WavesOfEmemies_SO.Wave wave = _enemyWaves.WavesArray[_currentWave];
 
             // Spawn meteorites
-            foreach (WavesOfEmemies_SO.BaseEnemyInfo meteoriteInfo in wave.meteoriteTypes)
+            foreach (WavesOfEmemies_SO.MeteoritesInfo meteoritesInfo in wave.meteoriteTypes)
             {
+                //StartCoroutine(StartSpawnMeteorites(
+                //    meteoritesInfo.Amount, meteoritesInfo.Frequency, meteoritesInfo.Prefab));
                 StartCoroutine(StartSpawnMeteorites(
-                    meteoriteInfo.Amount, meteoriteInfo.Frequency, meteoriteInfo.Prefab));
+                    meteoritesInfo.Amount, meteoritesInfo.Frequency, meteoritesInfo.meteoriteInfo));
             }
         
             // Spawn Ufos
@@ -95,14 +101,29 @@ public class EnemySpawner : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator StartSpawnMeteorites(byte amount, float frequency, GameObject prefab)
+    private IEnumerator StartSpawnMeteorites(byte amount, float frequency, MeteoriteType_SO metInfo)
     {
+        WaitForSeconds wait = new WaitForSeconds(frequency);
         EnemiesSpawned += amount;
+        
         for (byte i = 0; i < amount; i++)
         {
-            yield return StartCoroutine(SpawnEnemy(frequency, prefab,
-                new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1.5f, Random.Range(-_camOrtSize, _camOrtSize)),
-                Quaternion.Euler(0, 0, Random.Range(0, 360))));
+            if(!_gameOver)
+            {
+                GameObject newGO = Instantiate(_baseMeteorite);
+                newGO.transform.position = new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1.5f, Random.Range(-_camOrtSize, _camOrtSize));
+                newGO.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+                newGO.transform.localScale = metInfo.transform.localScale;
+                newGO.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
+                newGO.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
+
+                Meteorite GOmetScr = newGO.GetComponent<Meteorite>();
+                GOmetScr.Speed = metInfo.speed;
+                GOmetScr.ScorePoints = metInfo.scorePoints;
+                GOmetScr.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
+            }
+
+            yield return wait;
         }
     }
 

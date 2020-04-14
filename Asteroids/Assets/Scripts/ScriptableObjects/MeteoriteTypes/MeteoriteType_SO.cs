@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MeteoriteType", menuName = "MeteoriteType", order = 51)]
 public class MeteoriteType_SO : ScriptableObject
 {
+    public Transform transform;
     public Sprite sprite;
     public PolygonCollider2D polygonCollider2d;
     

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72570c9e435ee374b869c43e74315aa7, type: 3}
   m_Name: BigMeteorite
   m_EditorClassIdentifier: 
+  transform: {fileID: 4718865033537515796, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
+    type: 3}
   sprite: {fileID: 21300000, guid: 4e60210587fb0fc4cb422138d779924e, type: 3}
   polygonCollider2d: {fileID: 3340002331195531770, guid: b2dadcd9f792eb740ba6b6ab82ffe20f,
     type: 3}
   speed: 1.5
   scorePoints: 20
-  dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
   smallerMeteoritesSO:
   - {fileID: 0}
   - {fileID: 0}

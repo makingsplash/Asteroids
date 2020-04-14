@@ -9,15 +9,21 @@ public class WavesOfEmemies_SO : ScriptableObject
     [Serializable]
      public class BaseEnemyInfo
      {
-        public GameObject Prefab;
         public byte Amount;
         public float Frequency;
      }
 
     [Serializable]
-    public class UfoInfo : BaseEnemyInfo
+    public class UfosInfo : BaseEnemyInfo
     {
+        public GameObject Prefab;
         public GameObject LaserPoolPrefab;
+    }
+
+    [Serializable]
+    public class MeteoritesInfo : BaseEnemyInfo
+    {
+        public MeteoriteType_SO meteoriteInfo;
     }
 
     [Serializable]
@@ -26,9 +32,9 @@ public class WavesOfEmemies_SO : ScriptableObject
         [SerializeField] private string _name;
 
         [Header("Meteorites")]
-        public BaseEnemyInfo[] meteoriteTypes;
+        public MeteoritesInfo[] meteoriteTypes;
 
         [Header("Ufo")]
-        public UfoInfo ufoInfo = new UfoInfo();
+        public UfosInfo ufoInfo = new UfosInfo();
     }
 }
