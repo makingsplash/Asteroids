@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Laser : MonoBehaviour, IDamager
+public class Laser : MonoBehaviour, IDamager //, IPoolObject
 {
-    public LaserPool ParentPool;
+    public LaserPool ParentPool { get; set; }
+    //public ObjectPool ParentPool { get; set; }
 
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
@@ -14,7 +12,7 @@ public class Laser : MonoBehaviour, IDamager
     [Tooltip("If rocket laser, will add points to score for hit")]
     private bool _isRocketLaser;
 
-    private new Rigidbody2D _rigidbody;
+    private Rigidbody2D _rigidbody;
     private float _currentLifeTime;
 
 
