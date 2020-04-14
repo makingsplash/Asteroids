@@ -33,7 +33,7 @@ public class RocketController : MonoBehaviour, IDamageable
     private bool isInvulnerability = false;
 
     private Rigidbody2D _rigidbody;
-    private LaserPool _laserPool;
+    private ObjectPool _laserPool;
 
     
     private void OnEnable()
@@ -49,7 +49,7 @@ public class RocketController : MonoBehaviour, IDamageable
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _laserPool = GetComponent<LaserPool>();
+        _laserPool = GetComponent<ObjectPool>();
         _input = GetComponent<RocketInput>();
     }
 
@@ -109,7 +109,7 @@ public class RocketController : MonoBehaviour, IDamageable
     {
         if (_canShot)
         {
-            _laserPool.LaunchLaser(
+            _laserPool.SpawnObject(
                 transform.up / 1.7f + transform.position,
                 transform.rotation.eulerAngles.z);
 

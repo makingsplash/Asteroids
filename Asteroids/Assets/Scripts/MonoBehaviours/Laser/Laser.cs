@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public class Laser : MonoBehaviour, IDamager //, IPoolObject
+public class Laser : MonoBehaviour, IDamager, IPoolObject
 {
-    public LaserPool ParentPool { get; set; }
-    //public ObjectPool ParentPool { get; set; }
+    public ObjectPool ParentPool { get; set; }
 
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;

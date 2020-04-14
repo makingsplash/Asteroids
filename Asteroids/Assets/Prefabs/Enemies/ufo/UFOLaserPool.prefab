@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3995995571900510937}
-  - component: {fileID: 3995995571900510936}
+  - component: {fileID: 2316631328962273388}
   m_Layer: 0
   m_Name: UFOLaserPool
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3995995571900510936
+--- !u!114 &2316631328962273388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,9 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3995995571900510939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b609c66a33c3a04cb201383e014c2af, type: 3}
+  m_Script: {fileID: 11500000, guid: a0da0db7e4d33204d987e60eebd27324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSize: 40
-  _laserPrefab: {fileID: 3183045210313738148, guid: acf0a6fc4114f6d4c981c0e6eae01ee6,
+  _poolSize: 30
+  _objectPrefab: {fileID: 3183045210313738148, guid: acf0a6fc4114f6d4c981c0e6eae01ee6,
     type: 3}

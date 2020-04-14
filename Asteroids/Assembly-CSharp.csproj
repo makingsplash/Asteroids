@@ -71,7 +71,6 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\UFO.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Laser\Laser.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviours\Laser\LaserPool.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\SceneManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\UIManager.cs" />
@@ -81,7 +80,8 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketInput.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketSpawner.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\UI\EnemyWaveBar.cs" />
-    <Compile Include="Assets\Scripts\ScriptableObjects\WavesOfEmemies_SO.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\EnemyWaves\WavesOfEmemies_SO.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\MeteoriteTypes\MeteoriteType_SO.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

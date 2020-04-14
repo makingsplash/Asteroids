@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -31,7 +32,13 @@ public class EnemySpawner : MonoBehaviour
         } 
     }
 
+    [Header("EnemyWaves")]
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
+    
+    [Header("MeteoritesPool")]
+    [SerializeField] private ObjectPool _meteoritesPool;
+    
+    private ObjectPool _ufoLaserPool;
 
     private static bool _gameOver = false;
 
@@ -39,8 +46,6 @@ public class EnemySpawner : MonoBehaviour
     private float _camAspect;
 
     private byte _currentWave = 0;
-
-    private GameObject _UFOLaserPool;
 
 
     private void OnEnable()
@@ -65,19 +70,21 @@ public class EnemySpawner : MonoBehaviour
             WavesOfEmemies_SO.Wave wave = _enemyWaves.WavesArray[_currentWave];
 
             // Spawn meteorites
-            foreach (WavesOfEmemies_SO.BaseEnemyInfo meteoriteInfo in wave.meteoriteTypes)
+            foreach (WavesOfEmemies_SO.MeteoritesInfo meteoritesInfo in wave.meteoriteTypes)
             {
                 StartCoroutine(StartSpawnMeteorites(
-                    meteoriteInfo.Amount, meteoriteInfo.Frequency, meteoriteInfo.Prefab));
+                    meteoritesInfo.Amount, meteoritesInfo.Frequency, meteoritesInfo.meteoriteInfo));
             }
         
             // Spawn Ufos
             if (wave.ufoInfo.Amount > 0)
             {
-                if (_UFOLaserPool == null)
+                if (_ufoLaserPool == null)
                 {
-                    _UFOLaserPool = Instantiate(wave.ufoInfo.LaserPoolPrefab);
-                    _UFOLaserPool.SetActive(true);
+                    GameObject _UFOLaserPoolObj = Instantiate(wave.ufoInfo.LaserPoolPrefab);
+                    _UFOLaserPoolObj.SetActive(true);
+
+                    _ufoLaserPool = _UFOLaserPoolObj.GetComponent<ObjectPool>();
                 }
 
                 StartCoroutine(StartSpawnUfos(
@@ -95,38 +102,56 @@ public class EnemySpawner : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator StartSpawnMeteorites(byte amount, float frequency, GameObject prefab)
+    private IEnumerator StartSpawnMeteorites(byte amount, float frequency, MeteoriteType_SO metInfo)
     {
+        WaitForSeconds wait = new WaitForSeconds(frequency);
         EnemiesSpawned += amount;
+        
         for (byte i = 0; i < amount; i++)
         {
-            yield return StartCoroutine(SpawnEnemy(frequency, prefab,
-                new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 1.5f, Random.Range(-_camOrtSize, _camOrtSize)),
-                Quaternion.Euler(0, 0, Random.Range(0, 360))));
+            if (!_gameOver)
+            {
+                GameObject meteorite = _meteoritesPool.SpawnObject(
+                    new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 0.5f, // pick random screen side
+                    Random.Range(-_camOrtSize, _camOrtSize)), // pick random heigth
+                    Random.Range(0, 360));
+
+                meteorite.transform.localScale = metInfo.transform.localScale;
+                meteorite.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
+                meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
+
+                Meteorite metComponent = meteorite.GetComponent<Meteorite>();
+                metComponent.Speed = metInfo.speed;
+                metComponent.ScorePoints = metInfo.scorePoints;
+                metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
+            }
+            else
+                yield break;
+
+            yield return wait;
         }
     }
 
     private IEnumerator StartSpawnUfos(byte amount, float frequency, GameObject prefab)
     {
+        WaitForSeconds wait = new WaitForSeconds(frequency);
         EnemiesSpawned += amount;
         for (byte i = 0; i < amount; i++)
         {
-            yield return StartCoroutine(SpawnEnemy(frequency, prefab,
-                new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
-                    Quaternion.identity));
-        }
-    }
+            if (!_gameOver)
+            {
+                GameObject ufo = Instantiate(prefab,
+                    new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect, _camOrtSize - 1),
+                    Quaternion.identity);
 
-    public static IEnumerator SpawnEnemy(float frequency, GameObject prefab, Vector2 position, Quaternion rotation)
-    {
-        WaitForSeconds spawnFrequency = new WaitForSeconds(frequency);
+                UFO ufoComponent = ufo.GetComponent<UFO>();
+                ufoComponent.LaserPool = _ufoLaserPool;
 
-        if (!_gameOver)
-        {
-            Instantiate(prefab, position, rotation);
-            yield return spawnFrequency;
+                yield return wait;
+            }
+            else
+                yield break;
         }
-        else yield break;
     }
 
     public void NextWave() => StartCoroutine(SpawnWave());

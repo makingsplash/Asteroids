@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    /*
-     * Общий пул для всех метеоритов
-     * В который мы из скриптабл обджектов будем подставлять значения
-     * в игровые объекты этого пула ? было бы хорошо
-     * 
-     */
-
     public Queue<GameObject> Pool;
 
     [SerializeField] private byte _poolSize = 30;
@@ -22,7 +15,7 @@ public class ObjectPool : MonoBehaviour
         StartCoroutine(FillPool());
     }
 
-    public void SpawnObject(Vector2 position, float rotationEulerAngle)
+    public GameObject SpawnObject(Vector2 position, float rotationEulerAngle)
     {
         if (Pool.Count > 0)
         {
@@ -31,9 +24,14 @@ public class ObjectPool : MonoBehaviour
             poolObject.transform.position = position;
 
             poolObject.transform.eulerAngles = Vector3.forward * rotationEulerAngle;
+
+            return poolObject;
         }
         else
+        {
             Debug.LogError("В пуле нет свободных объектов для спавна");
+            return null;
+        }
     }
 
     private IEnumerator FillPool()
@@ -45,7 +43,6 @@ public class ObjectPool : MonoBehaviour
             {
                 GameObject Obj = Instantiate(_objectPrefab);
 
-                //Obj.GetComponent<Laser>().ParentPool = this;
                 Obj.GetComponent<IPoolObject>().ParentPool = this;
                 Obj.transform.SetParent(transform);
                 Obj.SetActive(false);
