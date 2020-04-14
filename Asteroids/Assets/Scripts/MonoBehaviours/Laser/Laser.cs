@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Laser : MonoBehaviour, IDamager, IPoolObject
 {
@@ -14,7 +11,7 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
     [Tooltip("If rocket laser, will add points to score for hit")]
     private bool _isRocketLaser;
 
-    private new Rigidbody2D _rigidbody;
+    private Rigidbody2D _rigidbody;
     private float _currentLifeTime;
 
 

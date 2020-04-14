@@ -24,6 +24,7 @@ public class ObjectPool : MonoBehaviour
             poolObject.transform.position = position;
 
             poolObject.transform.eulerAngles = Vector3.forward * rotationEulerAngle;
+
             return poolObject;
         }
         else
@@ -42,7 +43,6 @@ public class ObjectPool : MonoBehaviour
             {
                 GameObject Obj = Instantiate(_objectPrefab);
 
-                //Obj.GetComponent<Laser>().ParentPool = this;
                 Obj.GetComponent<IPoolObject>().ParentPool = this;
                 Obj.transform.SetParent(transform);
                 Obj.SetActive(false);
