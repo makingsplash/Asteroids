@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3995995571900510939
+--- !u!1 &5661401071551807115
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3995995571900510937}
-  - component: {fileID: 2316631328962273388}
+  - component: {fileID: 5661401071551807112}
+  - component: {fileID: 7223114931024035093}
   m_Layer: 0
-  m_Name: UFOLaserPool
+  m_Name: MeteoritesPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3995995571900510937
+--- !u!4 &5661401071551807112
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3995995571900510939}
+  m_GameObject: {fileID: 5661401071551807115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 324.9507, y: 199.7677, z: -48.290356}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2316631328962273388
+--- !u!114 &7223114931024035093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3995995571900510939}
+  m_GameObject: {fileID: 5661401071551807115}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0da0db7e4d33204d987e60eebd27324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolSize: 30
-  _objectPrefab: {fileID: 3183045210313738148, guid: acf0a6fc4114f6d4c981c0e6eae01ee6,
+  _poolSize: 15
+  _objectPrefab: {fileID: 2990826428107403900, guid: ea52401cbb1385b45bcd362acfbab07f,
     type: 3}

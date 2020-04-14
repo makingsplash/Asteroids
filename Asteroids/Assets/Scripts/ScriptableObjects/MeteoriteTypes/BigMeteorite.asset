@@ -20,5 +20,5 @@ MonoBehaviour:
   speed: 1.5
   scorePoints: 20
   smallerMeteoritesSO:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0633213460c391049935771050ad9870, type: 2}
+  - {fileID: 11400000, guid: 96e7835c1974e9345bf1a09939fe408e, type: 2}

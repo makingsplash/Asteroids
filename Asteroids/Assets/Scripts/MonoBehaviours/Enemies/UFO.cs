@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class UFO : BaseEnemy
 {
+    [HideInInspector] public ObjectPool LaserPool;
+
     [SerializeField] private AudioClip _shotSound;
 
     [SerializeField] private float _fireRate = 0.5f;
     
     private GameObject _player;
-    private LaserPool _laserPool;
 
     private float _nonAngryFlyTimer = 2;
     private Vector2 _nonAngryFlyDirection;
@@ -22,8 +21,6 @@ public class UFO : BaseEnemy
         if (_player == null)
             _player = GameObject.FindGameObjectWithTag("Player");
         RocketController.OnPlayerEnabled += SetPlayerGameObject;
-
-        _laserPool = FindObjectOfType<LaserPool>();
 
         if (transform.position.x > 0)
             _nonAngryFlyDirection = -transform.right;
@@ -99,7 +96,7 @@ public class UFO : BaseEnemy
                 Vector3 direction = _player.transform.position - position;
                 float eulerAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 
-                _laserPool.LaunchLaser(position, eulerAngle);
+                LaserPool.SpawnObject(position, eulerAngle);
 
                 AudioManager.Instance.PlayOneSound(_shotSound);
             }

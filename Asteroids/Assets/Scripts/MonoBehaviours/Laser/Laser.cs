@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour, IDamager
+public class Laser : MonoBehaviour, IDamager, IPoolObject
 {
-    public LaserPool ParentPool;
+    public ObjectPool ParentPool { get; set; }
 
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
