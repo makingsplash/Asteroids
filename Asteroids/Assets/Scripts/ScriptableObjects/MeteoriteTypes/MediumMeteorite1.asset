@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72570c9e435ee374b869c43e74315aa7, type: 3}
+  m_Name: MediumMeteorite1
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 13abaa2b36ae4fd479cba238e743c1dd, type: 3}
+  polygonCollider2d: {fileID: 3816838287345253961, guid: af4f4b75832ac534db11d5c3329f2f96,
+    type: 3}
+  speed: 2
+  scorePoints: 35
+  dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  smallerMeteoritesSO:
+  - {fileID: 11400000, guid: f93182145eae3d2469c7d3bbca710d49, type: 2}
