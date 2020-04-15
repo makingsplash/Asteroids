@@ -8,16 +8,14 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
     [SerializeField] private float _lifeTime;
 
     [SerializeField]
-    [Tooltip("If rocket laser, will add points to score for hit")]
+    [Tooltip("If rocket laser, will add points to score for a hit")]
     private bool _isRocketLaser;
 
-    private Rigidbody2D _rigidbody;
     private float _currentLifeTime;
 
 
     private void OnEnable()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
         _currentLifeTime = _lifeTime;
     }
 
@@ -28,11 +26,8 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
         {
             ReturnToPool();
         }
-    }
 
-    private void LateUpdate()
-    {
-        _rigidbody.velocity = transform.up * _speed * Time.deltaTime;
+        transform.position += transform.up * _speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

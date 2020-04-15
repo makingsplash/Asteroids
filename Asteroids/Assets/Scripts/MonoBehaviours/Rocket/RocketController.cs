@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RocketController : MonoBehaviour, IDamageable
@@ -9,6 +8,8 @@ public class RocketController : MonoBehaviour, IDamageable
 
     [SerializeField] private float _fireRate;
 
+    [SerializeField] private ObjectPool _laserPool;
+
     [Header("Movement")]
     [SerializeField] private ushort _moveSpeed = 250;
     [SerializeField] private ushort _rotateSpeed = 350;
@@ -16,9 +17,6 @@ public class RocketController : MonoBehaviour, IDamageable
     [Header("Sounds")]
     [SerializeField] private AudioClip _shotSound;
     [SerializeField] private AudioClip _rocketExplosionSound;
-    
-    [Header("Invulnerability")]
-    [SerializeField] private PolygonCollider2D _polygonCollider;
 
     [Header("Animations")]
     [SerializeField] private GameObject _movingFireAnim;
@@ -33,7 +31,7 @@ public class RocketController : MonoBehaviour, IDamageable
     private bool isInvulnerability = false;
 
     private Rigidbody2D _rigidbody;
-    private ObjectPool _laserPool;
+    private PolygonCollider2D _polygonCollider;
 
     
     private void OnEnable()
@@ -55,7 +53,6 @@ public class RocketController : MonoBehaviour, IDamageable
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _laserPool = GetComponent<ObjectPool>();
     }
 
     void Update()
@@ -93,18 +90,12 @@ public class RocketController : MonoBehaviour, IDamageable
         }
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        if(_input.Vertical >= 0)
-        {
-            _rigidbody.AddRelativeForce(
-                Vector2.up * _input.Vertical * _moveSpeed * Time.deltaTime);
-        }
+        _rigidbody.AddRelativeForce(
+            Vector2.up * _input.Vertical * _moveSpeed * Time.deltaTime);
 
-        //\\ Use Quaternion.Slerp
-        _rigidbody.rotation -= _input.Horizontal * _rotateSpeed * Time.deltaTime;
-
-
+        transform.eulerAngles -= Vector3.forward * _input.Horizontal * _rotateSpeed * Time.deltaTime;
     }
 
     private IEnumerator LaserReload()

@@ -4,12 +4,11 @@ using UnityEngine;
 public class Meteorite : BaseEnemy, IPoolObject
 {
     [Header("When destroyed")]
-    //[SerializeField] private List<GameObject> _smallerMeteoritesPrefabs = new List<GameObject>();
     public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
 
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
 
-    private void LateUpdate()
+    private void Update()
     {
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
     }
@@ -30,8 +29,6 @@ public class Meteorite : BaseEnemy, IPoolObject
 
         ParentPool.Pool.Enqueue(gameObject);
         gameObject.SetActive(false);
-        
-        //Destroy(gameObject);
     }
 
     void SpawnSmallerMeteorites()
@@ -53,11 +50,6 @@ public class Meteorite : BaseEnemy, IPoolObject
             GOmetScr.Speed = metInfo.speed;
             GOmetScr.ScorePoints = metInfo.scorePoints;
             GOmetScr.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
-
-            //Instantiate(
-            //    _smallerMeteoritesPrefabs[UnityEngine.Random.Range(0, _smallerMeteoritesPrefabs.Count)],
-            //    transform.position + Vector3.right * UnityEngine.Random.Range(-0.2f, 0.2f) + Vector3.up * UnityEngine.Random.Range(-0.2f, 0.2f),
-            //    Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + UnityEngine.Random.Range(-15, 15)));
 
             EnemySpawner.EnemiesSpawned++;
         }
