@@ -199,7 +199,7 @@ MonoBehaviour:
   Vertical: 0
   Horizontal: 0
   IsShotTapDown: 0
-  keyboardInput: 1
+  keyboardInput: 0
 --- !u!114 &8877529137201896261
 MonoBehaviour:
   m_ObjectHideFlags: 0

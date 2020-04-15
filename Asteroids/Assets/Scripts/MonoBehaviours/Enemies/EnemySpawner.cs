@@ -80,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (_ufoLaserPool == null)
                 {
-                    GameObject _UFOLaserPoolObj = Instantiate(wave.ufoInfo.LaserPoolPrefab);
+                    GameObject _UFOLaserPoolObj = Instantiate(wave.ufoInfo.UfoLaserPool);
                     _UFOLaserPoolObj.SetActive(true);
 
                     _ufoLaserPool = _UFOLaserPoolObj.GetComponent<ObjectPool>();

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 681355794433723574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.118888, y: 0.118888, z: 0.118888}
+  m_LocalScale: {x: 0.22519764, y: 0.22519764, z: 0.22519764}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -331,5 +331,6 @@ MonoBehaviour:
   Speed: 1.5
   ScorePoints: 45
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  LaserPool: {fileID: 0}
   _shotSound: {fileID: 8300000, guid: a429aace0e22b804dac0a97959e6dc27, type: 3}
   _fireRate: 1

@@ -5,8 +5,9 @@ ScriptsOnlyBuild:
     - EnemySpawner
     - EnemyWaveBar
     - Laser
-    - LaserPool
     - Meteorite
+    - MeteoriteType_SO
+    - ObjectPool
     - OverBorderShifting
     - RocketController
     - RocketInput
@@ -70,61 +71,63 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9264}
+      Script: {instanceID: 9266}
     - Class: 114
-      Script: {instanceID: 9312}
+      Script: {instanceID: 9314}
     - Class: 114
-      Script: {instanceID: 9324}
+      Script: {instanceID: 9326}
     - Class: 114
-      Script: {instanceID: 9358}
-    - Class: 114
-      Script: {instanceID: 9364}
+      Script: {instanceID: 9360}
     - Class: 114
       Script: {instanceID: 9366}
     - Class: 114
-      Script: {instanceID: 9370}
+      Script: {instanceID: 9368}
     - Class: 114
-      Script: {instanceID: 9378}
+      Script: {instanceID: 9372}
     - Class: 114
-      Script: {instanceID: 9412}
+      Script: {instanceID: 9380}
     - Class: 114
       Script: {instanceID: 9414}
     - Class: 114
-      Script: {instanceID: 9654}
+      Script: {instanceID: 9416}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9660}
     - Class: 114
-      Script: {instanceID: 9774}
+      Script: {instanceID: 9710}
     - Class: 114
-      Script: {instanceID: 9814}
+      Script: {instanceID: 9782}
     - Class: 114
-      Script: {instanceID: 9848}
+      Script: {instanceID: 9822}
     - Class: 114
-      Script: {instanceID: 9858}
+      Script: {instanceID: 9856}
     - Class: 114
-      Script: {instanceID: 9860}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9866}
+      Script: {instanceID: 9874}
     - Class: 114
-      Script: {instanceID: 9876}
+      Script: {instanceID: 9884}
     - Class: 114
-      Script: {instanceID: 9894}
+      Script: {instanceID: 9902}
     - Class: 114
-      Script: {instanceID: 10132}
+      Script: {instanceID: 9970}
     - Class: 114
-      Script: {instanceID: 10142}
+      Script: {instanceID: 10148}
     - Class: 114
-      Script: {instanceID: 10258}
+      Script: {instanceID: 10158}
     - Class: 114
-      Script: {instanceID: 10294}
+      Script: {instanceID: 10278}
     - Class: 114
-      Script: {instanceID: 10420}
+      Script: {instanceID: 10316}
     - Class: 114
-      Script: {instanceID: 10550}
+      Script: {instanceID: 10444}
     - Class: 114
-      Script: {instanceID: 10628}
+      Script: {instanceID: 10574}
     - Class: 114
-      Script: {instanceID: 10662}
+      Script: {instanceID: 10652}
+    - Class: 114
+      Script: {instanceID: 10668}
+    - Class: 114
+      Script: {instanceID: 10688}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -192,7 +195,7 @@ ScriptsOnlyBuild:
     className: RocketSpawner
   - hash:
       serializedVersion: 2
-      Hash: 72a07bb22985149b6276f8c39aeae5c6
+      Hash: 841a4844594472893f066de9ec75f1e2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UFO
@@ -618,7 +621,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 833b03c40279feae925848c484c74194
+      Hash: f0af99cbf469989f84389008e67f2c2e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Meteorite
@@ -684,7 +687,7 @@ ScriptsOnlyBuild:
     className: Benchmark01
   - hash:
       serializedVersion: 2
-      Hash: e51693f433f8268c763106dabd02959b
+      Hash: 3a719dd21f4e0f63449b792d82e3dfb3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Laser
@@ -700,12 +703,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneManager
-  - hash:
-      serializedVersion: 2
-      Hash: 8823aba3e56e92b008bc085d16add2df
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LaserPool
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -760,6 +757,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 84ff8d8e1f95920bd63663b179f51fd0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ObjectPool
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -942,7 +945,7 @@ ScriptsOnlyBuild:
     className: Benchmark04
   - hash:
       serializedVersion: 2
-      Hash: bc7485eab68042a93fc8f493c029c90e
+      Hash: a784570310009a04209f5b3fb608e4d2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WavesOfEmemies_SO
@@ -1038,7 +1041,13 @@ ScriptsOnlyBuild:
     className: EnvMapAnimator
   - hash:
       serializedVersion: 2
-      Hash: eb6906160bedac3a70be572cf73f6beb
+      Hash: afa5bc2854fcf13f40cf88d8bb6ed365
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MeteoriteType_SO
+  - hash:
+      serializedVersion: 2
+      Hash: a4e1ad3fa21238aa7f40554c4aba7a31
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemySpawner

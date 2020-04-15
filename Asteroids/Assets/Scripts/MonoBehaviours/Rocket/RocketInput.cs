@@ -9,25 +9,47 @@ public class RocketInput : MonoBehaviour
     [Header("For Tests")]
     public bool keyboardInput = false;
 
+    private bool _right = false;
+    private bool _left = false;
+
 
     private void Update()
     {
-        if(keyboardInput)
-        {
-            Vertical = Input.GetAxis("Vertical");
-            Horizontal = Input.GetAxis("Horizontal");
+        // Изменить на менее ресурсоёмкое
 
-            IsShotTapDown = Input.GetKey(KeyCode.L);
-        }
+        if (_left && !_right)
+            Horizontal = Mathf.Lerp(Horizontal, -1, 0.15f);
+
+        if (!_left && _right)
+            Horizontal = Mathf.Lerp(Horizontal, 1, 0.15f);
+
+        if (!_left && !_right || _left && _right)
+            Horizontal = Mathf.Lerp(Horizontal, 0, 0.015f);
     }
 
     public void TapShotDown() => IsShotTapDown = true;
     public void TapShotUp() => IsShotTapDown = false;
 
-    public void TapRightDown() => Horizontal = 1;
-    public void TapRightUp() => Horizontal = 0;
-    public void TapLeftDown() => Horizontal = -1;
-    public void TapLeftUp() => Horizontal = 0;
+    public void TapLeftDown()
+    {
+        _left = true;
+        _right = false;
+    }
+    public void TapLeftUp()
+    {
+        _left = false;
+        _right = false;
+    }
+    public void TapRightDown()
+    {
+        _left = false;
+        _right = true;
+    }
+    public void TapRightUp()
+    {
+        _left = false;
+        _right = false;
+    }
 
     public void TapForwardDown() => Vertical = 1;
     public void TapForwardUp() => Vertical = 0;

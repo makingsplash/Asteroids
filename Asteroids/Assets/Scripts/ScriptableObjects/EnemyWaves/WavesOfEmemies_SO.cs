@@ -17,7 +17,7 @@ public class WavesOfEmemies_SO : ScriptableObject
     public class UfosInfo : BaseEnemyInfo
     {
         public GameObject Prefab;
-        public GameObject LaserPoolPrefab;
+        public GameObject UfoLaserPool;
     }
 
     [Serializable]
