@@ -39,9 +39,15 @@ public class RocketController : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         _polygonCollider = GetComponent<PolygonCollider2D>();
+        _input = GetComponent<RocketInput>();
+
         MakeInvulnerability();
 
         _canShot = true;
+
+        _input.Horizontal = 0;
+        _input.Vertical = 0;
+        _input.IsShotTapDown = false;
 
         OnPlayerEnabled?.Invoke(gameObject);
     }
@@ -50,7 +56,6 @@ public class RocketController : MonoBehaviour, IDamageable
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _laserPool = GetComponent<ObjectPool>();
-        _input = GetComponent<RocketInput>();
     }
 
     void Update()
@@ -88,14 +93,18 @@ public class RocketController : MonoBehaviour, IDamageable
         }
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if(_input.Vertical >= 0)
         {
             _rigidbody.AddRelativeForce(
                 Vector2.up * _input.Vertical * _moveSpeed * Time.deltaTime);
         }
+
+        //\\ Use Quaternion.Slerp
         _rigidbody.rotation -= _input.Horizontal * _rotateSpeed * Time.deltaTime;
+
+
     }
 
     private IEnumerator LaserReload()

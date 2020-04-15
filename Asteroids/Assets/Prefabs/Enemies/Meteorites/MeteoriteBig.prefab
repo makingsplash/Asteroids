@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4718865033537516008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16439015, y: 0.16439015, z: 0.16439015}
+  m_LocalScale: {x: 0.3079192, y: 0.3079192, z: 0.3079192}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -172,9 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ff622453bd9d04ea09e0b2a6e9a5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   ScorePoints: 20
-  _speed: 1.5
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
-  _smallerMeteoritesPrefabs:
-  - {fileID: 3816838287345253960, guid: af4f4b75832ac534db11d5c3329f2f96, type: 3}
-  - {fileID: 5473056865214284960, guid: 7151d8c1ebdf2cc4e9ec701a10ef4682, type: 3}
+  SmallerMeteoritesInfo: []
