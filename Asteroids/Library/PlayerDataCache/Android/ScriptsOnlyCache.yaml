@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AudioManager
+    - CameraInfo
     - EnemySpawner
     - EnemyWaveBar
     - Laser
@@ -95,39 +96,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9706}
     - Class: 114
-      Script: {instanceID: 9776}
+      Script: {instanceID: 9718}
     - Class: 114
-      Script: {instanceID: 9816}
+      Script: {instanceID: 9778}
     - Class: 114
-      Script: {instanceID: 9850}
+      Script: {instanceID: 9818}
     - Class: 114
-      Script: {instanceID: 9860}
+      Script: {instanceID: 9852}
     - Class: 114
-      Script: {instanceID: 9866}
+      Script: {instanceID: 9862}
     - Class: 114
-      Script: {instanceID: 9876}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9894}
+      Script: {instanceID: 9878}
     - Class: 114
-      Script: {instanceID: 9962}
+      Script: {instanceID: 9896}
     - Class: 114
-      Script: {instanceID: 10134}
+      Script: {instanceID: 9964}
     - Class: 114
-      Script: {instanceID: 10144}
+      Script: {instanceID: 10136}
     - Class: 114
-      Script: {instanceID: 10260}
+      Script: {instanceID: 10146}
     - Class: 114
-      Script: {instanceID: 10296}
+      Script: {instanceID: 10262}
     - Class: 114
-      Script: {instanceID: 10422}
+      Script: {instanceID: 10298}
     - Class: 114
-      Script: {instanceID: 10552}
+      Script: {instanceID: 10424}
     - Class: 114
-      Script: {instanceID: 10630}
+      Script: {instanceID: 10554}
     - Class: 114
-      Script: {instanceID: 10646}
+      Script: {instanceID: 10632}
     - Class: 114
-      Script: {instanceID: 10666}
+      Script: {instanceID: 10648}
+    - Class: 114
+      Script: {instanceID: 10668}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -627,6 +630,12 @@ ScriptsOnlyBuild:
     className: Meteorite
   - hash:
       serializedVersion: 2
+      Hash: a51f2ee26580325a14bc17198312ef02
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraInfo
+  - hash:
+      serializedVersion: 2
       Hash: 4d16cfbaa8e821a2b370e80844a0e9bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -699,7 +708,7 @@ ScriptsOnlyBuild:
     className: UIManager
   - hash:
       serializedVersion: 2
-      Hash: 95074457c11ea533b8247aab6901dcc6
+      Hash: 7bc4ca0f268cba0c3154ba368934fdd5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneManager
@@ -1072,4 +1081,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/admin/Desktop/123123.apk
+  playerPath: C:/Users/admin/Desktop/1111.apk
