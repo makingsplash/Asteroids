@@ -51,8 +51,8 @@ public class EnemySpawner : MonoBehaviour
     {
         BaseEnemy.EnemyKilled += CheckForNextWave;
 
-        _camOrtSize = Camera.main.orthographicSize;
-        _camAspect = Camera.main.aspect;
+        _camOrtSize = CameraInfo.Instance.CamOrtSize;
+        _camAspect = CameraInfo.Instance.CamAspect;
 
         _enemiesSpawned = 0;
         _enemiesKilled = 0;
@@ -110,11 +110,21 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!_gameOver)
             {
-                GameObject meteorite = _meteoritesPool.SpawnObject(
-                    new Vector2((Random.Range(0, 2) * 2 - 1) * _camOrtSize * _camAspect - 0.5f, // pick random screen side
-                    Random.Range(-_camOrtSize, _camOrtSize)), // pick random heigth
-                    Random.Range(0, 360));
+                float spawnRadius = _camOrtSize * _camAspect * 1.3f;
+                float spawnX = Random.Range(-spawnRadius, spawnRadius);
+                float spawnY = Mathf.Sqrt((spawnRadius * spawnRadius) - (spawnX * spawnX));
+                spawnY *= Random.Range(0, 2) * 2 - 1;
+                Vector2 spawnPos = new Vector2(spawnX, spawnY);
 
+                Vector2 lookTo = new Vector2(
+                    Random.Range(-_camAspect * _camOrtSize / 2, _camAspect * _camOrtSize / 2),
+                    Random.Range(-_camOrtSize / 2, _camOrtSize / 2));
+
+                Vector2 direction = lookTo - spawnPos;
+                float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+                
+
+                GameObject meteorite = _meteoritesPool.SpawnObject(spawnPos, rotationAngle);
                 meteorite.transform.localScale = metInfo.transform.localScale;
                 meteorite.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
                 meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;

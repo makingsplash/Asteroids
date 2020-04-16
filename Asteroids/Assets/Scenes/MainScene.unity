@@ -382,7 +382,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 98.8
+  m_fontSize: 98.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -572,6 +573,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68326644f8fd5254ea8814b8058db39e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CamOrtSize: 0
+  CamAspect: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1255,7 +1270,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 104.3
+  m_fontSize: 104.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1356,7 +1371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512044667ed27054d85c33be76b41b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1963824295}
+  _rocket: {fileID: 1963824295}
 --- !u!4 &972383341
 Transform:
   m_ObjectHideFlags: 0

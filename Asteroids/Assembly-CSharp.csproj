@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IPoolObject.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\CameraInfo.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />

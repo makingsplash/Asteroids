@@ -16,13 +16,13 @@ public class SceneManager : MonoBehaviour
             if (_instance != null)
                 return _instance;
 
-            Debug.LogError("There is on SceneManager in the scene");
+            Debug.LogError("There is no SceneManager in the scene");
 
             return null;
         }
     }
 
-    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _rocket;
 
     private byte _lifesAmount = 3;
     private bool _gameOver = false;
@@ -89,7 +89,7 @@ public class SceneManager : MonoBehaviour
             GameOver();
         }
 
-        _player.SetActive(false);
+        _rocket.SetActive(false);
     }
 
     public void GameWin()

@@ -6,14 +6,14 @@ public class OverBorderShifting : MonoBehaviour
     // Без неё мы будем постоянно перемещать вышедший объект на границу камеры
     private const float _shiftCorrection = 0.2f;
 
-    private float _camOrtSize;  // Camera.main.orthographicSize
-    private float _posX;        // transform.position.x
-    private float _posY;        // transform.position.y
+    private float _camOrtSize;
+    private float _posX;
+    private float _posY;
 
 
     private void Start()
     {
-        _camOrtSize = Camera.main.orthographicSize;
+        _camOrtSize = CameraInfo.Instance.CamOrtSize;
     }
 
     void Update()

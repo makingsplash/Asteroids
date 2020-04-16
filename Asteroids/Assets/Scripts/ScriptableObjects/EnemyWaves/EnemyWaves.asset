@@ -15,12 +15,12 @@ MonoBehaviour:
   WavesArray:
   - _name: 1
     meteoriteTypes:
-    - Amount: 2
-      Frequency: 4
+    - Amount: 4
+      Frequency: 2
       meteoriteInfo: {fileID: 11400000, guid: f93182145eae3d2469c7d3bbca710d49, type: 2}
-    - Amount: 1
-      Frequency: 1
-      meteoriteInfo: {fileID: 11400000, guid: 0633213460c391049935771050ad9870, type: 2}
+    - Amount: 2
+      Frequency: 2
+      meteoriteInfo: {fileID: 11400000, guid: cf63bd18319df0541a5113da6ef5433c, type: 2}
     ufoInfo:
       Amount: 0
       Frequency: 0
