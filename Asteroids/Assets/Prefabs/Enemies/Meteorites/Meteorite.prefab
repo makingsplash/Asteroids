@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6467657899427379823}
   - component: {fileID: 2990826428107403905}
   m_Layer: 8
-  m_Name: BaseMeteorite
+  m_Name: Meteorite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2990826428107403900}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
   m_Name: 
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ff622453bd9d04ea09e0b2a6e9a5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   ScorePoints: 0
-  _speed: 0
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
-  _smallerMeteoritesPrefabs: []
+  SmallerMeteoritesInfo: []

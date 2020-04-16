@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Meteorite : BaseEnemy, IPoolObject
@@ -8,9 +9,45 @@ public class Meteorite : BaseEnemy, IPoolObject
 
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
 
+    private OverBorderShifting _overBorder;
+    private float _camHeigth;
+    private float _camWidth;
+    private bool _isVisible;
+
+
+    private void Start()
+    {
+        _camHeigth = CameraInfo.Instance.CamOrtSize;
+        _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
+    }
+
+    private void OnEnable()
+    {
+        _overBorder = GetComponent<OverBorderShifting>();
+        _overBorder.enabled = false;
+        StartCoroutine(EnableShifting());
+    }
+
     private void Update()
     {
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
+    }
+
+    private IEnumerator EnableShifting()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.3f);
+        while(!_isVisible)
+        {
+            float posX = Mathf.Abs(transform.position.x);
+            float posY = Mathf.Abs(transform.position.y);
+            if(posX < _camWidth && posY < _camHeigth)
+            {
+                _isVisible = true;
+                _overBorder.enabled = true;
+            }
+
+            yield return wait;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
