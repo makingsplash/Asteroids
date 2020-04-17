@@ -7,12 +7,13 @@ public class Meteorite : BaseEnemy, IPoolObject
     [Header("When destroyed")]
     public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
 
+    [HideInInspector] public OverBorderShifting OverBorder;
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
 
-    private OverBorderShifting _overBorder;
     private float _camHeigth;
     private float _camWidth;
     private bool _isVisible;
+    private Coroutine _shifting;
 
 
     private void Start()
@@ -23,9 +24,16 @@ public class Meteorite : BaseEnemy, IPoolObject
 
     private void OnEnable()
     {
-        _overBorder = GetComponent<OverBorderShifting>();
-        _overBorder.enabled = false;
-        StartCoroutine(EnableShifting());
+        if (OverBorder == null)
+            OverBorder = GetComponent<OverBorderShifting>();
+        
+        OverBorder.enabled = false;
+        _shifting = StartCoroutine(EnableShifting());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_shifting);
     }
 
     private void Update()
@@ -36,14 +44,16 @@ public class Meteorite : BaseEnemy, IPoolObject
     private IEnumerator EnableShifting()
     {
         WaitForSeconds wait = new WaitForSeconds(0.3f);
-        while(!_isVisible)
+
+        _isVisible = false;
+        while (!_isVisible)
         {
             float posX = Mathf.Abs(transform.position.x);
             float posY = Mathf.Abs(transform.position.y);
             if(posX < _camWidth && posY < _camHeigth)
             {
                 _isVisible = true;
-                _overBorder.enabled = true;
+                OverBorder.enabled = true;
             }
 
             yield return wait;

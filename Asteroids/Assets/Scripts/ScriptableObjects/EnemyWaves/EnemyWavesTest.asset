@@ -18,15 +18,12 @@ MonoBehaviour:
     - Amount: 1
       Frequency: 1
       meteoriteInfo: {fileID: 11400000, guid: cf63bd18319df0541a5113da6ef5433c, type: 2}
-    - Amount: 2
-      Frequency: 3
-      meteoriteInfo: {fileID: 11400000, guid: f93182145eae3d2469c7d3bbca710d49, type: 2}
     ufoInfo:
-      Amount: 0
-      Frequency: 3
+      Amount: 1
+      Frequency: 1
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
-      LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+      UfoLaserPool: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
         type: 3}
   - _name: SecondWaveTest
     meteoriteTypes:
@@ -38,5 +35,4 @@ MonoBehaviour:
       Frequency: 1
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
-      LaserPoolPrefab: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
-        type: 3}
+      UfoLaserPool: {fileID: 0}

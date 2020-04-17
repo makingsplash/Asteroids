@@ -11,21 +11,20 @@ public class UFO : BaseEnemy
     
     private GameObject _player;
 
-    private float _nonAngryFlyTimer = 2;
-    private Vector2 _nonAngryFlyDirection;
-    private bool _isAngry = false;
-    private float _deadTimer = 10f;
+    private const string _playerTag = "Player";
+    private float _horizontalFlyTimer = 2;
+    private Vector2 _horizontalFlyDirection;
+    private float _deadTimer = 12f;
+    private Vector2 _nextPosition;
+
 
     private void OnEnable()
     {
         if (_player == null)
-            _player = GameObject.FindGameObjectWithTag("Player");
+            _player = GameObject.FindGameObjectWithTag(_playerTag);
         RocketController.OnPlayerEnabled += SetPlayerGameObject;
 
-        if (transform.position.x > 0)
-            _nonAngryFlyDirection = -transform.right;
-        else
-            _nonAngryFlyDirection = transform.right;
+        StartCoroutine(StatesSwitch());
     }
 
     private void OnDisable()
@@ -35,72 +34,104 @@ public class UFO : BaseEnemy
 
     private void Update()
     {
-        if (!_isAngry)
-        {
-            _nonAngryFlyTimer -= Time.deltaTime;
-            if (_nonAngryFlyTimer < 0)
-            {
-                _isAngry = true;
-                StartCoroutine(LaserShots());
-            }
-        }
+        transform.Translate(_nextPosition);
     }
 
-    private void LateUpdate()
+	#region FSM
+	private IEnumerator StatesSwitch()
     {
-        if (!_isAngry)
+        yield return StartCoroutine(FreeFlyHorizontal());
+
+        while (true)
         {
-            transform.Translate(_nonAngryFlyDirection * Speed * Time.deltaTime);
-        }
-        else
-        {
-            if (_player != null && _player.activeSelf)
-                transform.Translate((_player.transform.position - transform.position).normalized * Speed * Time.deltaTime);
-            else
-            {
-                transform.Translate(transform.up * Speed * Time.deltaTime);
-                _deadTimer -= Time.deltaTime;
-                if (_deadTimer < 0)
-                    Destroy(gameObject);
-            }
+            yield return StartCoroutine(Attack());
+            yield return StartCoroutine(FreeFlyUp());
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator FreeFlyHorizontal()
+    {
+        if (transform.position.x > 0)
+            _horizontalFlyDirection = -transform.right;
+        else
+            _horizontalFlyDirection = transform.right;
+
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+
+        while(_horizontalFlyTimer > 0)
+        {
+            _horizontalFlyTimer -= Time.deltaTime;
+            _nextPosition = _horizontalFlyDirection * Speed * Time.deltaTime;
+            yield return wait;
+        }
+
+        yield return null;
+    }
+
+    private IEnumerator Attack()
+    {
+        Coroutine shots = StartCoroutine(LaserShots());
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+
+        while (_player != null && _player.activeSelf)
+        {
+            _nextPosition = (_player.transform.position - transform.position).normalized * Speed * Time.deltaTime;
+            yield return wait;
+        }
+
+        _player = null;
+        StopCoroutine(shots);
+        
+        yield return null;
+    }
+
+    private IEnumerator FreeFlyUp()
+    {
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+
+        while (_player == null)
+        {
+            _deadTimer -= Time.deltaTime;
+            if (_deadTimer < 0)
+                Destroy(gameObject);
+
+            _nextPosition = transform.up * Speed * Time.deltaTime;
+
+            yield return wait;
+        }
+
+        yield return null;
+    }
+    IEnumerator LaserShots()
+    {
+        while (true)
+        {
+            Vector3 position = -transform.up / 2.5f + transform.position;
+            Vector3 direction = _player.transform.position - position;
+            float eulerAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+
+            LaserPool.SpawnObject(position, eulerAngle);
+
+            AudioManager.Instance.PlayOneSound(_shotSound);
+
+            yield return new WaitForSeconds(1 / _fireRate);
+        }
+    }
+	#endregion
+
+	private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable player = collision.gameObject.GetComponent<IDamageable>();
         if (player != null)
             DoDamage(player);
     }
 
-    void SetPlayerGameObject(GameObject player)
-    {
-        this._player = player;
-    }
+    void SetPlayerGameObject(GameObject player) => this._player = player;
 
     public override void TakeDamage()
     {
         base.TakeDamage();
 
         Destroy(gameObject);
-    }
-
-    IEnumerator LaserShots()
-    {
-        while (true)
-        {
-            if (_player != null && _player.activeSelf)
-            {
-                Vector3 position = -transform.up / 2.5f + transform.position;
-
-                Vector3 direction = _player.transform.position - position;
-                float eulerAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-
-                LaserPool.SpawnObject(position, eulerAngle);
-
-                AudioManager.Instance.PlayOneSound(_shotSound);
-            }
-            yield return new WaitForSeconds(1 / _fireRate);
-        }
     }
 }
