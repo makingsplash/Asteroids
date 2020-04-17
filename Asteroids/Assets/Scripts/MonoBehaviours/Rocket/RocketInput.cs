@@ -13,7 +13,7 @@ public class RocketInput : MonoBehaviour
     private void Update()
     {
         if (_left && !_right)
-            Horizontal = Mathf.Lerp(Horizontal, -1, 0.15f);
+            Horizontal = Mathf.Lerp(Horizontal, -1, 0.15f); // by Time.deltaTime, not 0.15f
 
         if (!_left && _right)
             Horizontal = Mathf.Lerp(Horizontal, 1, 0.15f);

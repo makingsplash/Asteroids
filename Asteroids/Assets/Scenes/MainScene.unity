@@ -382,7 +382,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 98.85
+  m_fontSize: 98.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 104.35
+  m_fontSize: 104.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyWaves: {fileID: 11400000, guid: a040a97ba5148ed42862b26227d6f960, type: 2}
+  _enemyWaves: {fileID: 11400000, guid: a8bec994c1d9426428c58597187e13fa, type: 2}
   _meteoritesPool: {fileID: 7223114931024035093}
 --- !u!1 &1537010212
 GameObject:
@@ -2325,6 +2325,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223114931024035093, guid: c230c427bb0003a449f8ab716652314d,
+        type: 3}
+      propertyPath: _poolSize
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c230c427bb0003a449f8ab716652314d, type: 3}
 --- !u!114 &6815747179874732980 stripped
@@ -2427,6 +2432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _moveSpeed
       value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877529137201896256, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}
