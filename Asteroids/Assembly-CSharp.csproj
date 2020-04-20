@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Prefabs\Enemies\Meteorites\TestMet.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IPoolObject.cs" />

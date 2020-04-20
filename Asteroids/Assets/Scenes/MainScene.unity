@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &44248543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -940,7 +940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &806241843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,7 +1358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &972383340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,7 +1526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1323329020
 Transform:
   m_ObjectHideFlags: 0
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyWaves: {fileID: 11400000, guid: a8bec994c1d9426428c58597187e13fa, type: 2}
+  _enemyWaves: {fileID: 11400000, guid: a040a97ba5148ed42862b26227d6f960, type: 2}
   _meteoritesPool: {fileID: 7223114931024035093}
 --- !u!1 &1537010212
 GameObject:
@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1680,7 +1680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1958,7 +1958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2025176448
 Transform:
   m_ObjectHideFlags: 0
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087645904}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -2050,6 +2050,231 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087645904}
   m_CullTransparentMesh: 0
+--- !u!114 &3879322188503370752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014246533930402835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &4511994891373199396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511994891373199576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.132, y: -0.454, z: 0}
+  m_LocalScale: {x: 0.14610259, y: 0.14610259, z: 0.14610259}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4511994891373199399
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511994891373199576}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: bbebf65ef0d4f0e4cb90eef338fc5e63, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &4511994891373199576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4511994891373199396}
+  - component: {fileID: 4511994891373199399}
+  - component: {fileID: 5682948096896682187}
+  - component: {fileID: 4511994891373199578}
+  - component: {fileID: 4511994891373199577}
+  m_Layer: 8
+  m_Name: Meteorite (1)
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &4511994891373199577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511994891373199576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a50768862c4a6e4fb540e6ad2f1d22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &4511994891373199578
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511994891373199576}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 2
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!1 &5014246533930402835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5014246533930403055}
+  - component: {fileID: 5014246533930403052}
+  - component: {fileID: 3879322188503370752}
+  - component: {fileID: 5014246533930403054}
+  m_Layer: 8
+  m_Name: Meteorite
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &5014246533930403052
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014246533930402835}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 4e60210587fb0fc4cb422138d779924e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &5014246533930403054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014246533930402835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ff622453bd9d04ea09e0b2a6e9a5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 4
+  ScorePoints: 0
+  _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
+  SmallerMeteoritesInfo: []
+  OverBorder: {fileID: 0}
+--- !u!4 &5014246533930403055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014246533930402835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.026, y: -0.462, z: 0}
+  m_LocalScale: {x: 0.18261345, y: 0.18261345, z: 0.18261345}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5065995283999159741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2061,6 +2286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RocketLaserPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928594189798717435, guid: b13d0609ed184b04fb4a16f63d009f23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5301523961157156221, guid: b13d0609ed184b04fb4a16f63d009f23,
         type: 3}
@@ -2100,7 +2330,7 @@ PrefabInstance:
     - target: {fileID: 5301523961157156221, guid: b13d0609ed184b04fb4a16f63d009f23,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5301523961157156221, guid: b13d0609ed184b04fb4a16f63d009f23,
         type: 3}
@@ -2239,7 +2469,7 @@ PrefabInstance:
     - target: {fileID: 5436956735474600911, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5436956735474600911, guid: 01b102cdaf514e14598b7ed17f679623,
         type: 3}
@@ -2269,6 +2499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MeteoritesPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661401071551807115, guid: c230c427bb0003a449f8ab716652314d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5661401071551807112, guid: c230c427bb0003a449f8ab716652314d,
         type: 3}
@@ -2308,7 +2543,7 @@ PrefabInstance:
     - target: {fileID: 5661401071551807112, guid: c230c427bb0003a449f8ab716652314d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5661401071551807112, guid: c230c427bb0003a449f8ab716652314d,
         type: 3}
@@ -2325,13 +2560,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7223114931024035093, guid: c230c427bb0003a449f8ab716652314d,
-        type: 3}
-      propertyPath: _poolSize
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c230c427bb0003a449f8ab716652314d, type: 3}
+--- !u!114 &5682948096896682187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511994891373199576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a0e190188acd04b8ba54dab9b8d128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6815747179874732980 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6815747179874732980, guid: b13d0609ed184b04fb4a16f63d009f23,
@@ -2406,7 +2648,7 @@ PrefabInstance:
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
@@ -2430,13 +2672,8 @@ PrefabInstance:
       objectReference: {fileID: 6815747179874732980}
     - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
-      propertyPath: _moveSpeed
-      value: 420
-      objectReference: {fileID: 0}
-    - target: {fileID: 8877529137201896256, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: _rotateSpeed
+      value: 650
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}

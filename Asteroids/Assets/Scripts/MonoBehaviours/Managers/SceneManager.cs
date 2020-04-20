@@ -43,6 +43,8 @@ public class SceneManager : MonoBehaviour
 
         _rocketSpawner = GetComponentInChildren<RocketSpawner>();
         _enemySpawner = GetComponentInChildren<EnemySpawner>();
+
+        Application.targetFrameRate = 60;
     }
 
     private void Start()
@@ -64,10 +66,10 @@ public class SceneManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        StartCoroutine(_rocketSpawner.SpawnRocket());
+        //StartCoroutine(_rocketSpawner.SpawnRocket());
         yield return new WaitForSeconds(2.5f);
 
-        StartEnemyWaveSpawning();
+        //StartEnemyWaveSpawning();
     }
 
     private void StartEnemyWaveSpawning() => _enemySpawner.NextWave();
