@@ -13,13 +13,13 @@ public class RocketInput : MonoBehaviour
     private void Update()
     {
         if (_left && !_right)
-            Horizontal = Mathf.Lerp(Horizontal, -1, 0.15f); // by Time.deltaTime, not 0.15f
+            Horizontal = Mathf.Lerp(Horizontal, -1, Time.deltaTime);
 
         if (!_left && _right)
-            Horizontal = Mathf.Lerp(Horizontal, 1, 0.15f);
+            Horizontal = Mathf.Lerp(Horizontal, 1, Time.deltaTime);
 
         if (!_left && !_right || _left && _right)
-            Horizontal = Mathf.Lerp(Horizontal, 0, 0.015f);
+            Horizontal = Mathf.Lerp(Horizontal, 0, Time.deltaTime * 0.7f);
     }
 
     public void TapShotDown() => IsShotTapDown = true;

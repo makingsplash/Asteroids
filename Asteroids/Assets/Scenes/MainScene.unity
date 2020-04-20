@@ -523,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -800,7 +800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.547107, y: 0.89541817}
   m_AnchorMax: {x: 0.647, y: 0.96700007}
-  m_AnchoredPosition: {x: -6, y: 0.8500366}
+  m_AnchoredPosition: {x: -6, y: 0.8499756}
   m_SizeDelta: {x: 6.3200073, y: 1.3499985}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &664676131
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyWaves: {fileID: 11400000, guid: a8bec994c1d9426428c58597187e13fa, type: 2}
+  _enemyWaves: {fileID: 11400000, guid: a040a97ba5148ed42862b26227d6f960, type: 2}
   _meteoritesPool: {fileID: 7223114931024035093}
 --- !u!1 &1537010212
 GameObject:
@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1680,7 +1680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2062,6 +2062,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RocketLaserPool
       objectReference: {fileID: 0}
+    - target: {fileID: 5928594189798717435, guid: b13d0609ed184b04fb4a16f63d009f23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5301523961157156221, guid: b13d0609ed184b04fb4a16f63d009f23,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2100,7 +2105,7 @@ PrefabInstance:
     - target: {fileID: 5301523961157156221, guid: b13d0609ed184b04fb4a16f63d009f23,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5301523961157156221, guid: b13d0609ed184b04fb4a16f63d009f23,
         type: 3}
@@ -2270,6 +2275,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeteoritesPool
       objectReference: {fileID: 0}
+    - target: {fileID: 5661401071551807115, guid: c230c427bb0003a449f8ab716652314d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5661401071551807112, guid: c230c427bb0003a449f8ab716652314d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2308,7 +2318,7 @@ PrefabInstance:
     - target: {fileID: 5661401071551807112, guid: c230c427bb0003a449f8ab716652314d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5661401071551807112, guid: c230c427bb0003a449f8ab716652314d,
         type: 3}
@@ -2324,11 +2334,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7223114931024035093, guid: c230c427bb0003a449f8ab716652314d,
-        type: 3}
-      propertyPath: _poolSize
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c230c427bb0003a449f8ab716652314d, type: 3}
@@ -2406,7 +2411,7 @@ PrefabInstance:
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
@@ -2430,13 +2435,8 @@ PrefabInstance:
       objectReference: {fileID: 6815747179874732980}
     - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
-      propertyPath: _moveSpeed
-      value: 420
-      objectReference: {fileID: 0}
-    - target: {fileID: 8877529137201896256, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: _rotateSpeed
+      value: 650
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}

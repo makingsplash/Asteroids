@@ -68,6 +68,13 @@ public class RocketController : MonoBehaviour, IDamageable
         if (isInvulnerability)
             InvulnerabilityCouner();
     }
+    private void LateUpdate()
+    {
+        _rigidbody.AddRelativeForce(
+            Vector2.up * _input.Vertical * _moveSpeed * Time.deltaTime);
+
+        transform.eulerAngles -= Vector3.forward * _input.Horizontal * _rotateSpeed * Time.deltaTime;
+    }
 
     private void MakeInvulnerability()
     {
@@ -90,13 +97,6 @@ public class RocketController : MonoBehaviour, IDamageable
         }
     }
 
-    private void LateUpdate()
-    {
-        _rigidbody.AddRelativeForce(
-            Vector2.up * _input.Vertical * _moveSpeed * Time.deltaTime);
-
-        transform.eulerAngles -= Vector3.forward * _input.Horizontal * _rotateSpeed * Time.deltaTime;
-    }
 
     private IEnumerator LaserReload()
     {

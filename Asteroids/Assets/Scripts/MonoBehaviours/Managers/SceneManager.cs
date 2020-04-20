@@ -43,6 +43,8 @@ public class SceneManager : MonoBehaviour
 
         _rocketSpawner = GetComponentInChildren<RocketSpawner>();
         _enemySpawner = GetComponentInChildren<EnemySpawner>();
+
+        Application.targetFrameRate = 60;
     }
 
     private void Start()
