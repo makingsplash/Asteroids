@@ -177,7 +177,7 @@ MonoBehaviour:
   _fireRate: 0.2
   _laserPool: {fileID: 0}
   _moveSpeed: 420
-  _rotateSpeed: 1050
+  _rotateSpeed: 800
   _shotSound: {fileID: 8300000, guid: 2f7cb02e10ede0444a4e970af1482325, type: 3}
   _rocketExplosionSound: {fileID: 8300000, guid: 57224491e0a29eb4db188c02fb50c8c6,
     type: 3}

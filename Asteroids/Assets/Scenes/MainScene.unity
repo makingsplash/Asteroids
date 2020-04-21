@@ -598,7 +598,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.63403344, g: 0.76690716, b: 0.9811321, a: 0}
+  m_BackGroundColor: {r: 0.69882524, g: 0.8078984, b: 0.9811321, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 1006594936}
   - component: {fileID: 1006594935}
   m_Layer: 5
-  m_Name: FPS
+  m_Name: DPI_FPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2506,6 +2506,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223114931024035093, guid: c230c427bb0003a449f8ab716652314d,
+        type: 3}
+      propertyPath: _poolSize
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c230c427bb0003a449f8ab716652314d, type: 3}
 --- !u!114 &6815747179874732980 stripped
@@ -2604,10 +2609,5 @@ PrefabInstance:
       propertyPath: _laserPool
       value: 
       objectReference: {fileID: 6815747179874732980}
-    - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: _rotateSpeed
-      value: 650
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}

@@ -149,6 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9bbda5705c9034ebe6ad1cf9b23fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
-  _lifeTime: 3
+  _speed: 5
+  _lifeTime: 2.5
   _isRocketLaser: 0
