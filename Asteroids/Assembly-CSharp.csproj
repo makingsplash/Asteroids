@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\UI\EnemyWaveBar.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\EnemyWaves\WavesOfEmemies_SO.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\MeteoriteTypes\MeteoriteType_SO.cs" />
+    <Compile Include="Assets\Scripts\testfps.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
