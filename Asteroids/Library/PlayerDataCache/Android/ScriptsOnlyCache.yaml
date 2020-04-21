@@ -119,21 +119,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10146}
     - Class: 114
-      Script: {instanceID: 10262}
+      Script: {instanceID: 10208}
     - Class: 114
-      Script: {instanceID: 10298}
+      Script: {instanceID: 10264}
     - Class: 114
-      Script: {instanceID: 10424}
+      Script: {instanceID: 10300}
     - Class: 114
-      Script: {instanceID: 10554}
+      Script: {instanceID: 10426}
     - Class: 114
-      Script: {instanceID: 10632}
+      Script: {instanceID: 10556}
     - Class: 114
-      Script: {instanceID: 10648}
+      Script: {instanceID: 10634}
     - Class: 114
-      Script: {instanceID: 10668}
+      Script: {instanceID: 10650}
     - Class: 114
-      Script: {instanceID: 12494}
+      Script: {instanceID: 10670}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -885,6 +885,12 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: testfps
+  - hash:
+      serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1081,13 +1087,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: testfps
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/admin/Desktop/1111.apk
+  playerPath: C:/Users/admin/Desktop/111.apk

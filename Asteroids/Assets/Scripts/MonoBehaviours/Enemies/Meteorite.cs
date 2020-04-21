@@ -14,6 +14,8 @@ public class Meteorite : BaseEnemy, IPoolObject
     private float _camWidth;
     private bool _isVisible;
     private Coroutine _shifting;
+    private PolygonCollider2D _polygonCollider2d;
+    private bool _isColliding;
 
 
     private void Start()
@@ -24,9 +26,15 @@ public class Meteorite : BaseEnemy, IPoolObject
 
     private void OnEnable()
     {
+
+        _polygonCollider2d = GetComponent<PolygonCollider2D>();
+
         if (OverBorder == null)
             OverBorder = GetComponent<OverBorderShifting>();
-        
+
+        _isColliding = false;
+
+        _polygonCollider2d.enabled = false;
         OverBorder.enabled = false;
         _shifting = StartCoroutine(EnableShifting());
     }
@@ -54,6 +62,7 @@ public class Meteorite : BaseEnemy, IPoolObject
             {
                 _isVisible = true;
                 OverBorder.enabled = true;
+                _polygonCollider2d.enabled = true;
             }
 
             yield return wait;
@@ -69,13 +78,18 @@ public class Meteorite : BaseEnemy, IPoolObject
 
     public override void TakeDamage()
     {
-        if (SmallerMeteoritesInfo.Count > 0)
-            SpawnSmallerMeteorites();
+        if(!_isColliding)
+        {
+            _isColliding = true;
 
-        base.TakeDamage();
+            if (SmallerMeteoritesInfo.Count > 0)
+                SpawnSmallerMeteorites();
 
-        ParentPool.Pool.Enqueue(gameObject);
-        gameObject.SetActive(false);
+            base.TakeDamage();
+
+            ParentPool.Pool.Enqueue(gameObject);
+            gameObject.SetActive(false);
+        }
     }
 
     void SpawnSmallerMeteorites()
