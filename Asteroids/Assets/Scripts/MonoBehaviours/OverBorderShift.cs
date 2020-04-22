@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class OverBorderShifting : MonoBehaviour
+public class OverBorderShift : MonoBehaviour
 {
     // Коррекция позиции при выходе за границы камеры 
     // Без неё мы будем постоянно перемещать вышедший объект на границу камеры

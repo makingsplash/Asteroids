@@ -134,7 +134,7 @@ public class EnemySpawner : MonoBehaviour
                 metComponent.ScorePoints = metInfo.scorePoints;
                 metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
 
-                metComponent.ShiftingRoutine = StartCoroutine(metComponent.EnableShifting());
+                metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
             }
             else
                 yield break;

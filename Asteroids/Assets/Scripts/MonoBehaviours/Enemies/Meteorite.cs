@@ -7,14 +7,12 @@ public class Meteorite : BaseEnemy, IPoolObject
     [Header("When destroyed")]
     public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
 
-    public Coroutine ShiftingRoutine;
-
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
+    [HideInInspector] public Coroutine ShiftRoutine;
 
     private float _camHeigth;
     private float _camWidth;
-    public bool _isVisible; /////
-    public OverBorderShifting _overBorder;  ////////
+    private OverBorderShift _overBorderShift;
     private PolygonCollider2D _polygonCollider2d;
     private bool _isColliding;
 
@@ -27,19 +25,7 @@ public class Meteorite : BaseEnemy, IPoolObject
             _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
         }
 
-        _polygonCollider2d = GetComponent<PolygonCollider2D>();
-        _polygonCollider2d.enabled = false;
-
-        _overBorder = GetComponent<OverBorderShifting>();
-        _overBorder.enabled = false;
-
         _isColliding = false;
-    }
-
-    private void OnDisable()
-    {
-        _overBorder.enabled = false;
-        _isVisible = false;
     }
 
     private void Update()
@@ -47,36 +33,32 @@ public class Meteorite : BaseEnemy, IPoolObject
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
     }
 
-    // не нужно запускать в onEnable, сделать public и запускать снаружи
-    public IEnumerator EnableShifting()
+    public IEnumerator EnableShift()
     {
-        Debug.Log("+++ Started EnableShifting");
+        if (_polygonCollider2d == null)
+            _polygonCollider2d = GetComponent<PolygonCollider2D>();
+        _polygonCollider2d.enabled = false;
+
+        if (_overBorderShift == null)
+            _overBorderShift = GetComponent<OverBorderShift>();
+        _overBorderShift.enabled = false;
 
         WaitForSeconds wait = new WaitForSeconds(0.1f);
 
-        _isVisible = false;
-        while (!_isVisible && gameObject.activeSelf)
+        while (true)
         {
             float posX = Mathf.Abs(transform.position.x);
             float posY = Mathf.Abs(transform.position.y);
 
-            Debug.Log("X " + posX + " " + _camWidth);
-            Debug.Log("Y " + posY + " " + _camHeigth);
-
             if(posX < _camWidth && posY < _camHeigth)
             {
-                Debug.Log("ооо Became visible");
-                _isVisible = true;
-                _overBorder.enabled = true;
+                _overBorderShift.enabled = true;
                 _polygonCollider2d.enabled = true;
+                
                 break;
             }
-
             yield return wait;
         }
-
-        Debug.Log("--- Stop coroutine");
-        yield return null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -102,7 +84,7 @@ public class Meteorite : BaseEnemy, IPoolObject
         }
     }
 
-    void SpawnSmallerMeteorites()
+    private void SpawnSmallerMeteorites()
     {
         for (int i = 0; i < UnityEngine.Random.Range(1, 3); i++)
         {
@@ -121,7 +103,7 @@ public class Meteorite : BaseEnemy, IPoolObject
             metComponent.Speed = metInfo.speed;
             metComponent.ScorePoints = metInfo.scorePoints;
             metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
-            metComponent.ShiftingRoutine = StartCoroutine(metComponent.EnableShifting());
+            metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
 
             EnemySpawner.EnemiesSpawned++;
         }
