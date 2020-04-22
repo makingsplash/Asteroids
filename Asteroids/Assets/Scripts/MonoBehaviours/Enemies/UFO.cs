@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class UFO : BaseEnemy
+public class UFO : BaseEnemy, IDamageable
 {
     [HideInInspector] public ObjectPool LaserPool;
 
@@ -128,10 +128,9 @@ public class UFO : BaseEnemy
 
     void SetPlayerGameObject(GameObject player) => this._player = player;
 
-    public override void TakeDamage()
+    public void TakeDamage()
     {
-        base.TakeDamage();
-
-        Destroy(gameObject);
+        if(DecreaseHealth())
+            Destroy(gameObject);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meteorite : BaseEnemy, IPoolObject
+public class Meteorite : BaseEnemy, IPoolObject, IDamageable
 {
     [Header("When destroyed")]
     public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
@@ -68,19 +68,22 @@ public class Meteorite : BaseEnemy, IPoolObject
             DoDamage(player);
     }
 
-    public override void TakeDamage()
+    public void TakeDamage()
     {
         if(!_isColliding)
         {
             _isColliding = true;
 
-            if (SmallerMeteoritesInfo.Count > 0)
-                SpawnSmallerMeteorites();
+            if (DecreaseHealth())
+            {
+                if (SmallerMeteoritesInfo.Count > 0)
+                    SpawnSmallerMeteorites();
 
-            base.TakeDamage();
-
-            gameObject.SetActive(false);
-            ParentPool.Pool.Enqueue(gameObject);
+                gameObject.SetActive(false);
+                ParentPool.Pool.Enqueue(gameObject);
+            }
+            else
+                _isColliding = false;
         }
     }
 
@@ -100,6 +103,7 @@ public class Meteorite : BaseEnemy, IPoolObject
             meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
 
             Meteorite metComponent = meteorite.GetComponent<Meteorite>();
+            metComponent.Health = metInfo.health;
             metComponent.Speed = metInfo.speed;
             metComponent.ScorePoints = metInfo.scorePoints;
             metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;

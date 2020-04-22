@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03df29b15f11eb1468187b365fe4bbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 4
   Speed: 1.5
   ScorePoints: 45
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}

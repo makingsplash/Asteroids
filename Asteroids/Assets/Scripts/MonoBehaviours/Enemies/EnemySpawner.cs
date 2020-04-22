@@ -126,17 +126,15 @@ public class EnemySpawner : MonoBehaviour
                 meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
 
                 Meteorite metComponent = meteorite.GetComponent<Meteorite>();
+                metComponent.Health = metInfo.health;
                 metComponent.Speed = metInfo.speed;
                 metComponent.ScorePoints = metInfo.scorePoints;
                 metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
 
                 metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
 
-                // спавним палочку, уничтожаем когда включается овербоардшифт
-                //Debug.DrawRay(meteorite.transform.position, direction, Color.green);
                 metComponent.Warning = Instantiate(_meteoriteWarning, spawnPos,
                     Quaternion.AngleAxis(rotationAngle + 90, Vector3.forward));
-
             }
             else
                 yield break;
