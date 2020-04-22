@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RocketController : MonoBehaviour, IDamageable
 {
+    public bool TESTNONHITTABLE;
+
     public static Action<GameObject> OnPlayerEnabled;
 
     [SerializeField] private float _fireRate;
@@ -88,9 +90,9 @@ public class RocketController : MonoBehaviour, IDamageable
     private void InvulnerabilityCouner()
     {
         invulnerabilityTimerCurrent -= Time.deltaTime;
-        if(invulnerabilityTimerCurrent < 0)
+        if(invulnerabilityTimerCurrent < 0 && !TESTNONHITTABLE)
         {
-            //_polygonCollider.enabled = true;
+            _polygonCollider.enabled = true;
 
             _invulnerabilityAnim.SetActive(false);
             isInvulnerability = false;
