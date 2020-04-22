@@ -1,14 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
+public abstract class BaseEnemy : MonoBehaviour, IDamager
 {
     public static Action EnemyKilled;
+
+    public byte Health;
+    protected byte currentHealth;
 
     public float Speed;
     public byte ScorePoints;
 
     [SerializeField] protected AudioClip _dieSound;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -17,11 +21,21 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable, IDamager
             DoDamage(player);
     }
 
-    public virtual void TakeDamage()
+    protected bool DecreaseHealth()
     {
-        EnemyKilled();
-
-        AudioManager.Instance.PlayOneSound(_dieSound);
+        Health--;
+        if (Health == 0)
+        {
+            EnemyKilled();
+            AudioManager.Instance.PlayOneSound(_dieSound);
+            Debug.Log("Враг " + gameObject.name + " убит");
+            return true;
+        }
+        else
+        {
+            Debug.Log("У врага " + gameObject.name + " осталось " + Health + " хп");
+            return false;
+        }
     }
 
     public void DoDamage(IDamageable damageable)

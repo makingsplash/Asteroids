@@ -38,7 +38,6 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
         {
             BaseEnemy enemy = collision.gameObject.GetComponent<BaseEnemy>();
             UIManager.Instance.ChangeScore(enemy.ScorePoints);
-            damageable = enemy.GetComponent<IDamageable>();
         }
 
         DoDamage(damageable);

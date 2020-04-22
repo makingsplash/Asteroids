@@ -17,6 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: c6ff72bf56727e841b6ac9f4d39bd2e1, type: 3}
   polygonCollider2d: {fileID: 2990826428107403901, guid: 9a950d92beb9d2a469422213bce121d2,
     type: 3}
+  health: 1
   speed: 2.5
   scorePoints: 55
   smallerMeteoritesSO: []
