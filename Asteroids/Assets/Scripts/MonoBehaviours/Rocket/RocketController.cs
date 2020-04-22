@@ -90,7 +90,7 @@ public class RocketController : MonoBehaviour, IDamageable
         invulnerabilityTimerCurrent -= Time.deltaTime;
         if(invulnerabilityTimerCurrent < 0)
         {
-            _polygonCollider.enabled = true;
+            //_polygonCollider.enabled = true;
 
             _invulnerabilityAnim.SetActive(false);
             isInvulnerability = false;

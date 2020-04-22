@@ -7,41 +7,25 @@ public class Meteorite : BaseEnemy, IPoolObject
     [Header("When destroyed")]
     public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
 
-    [HideInInspector] public OverBorderShifting OverBorder;
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
+    [HideInInspector] public Coroutine ShiftRoutine;
 
     private float _camHeigth;
     private float _camWidth;
-    private bool _isVisible;
-    private Coroutine _shifting;
+    private OverBorderShift _overBorderShift;
     private PolygonCollider2D _polygonCollider2d;
     private bool _isColliding;
 
 
-    private void Start()
-    {
-        _camHeigth = CameraInfo.Instance.CamOrtSize;
-        _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
-    }
-
     private void OnEnable()
     {
-
-        _polygonCollider2d = GetComponent<PolygonCollider2D>();
-
-        if (OverBorder == null)
-            OverBorder = GetComponent<OverBorderShifting>();
+        if(_camHeigth == 0)
+        {
+            _camHeigth = CameraInfo.Instance.CamOrtSize;
+            _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
+        }
 
         _isColliding = false;
-
-        _polygonCollider2d.enabled = false;
-        OverBorder.enabled = false;
-        _shifting = StartCoroutine(EnableShifting());
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(_shifting);
     }
 
     private void Update()
@@ -49,22 +33,30 @@ public class Meteorite : BaseEnemy, IPoolObject
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
     }
 
-    private IEnumerator EnableShifting()
+    public IEnumerator EnableShift()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.3f);
+        if (_polygonCollider2d == null)
+            _polygonCollider2d = GetComponent<PolygonCollider2D>();
+        _polygonCollider2d.enabled = false;
 
-        _isVisible = false;
-        while (!_isVisible)
+        if (_overBorderShift == null)
+            _overBorderShift = GetComponent<OverBorderShift>();
+        _overBorderShift.enabled = false;
+
+        WaitForSeconds wait = new WaitForSeconds(0.1f);
+
+        while (true)
         {
             float posX = Mathf.Abs(transform.position.x);
             float posY = Mathf.Abs(transform.position.y);
+
             if(posX < _camWidth && posY < _camHeigth)
             {
-                _isVisible = true;
-                OverBorder.enabled = true;
+                _overBorderShift.enabled = true;
                 _polygonCollider2d.enabled = true;
+                
+                break;
             }
-
             yield return wait;
         }
     }
@@ -87,30 +79,31 @@ public class Meteorite : BaseEnemy, IPoolObject
 
             base.TakeDamage();
 
-            ParentPool.Pool.Enqueue(gameObject);
             gameObject.SetActive(false);
+            ParentPool.Pool.Enqueue(gameObject);
         }
     }
 
-    void SpawnSmallerMeteorites()
+    private void SpawnSmallerMeteorites()
     {
         for (int i = 0; i < UnityEngine.Random.Range(1, 3); i++)
         {
             // pick random prefab, apply random offset and rotation
-            GameObject newGO = ParentPool.SpawnObject(
+            GameObject meteorite = ParentPool.SpawnObject(
                  transform.position + Vector3.right * UnityEngine.Random.Range(-0.2f, 0.2f) + Vector3.up * UnityEngine.Random.Range(-0.2f, 0.2f),
                  transform.rotation.eulerAngles.z + UnityEngine.Random.Range(-15, 15));
 
             MeteoriteType_SO metInfo = SmallerMeteoritesInfo[UnityEngine.Random.Range(0, SmallerMeteoritesInfo.Count)];
 
-            newGO.transform.localScale = metInfo.transform.localScale;
-            newGO.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
-            newGO.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
+            meteorite.transform.localScale = metInfo.transform.localScale;
+            meteorite.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
+            meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
 
-            Meteorite GOmetScr = newGO.GetComponent<Meteorite>();
-            GOmetScr.Speed = metInfo.speed;
-            GOmetScr.ScorePoints = metInfo.scorePoints;
-            GOmetScr.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
+            Meteorite metComponent = meteorite.GetComponent<Meteorite>();
+            metComponent.Speed = metInfo.speed;
+            metComponent.ScorePoints = metInfo.scorePoints;
+            metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
+            metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
 
             EnemySpawner.EnemiesSpawned++;
         }

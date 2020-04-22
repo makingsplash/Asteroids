@@ -76,7 +76,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\SceneManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\ObjectPool.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviours\OverBorderShifting.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\OverBorderShift.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketInput.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketSpawner.cs" />
