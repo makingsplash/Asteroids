@@ -14,10 +14,8 @@ public class OverBorderShifting : MonoBehaviour
 
     private void Start()
     {
-        //_camOrtSize = CameraInfo.Instance.CamOrtSize;
-        //_camAspect = CameraInfo.Instance.CamAspect;
-        _camOrtSize = Camera.main.orthographicSize;
-        _camAspect = Camera.main.aspect;
+        _camOrtSize = CameraInfo.Instance.CamOrtSize;
+        _camAspect = CameraInfo.Instance.CamAspect;
     }
 
     void Update()

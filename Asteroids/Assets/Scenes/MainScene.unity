@@ -1424,7 +1424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28587463, y: 0.904257}
   m_AnchorMax: {x: 0.28587463, y: 0.904257}
-  m_AnchoredPosition: {x: 12, y: -6.5400085}
+  m_AnchoredPosition: {x: 12, y: -6.539978}
   m_SizeDelta: {x: 333.8, y: 85.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1006594935
@@ -2577,12 +2577,12 @@ PrefabInstance:
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
@@ -2602,12 +2602,17 @@ PrefabInstance:
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: _laserPool
       value: 
       objectReference: {fileID: 6815747179874732980}
+    - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: _fireRate
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}
