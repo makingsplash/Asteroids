@@ -1726,6 +1726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyWaves: {fileID: 11400000, guid: a040a97ba5148ed42862b26227d6f960, type: 2}
   _meteoritesPool: {fileID: 7223114931024035093}
+  _meteoriteWarning: {fileID: 3190825683776134426, guid: f0ac9a333d079094c8833478c68e9fc9,
+    type: 3}
 --- !u!1 &1537010212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,7 +2511,7 @@ PrefabInstance:
     - target: {fileID: 7223114931024035093, guid: c230c427bb0003a449f8ab716652314d,
         type: 3}
       propertyPath: _poolSize
-      value: 25
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c230c427bb0003a449f8ab716652314d, type: 3}
@@ -2613,6 +2615,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _fireRate
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: TESTNONHITTABLE
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}

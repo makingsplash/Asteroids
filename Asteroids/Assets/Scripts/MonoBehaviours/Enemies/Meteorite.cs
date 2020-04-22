@@ -9,6 +9,7 @@ public class Meteorite : BaseEnemy, IPoolObject
 
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
     [HideInInspector] public Coroutine ShiftRoutine;
+    [HideInInspector] public GameObject Warning;
 
     private float _camHeigth;
     private float _camWidth;
@@ -19,11 +20,8 @@ public class Meteorite : BaseEnemy, IPoolObject
 
     private void OnEnable()
     {
-        if(_camHeigth == 0)
-        {
-            _camHeigth = CameraInfo.Instance.CamOrtSize;
-            _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
-        }
+        _camHeigth = CameraInfo.Instance.CamOrtSize;
+        _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
 
         _isColliding = false;
     }
@@ -54,7 +52,9 @@ public class Meteorite : BaseEnemy, IPoolObject
             {
                 _overBorderShift.enabled = true;
                 _polygonCollider2d.enabled = true;
-                
+
+                Destroy(Warning);
+
                 break;
             }
             yield return wait;
