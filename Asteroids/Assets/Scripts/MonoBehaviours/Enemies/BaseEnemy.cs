@@ -5,13 +5,31 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
 {
     public static Action EnemyKilled;
 
-    public byte Health;
+    public byte Health
+    {
+        get
+        {
+            return currentHealth;
+        }
+        set
+        {
+            if (value > currentHealth)
+                _healthBar.ResizeMaxValue(value);
+            else
+            {
+                StartCoroutine(_healthBar.DecreaseCurrentValue());
+            }
+
+            currentHealth = value;
+        }
+    }
     protected byte currentHealth;
 
     public float Speed;
     public byte ScorePoints;
 
     [SerializeField] protected AudioClip _dieSound;
+    [SerializeField] protected EnemyHealthBar _healthBar;
 
 
     private void OnCollisionEnter2D(Collision2D collision)

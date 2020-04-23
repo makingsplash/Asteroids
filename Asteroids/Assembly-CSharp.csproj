@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketInput.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketSpawner.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\UI\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\UI\EnemyWaveBar.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\EnemyWaves\WavesOfEmemies_SO.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\MeteoriteTypes\MeteoriteType_SO.cs" />
