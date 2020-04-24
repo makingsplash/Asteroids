@@ -686,6 +686,6 @@ MonoBehaviour:
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
   _healthBar: {fileID: 685123100}
   LaserPool: {fileID: 0}
-  _ufoHealth: 4
+  _ufoHealth: 12
   _shotSound: {fileID: 8300000, guid: a429aace0e22b804dac0a97959e6dc27, type: 3}
   _fireRate: 1

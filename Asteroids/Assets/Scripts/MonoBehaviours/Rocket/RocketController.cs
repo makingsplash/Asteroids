@@ -21,26 +21,28 @@ public class RocketController : MonoBehaviour, IDamageable
 
     [Header("Animations")]
     [SerializeField] private GameObject _movingFireAnim;
-    [SerializeField] private GameObject _invulnerabilityAnim;
+    [SerializeField] private GameObject _shieldAnim;
 
     private bool _canShot;
 
-    private RocketInput _input;
-    
-    private readonly float invulnerabilityTimerMax = 5f;
-    private float invulnerabilityTimerCurrent;
-    private bool isInvulnerability = false;
+    private readonly float _shieldEnabledTimer = 5f;
+    private readonly float _shieldReloadTimer = 5f;
+    private bool _isShieldReady;
 
+    private RocketInput _input;
     private Rigidbody2D _rigidbody;
     private PolygonCollider2D _polygonCollider;
 
     
     private void OnEnable()
     {
-        _polygonCollider = GetComponent<PolygonCollider2D>();
-        _input = GetComponent<RocketInput>();
+        if(_polygonCollider == null)
+            _polygonCollider = GetComponent<PolygonCollider2D>();
+        if(_input == null)
+            _input = GetComponent<RocketInput>();
 
-        MakeInvulnerability();
+        _isShieldReady = true;
+        StartCoroutine(UseShield());
 
         _canShot = true;
 
@@ -65,10 +67,8 @@ public class RocketController : MonoBehaviour, IDamageable
 
         if (_input.IsShotTapDown)
             LaserShot();
-
-        if (isInvulnerability)
-            InvulnerabilityCouner();
     }
+
     private void LateUpdate()
     {
         _rigidbody.AddRelativeForce(
@@ -77,27 +77,28 @@ public class RocketController : MonoBehaviour, IDamageable
         transform.eulerAngles -= Vector3.forward * _input.Horizontal * _rotateSpeed * Time.deltaTime;
     }
 
-    private void MakeInvulnerability()
+    public IEnumerator UseShield()
     {
-        _polygonCollider.enabled = false;
-
-        invulnerabilityTimerCurrent = invulnerabilityTimerMax;
-        isInvulnerability = true;
-        _invulnerabilityAnim.SetActive(true);
-    }
-
-    private void InvulnerabilityCouner()
-    {
-        invulnerabilityTimerCurrent -= Time.deltaTime;
-        if(invulnerabilityTimerCurrent < 0 && !TESTNONHITTABLE)
+        Debug.Log("Использую щиток");
+        if (_isShieldReady)
         {
-            _polygonCollider.enabled = true;
+            Debug.Log("Включаю щиток");
+            _isShieldReady = false;
 
-            _invulnerabilityAnim.SetActive(false);
-            isInvulnerability = false;
+            _polygonCollider.enabled = false;
+            _shieldAnim.SetActive(true);
+            yield return new WaitForSeconds(_shieldEnabledTimer);
+
+            _polygonCollider.enabled = true;
+            _shieldAnim.SetActive(false);
+            yield return new WaitForSeconds(_shieldReloadTimer);
+
+            _isShieldReady = true;
+            Debug.Log("Щиток готов");
         }
     }
 
+    #region Laser usage
     private IEnumerator LaserReload()
     {
         _canShot = false;
@@ -118,8 +119,9 @@ public class RocketController : MonoBehaviour, IDamageable
             StartCoroutine(LaserReload());
         }
     }
+    #endregion
 
-    public void TakeDamage(byte damage)
+	public void TakeDamage(byte damage)
     {
         AudioManager.Instance.PlayOneSound(_rocketExplosionSound);
         SceneManager.Instance.PlayerDead();

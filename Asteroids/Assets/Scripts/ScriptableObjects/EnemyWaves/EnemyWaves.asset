@@ -22,7 +22,7 @@ MonoBehaviour:
       Frequency: 2
       meteoriteInfo: {fileID: 11400000, guid: cf63bd18319df0541a5113da6ef5433c, type: 2}
     ufoInfo:
-      Amount: 1
+      Amount: 0
       Frequency: 1
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
