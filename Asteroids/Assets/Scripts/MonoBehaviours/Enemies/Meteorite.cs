@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Meteorite : BaseEnemy, IPoolObject, IDamageable
 {
-    [Header("When destroyed")]
-    public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
-
+    [HideInInspector] public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
     [HideInInspector] public Coroutine ShiftRoutine;
     [HideInInspector] public GameObject Warning;
@@ -74,17 +72,18 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
         {
             _isColliding = true;
 
-            if (DecreaseHealth())
-            {
-                if (SmallerMeteoritesInfo.Count > 0)
-                    SpawnSmallerMeteorites();
-
-                gameObject.SetActive(false);
-                ParentPool.Pool.Enqueue(gameObject);
-            }
-            else
-                _isColliding = false;
+            DecreaseHealth();
         }
+        _isColliding = false;
+    }
+
+    protected override void Death()
+    {
+        if (SmallerMeteoritesInfo.Count > 0)
+            SpawnSmallerMeteorites();
+
+        gameObject.SetActive(false);
+        ParentPool.Pool.Enqueue(gameObject);
     }
 
     private void SpawnSmallerMeteorites()

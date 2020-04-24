@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour, IDamager
@@ -16,15 +17,14 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
             if (value > currentHealth)
                 _healthBar.ResizeMaxValue(value);
             else
-            {
                 StartCoroutine(_healthBar.DecreaseCurrentValue());
-            }
 
             currentHealth = value;
         }
     }
     protected byte currentHealth;
 
+    [Header("Enemy")]
     public float Speed;
     public byte ScorePoints;
 
@@ -39,25 +39,18 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
             DoDamage(player);
     }
 
-    protected bool DecreaseHealth()
+    protected void DecreaseHealth()
     {
         Health--;
         if (Health == 0)
         {
+            Death();
             EnemyKilled();
             AudioManager.Instance.PlayOneSound(_dieSound);
-            Debug.Log("Враг " + gameObject.name + " убит");
-            return true;
-        }
-        else
-        {
-            Debug.Log("У врага " + gameObject.name + " осталось " + Health + " хп");
-            return false;
         }
     }
 
-    public void DoDamage(IDamageable damageable)
-    {
-        damageable.TakeDamage();
-    }
+    protected virtual void Death() { }
+
+    public void DoDamage(IDamageable damageable) => damageable.TakeDamage();
 }
