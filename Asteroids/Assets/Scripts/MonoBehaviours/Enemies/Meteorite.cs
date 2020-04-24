@@ -66,14 +66,14 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
             DoDamage(player);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(byte damage)
     {
         if(!_isColliding)
         {
             _isColliding = true;
 
             UIManager.Instance.ChangeScore(HitScorePoints);
-            DecreaseHealth();
+            DecreaseHealth(damage);
         }
         _isColliding = false;
     }

@@ -4,9 +4,9 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
 {
     public ObjectPool ParentPool { get; set; }
 
+    [SerializeField] private byte _damage;
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
-
     private float _currentLifeTime;
 
 
@@ -19,9 +19,7 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
     {
         _currentLifeTime -= Time.deltaTime;
         if (_currentLifeTime < 0)
-        {
             ReturnToPool();
-        }
 
         transform.position += transform.up * _speed * Time.deltaTime;
     }
@@ -33,9 +31,10 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
 
     public void DoDamage(IDamageable damageable)
     {
-        damageable.TakeDamage();
+        damageable.TakeDamage(_damage);
         ReturnToPool();
     }
+
     void ReturnToPool()
     {
         gameObject.SetActive(false);

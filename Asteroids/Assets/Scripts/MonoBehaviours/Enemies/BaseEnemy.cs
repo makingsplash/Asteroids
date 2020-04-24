@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 public abstract class BaseEnemy : MonoBehaviour, IDamager
@@ -16,8 +15,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
         {
             if (value > currentHealth)
                 _healthBar.ResizeMaxValue(value);
-            else
-                StartCoroutine(_healthBar.DecreaseCurrentValue());
+            else if (gameObject.activeSelf)
+                StartCoroutine(_healthBar.SetCurrentValue(value));
 
             currentHealth = value;
         }
@@ -40,9 +39,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
             DoDamage(player);
     }
 
-    protected void DecreaseHealth()
+    protected void DecreaseHealth(byte amount)
     {
-        Health--;
+        Health = (byte) (Health - amount < 0 ? 0 : Health - amount);
         if (Health == 0)
         {
             Death();

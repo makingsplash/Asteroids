@@ -16,9 +16,8 @@ public class EnemyHealthBar : MonoBehaviour
         _slider.value = health;
     }
 
-    public IEnumerator DecreaseCurrentValue()
+    public IEnumerator SetCurrentValue(byte nextValue)
     {
-        float nextValue = _slider.value - 1;
         while (_slider.value > nextValue)
         {
             _slider.value -= _oneChange;
