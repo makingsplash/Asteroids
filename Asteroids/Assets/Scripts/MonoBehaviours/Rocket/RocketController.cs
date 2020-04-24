@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class RocketController : MonoBehaviour, IDamageable
 {
-    
     [Header("Testing")] public bool TESTNONHITTABLE;
 
     public static Action<GameObject> OnPlayerEnabled;
 
     [SerializeField] private float _fireRate;
-
     [SerializeField] private ObjectPool _laserPool;
 
     [Header("Movement")]
@@ -100,7 +98,6 @@ public class RocketController : MonoBehaviour, IDamageable
         }
     }
 
-
     private IEnumerator LaserReload()
     {
         _canShot = false;
@@ -122,7 +119,7 @@ public class RocketController : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(byte damage)
     {
         AudioManager.Instance.PlayOneSound(_rocketExplosionSound);
         SceneManager.Instance.PlayerDead();

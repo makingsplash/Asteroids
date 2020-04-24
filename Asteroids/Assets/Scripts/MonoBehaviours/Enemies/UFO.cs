@@ -133,10 +133,10 @@ public class UFO : BaseEnemy, IDamageable
 
     void SetPlayerGameObject(GameObject player) => _player = player;
 
-    public void TakeDamage()
+    public void TakeDamage(byte damage)
     {
         UIManager.Instance.ChangeScore(HitScorePoints);
-        DecreaseHealth();
+        DecreaseHealth(damage);
     }
 
     protected override void Death()
