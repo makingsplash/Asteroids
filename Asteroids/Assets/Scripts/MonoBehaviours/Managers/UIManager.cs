@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -29,7 +30,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private EnemyWaveBar _enemyWaveBar;
     [SerializeField] private TextMeshProUGUI _waveCounter;
 
+    [SerializeField] private Button _shieldButton;
+
     private byte _lifesAmount = 3;
+
 
     private void Awake()
     {
@@ -78,4 +82,17 @@ public class UIManager : MonoBehaviour
     public void DecreaseWaveBarCurrentValue() => StartCoroutine(_enemyWaveBar.DecreaseCurrentValue());
 
     public void ResizeWaveBarMaxValue() => _enemyWaveBar.ResizeMaxValue();
+
+    public void DisableShieldButton()
+    {
+        _shieldButton.image.color = Color.black;
+        _shieldButton.interactable = false;
+    }
+
+    public void PrepareShieldButton() => _shieldButton.image.color = Color.gray;
+    public void EnableShieldButton()
+    {
+        _shieldButton.image.color = Color.white;
+        _shieldButton.interactable = true;
+    }
 }
