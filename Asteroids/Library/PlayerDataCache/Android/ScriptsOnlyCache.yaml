@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AudioManager
     - CameraInfo
+    - EnemyHealthBar
     - EnemySpawner
     - EnemyWaveBar
     - Laser
@@ -26,12 +27,11 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshProUGUI
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
@@ -79,6 +79,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9324}
     - Class: 114
+      Script: {instanceID: 9356}
+    - Class: 114
       Script: {instanceID: 9358}
     - Class: 114
       Script: {instanceID: 9364}
@@ -93,47 +95,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9414}
     - Class: 114
-      Script: {instanceID: 9656}
+      Script: {instanceID: 9630}
     - Class: 114
-      Script: {instanceID: 9706}
+      Script: {instanceID: 9658}
     - Class: 114
-      Script: {instanceID: 9718}
+      Script: {instanceID: 9708}
     - Class: 114
-      Script: {instanceID: 9778}
+      Script: {instanceID: 9720}
     - Class: 114
-      Script: {instanceID: 9818}
+      Script: {instanceID: 9780}
     - Class: 114
-      Script: {instanceID: 9852}
+      Script: {instanceID: 9820}
     - Class: 114
-      Script: {instanceID: 9862}
+      Script: {instanceID: 9854}
     - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9864}
     - Class: 114
-      Script: {instanceID: 9878}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 9896}
+      Script: {instanceID: 9880}
     - Class: 114
-      Script: {instanceID: 9964}
+      Script: {instanceID: 9898}
     - Class: 114
-      Script: {instanceID: 10136}
+      Script: {instanceID: 9966}
     - Class: 114
-      Script: {instanceID: 10146}
+      Script: {instanceID: 10138}
     - Class: 114
-      Script: {instanceID: 10208}
+      Script: {instanceID: 10148}
     - Class: 114
-      Script: {instanceID: 10264}
+      Script: {instanceID: 10210}
     - Class: 114
-      Script: {instanceID: 10300}
+      Script: {instanceID: 10266}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10302}
     - Class: 114
-      Script: {instanceID: 10556}
+      Script: {instanceID: 10428}
     - Class: 114
-      Script: {instanceID: 10634}
+      Script: {instanceID: 10558}
     - Class: 114
-      Script: {instanceID: 10650}
+      Script: {instanceID: 10636}
     - Class: 114
-      Script: {instanceID: 10670}
+      Script: {instanceID: 10652}
+    - Class: 114
+      Script: {instanceID: 10672}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -201,7 +205,7 @@ ScriptsOnlyBuild:
     className: RocketSpawner
   - hash:
       serializedVersion: 2
-      Hash: 8ea2f85493e58f7248ab82943288265f
+      Hash: 71f54f8211e5d3e55b36239247369028
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UFO
@@ -411,6 +415,18 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
+  - hash:
+      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -615,6 +631,12 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
+      Hash: 6f4aa4b8533cdc69c3372ff333cb2646
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyHealthBar
+  - hash:
+      serializedVersion: 2
       Hash: 00274a21279f5cb831ce20f895049e38
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -627,7 +649,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 1dc3032978b0cd044e580f944cccb2ad
+      Hash: 9e0d8d9f8a124e7e56cb897743cc5087
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Meteorite
@@ -699,13 +721,13 @@ ScriptsOnlyBuild:
     className: Benchmark01
   - hash:
       serializedVersion: 2
-      Hash: 3a719dd21f4e0f63449b792d82e3dfb3
+      Hash: 8082e77aa84b55ebf3ca82925eb4966d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Laser
   - hash:
       serializedVersion: 2
-      Hash: e1f9a8c818359d34ce0db8d8ca97600b
+      Hash: 3004fcda1e407388cabe65b8c08d8532
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -909,7 +931,7 @@ ScriptsOnlyBuild:
     className: TMP_TextInfoDebugTool
   - hash:
       serializedVersion: 2
-      Hash: 6b8905d8a3de0ac4b760499277d55465
+      Hash: 950cdb75d12af84b52eda49442933266
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RocketController
@@ -1059,7 +1081,7 @@ ScriptsOnlyBuild:
     className: EnvMapAnimator
   - hash:
       serializedVersion: 2
-      Hash: 21d4a6d7738ff4162622b383c1e5eb00
+      Hash: eee4039825b7bff3307d1e2da5d8f3ff
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MeteoriteType_SO
@@ -1090,4 +1112,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/admin/Desktop/222.apk
+  playerPath: C:/Users/admin/Desktop/1.apk
