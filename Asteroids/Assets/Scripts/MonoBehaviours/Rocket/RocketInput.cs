@@ -54,5 +54,9 @@ public class RocketInput : MonoBehaviour
         _right = false;
     }
 
-    public void TapShieldDown() => StartCoroutine(_rocketController.UseShield());
+    public void TapShieldDown()
+    {
+        if(_rocketController.gameObject.activeSelf)
+            StartCoroutine(_rocketController.UseShield());
+    }
 }

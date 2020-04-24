@@ -76,27 +76,43 @@ public class RocketController : MonoBehaviour, IDamageable
 
         transform.eulerAngles -= Vector3.forward * _input.Horizontal * _rotateSpeed * Time.deltaTime;
     }
-
-    public IEnumerator UseShield()
+	public void TakeDamage(byte damage)
     {
-        Debug.Log("Использую щиток");
+        AudioManager.Instance.PlayOneSound(_rocketExplosionSound);
+        SceneManager.Instance.PlayerDead();
+    }
+
+	#region Shield usage
+	public IEnumerator UseShield()
+    {
         if (_isShieldReady)
         {
-            Debug.Log("Включаю щиток");
             _isShieldReady = false;
 
-            _polygonCollider.enabled = false;
-            _shieldAnim.SetActive(true);
-            yield return new WaitForSeconds(_shieldEnabledTimer);
-
-            _polygonCollider.enabled = true;
-            _shieldAnim.SetActive(false);
-            yield return new WaitForSeconds(_shieldReloadTimer);
+            UIManager.Instance.DisableShieldButton();
+            yield return ActivateShield();
+            UIManager.Instance.PrepareShieldButton();
+            yield return DeactivateShield();
+            UIManager.Instance.EnableShieldButton();
 
             _isShieldReady = true;
-            Debug.Log("Щиток готов");
         }
     }
+
+    private WaitForSeconds ActivateShield()
+    {
+        _polygonCollider.enabled = false;
+        _shieldAnim.SetActive(true);
+        return new WaitForSeconds(_shieldEnabledTimer);
+    }
+
+    private WaitForSeconds DeactivateShield()
+    {
+        _polygonCollider.enabled = true;
+        _shieldAnim.SetActive(false);
+        return new WaitForSeconds(_shieldReloadTimer);
+    }
+    #endregion
 
     #region Laser usage
     private IEnumerator LaserReload()
@@ -121,9 +137,4 @@ public class RocketController : MonoBehaviour, IDamageable
     }
     #endregion
 
-	public void TakeDamage(byte damage)
-    {
-        AudioManager.Instance.PlayOneSound(_rocketExplosionSound);
-        SceneManager.Instance.PlayerDead();
-    }
 }
