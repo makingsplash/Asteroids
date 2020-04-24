@@ -72,6 +72,7 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
         {
             _isColliding = true;
 
+            UIManager.Instance.ChangeScore(HitScorePoints);
             DecreaseHealth();
         }
         _isColliding = false;
@@ -79,6 +80,8 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
 
     protected override void Death()
     {
+        UIManager.Instance.ChangeScore(DeathScorePoints);
+
         if (SmallerMeteoritesInfo.Count > 0)
             SpawnSmallerMeteorites();
 
@@ -104,7 +107,8 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
             Meteorite metComponent = meteorite.GetComponent<Meteorite>();
             metComponent.Health = metInfo.health;
             metComponent.Speed = metInfo.speed;
-            metComponent.ScorePoints = metInfo.scorePoints;
+            metComponent.HitScorePoints = metInfo.hitScorePoints;
+            metComponent.DeathScorePoints = metInfo.deathScorePoints;
             metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
             metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
 

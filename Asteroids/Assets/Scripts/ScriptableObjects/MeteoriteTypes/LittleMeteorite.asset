@@ -19,5 +19,6 @@ MonoBehaviour:
     type: 3}
   health: 1
   speed: 2.5
-  scorePoints: 55
+  hitScorePoints: 25
+  deathScorePoints: 50
   smallerMeteoritesSO: []

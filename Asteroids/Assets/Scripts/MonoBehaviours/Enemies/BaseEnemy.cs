@@ -26,7 +26,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
 
     [Header("Enemy")]
     public float Speed;
-    public byte ScorePoints;
+    public byte HitScorePoints;
+    public byte DeathScorePoints;
 
     [SerializeField] protected AudioClip _dieSound;
     [SerializeField] protected EnemyHealthBar _healthBar;
