@@ -8,7 +8,13 @@ public class RocketInput : MonoBehaviour
 
     private bool _right = false;
     private bool _left = false;
+    private RocketController _rocketController;
 
+
+    private void OnEnable()
+    {
+        _rocketController = GetComponent<RocketController>();
+    }
 
     private void Update()
     {
@@ -24,6 +30,8 @@ public class RocketInput : MonoBehaviour
 
     public void TapShotDown() => IsShotTapDown = true;
     public void TapShotUp() => IsShotTapDown = false;
+    public void TapForwardDown() => Vertical = 1;
+    public void TapForwardUp() => Vertical = 0;
 
     public void TapLeftDown()
     {
@@ -46,6 +54,5 @@ public class RocketInput : MonoBehaviour
         _right = false;
     }
 
-    public void TapForwardDown() => Vertical = 1;
-    public void TapForwardUp() => Vertical = 0;
+    public void TapShieldDown() => StartCoroutine(_rocketController.UseShield());
 }
