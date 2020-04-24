@@ -5,8 +5,10 @@ public class UFO : BaseEnemy, IDamageable
 {
     [HideInInspector] public ObjectPool LaserPool;
 
-    [SerializeField] private AudioClip _shotSound;
+    [SerializeField] private byte _ufoHealth;
 
+    [Header("Shots")]
+    [SerializeField] private AudioClip _shotSound;
     [SerializeField] private float _fireRate = 0.5f;
     
     private GameObject _player;
@@ -20,6 +22,8 @@ public class UFO : BaseEnemy, IDamageable
 
     private void OnEnable()
     {
+        Health = _ufoHealth;
+
         if (_player == null)
             _player = GameObject.FindGameObjectWithTag(_playerTag);
         RocketController.OnPlayerEnabled += SetPlayerGameObject;
@@ -128,9 +132,7 @@ public class UFO : BaseEnemy, IDamageable
 
     void SetPlayerGameObject(GameObject player) => this._player = player;
 
-    public void TakeDamage()
-    {
-        if(DecreaseHealth())
-            Destroy(gameObject);
-    }
+    public void TakeDamage() => DecreaseHealth();
+
+    protected override void Death() => Destroy(gameObject);
 }

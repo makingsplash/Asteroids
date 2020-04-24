@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RocketController : MonoBehaviour, IDamageable
 {
-    public bool TESTNONHITTABLE;
+    
+    [Header("Testing")] public bool TESTNONHITTABLE;
 
     public static Action<GameObject> OnPlayerEnabled;
 
