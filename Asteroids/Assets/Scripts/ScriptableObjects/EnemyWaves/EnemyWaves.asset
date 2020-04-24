@@ -92,3 +92,28 @@ MonoBehaviour:
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
       UfoLaserPool: {fileID: 0}
+  - _name: 7
+    meteoriteTypes:
+    - Amount: 4
+      Frequency: 2.5
+      meteoriteInfo: {fileID: 11400000, guid: 96e7835c1974e9345bf1a09939fe408e, type: 2}
+    - Amount: 6
+      Frequency: 2.5
+      meteoriteInfo: {fileID: 11400000, guid: 0633213460c391049935771050ad9870, type: 2}
+    ufoInfo:
+      Amount: 1
+      Frequency: 2.5
+      Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
+        type: 3}
+      UfoLaserPool: {fileID: 0}
+  - _name: 8
+    meteoriteTypes:
+    - Amount: 10
+      Frequency: 3
+      meteoriteInfo: {fileID: 11400000, guid: cf63bd18319df0541a5113da6ef5433c, type: 2}
+    ufoInfo:
+      Amount: 6
+      Frequency: 3
+      Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
+        type: 3}
+      UfoLaserPool: {fileID: 0}
