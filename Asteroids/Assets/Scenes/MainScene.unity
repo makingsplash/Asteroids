@@ -2614,7 +2614,7 @@ PrefabInstance:
     - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: TESTNONHITTABLE
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}

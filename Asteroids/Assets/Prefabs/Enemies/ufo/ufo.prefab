@@ -681,7 +681,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1.5
-  ScorePoints: 45
+  HitScorePoints: 25
+  DeathScorePoints: 80
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
   _healthBar: {fileID: 685123100}
   LaserPool: {fileID: 0}

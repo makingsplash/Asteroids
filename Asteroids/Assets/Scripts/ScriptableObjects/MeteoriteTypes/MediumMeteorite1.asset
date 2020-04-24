@@ -19,6 +19,7 @@ MonoBehaviour:
     type: 3}
   health: 2
   speed: 2
-  scorePoints: 35
+  hitScorePoints: 15
+  deathScorePoints: 40
   smallerMeteoritesSO:
   - {fileID: 11400000, guid: f93182145eae3d2469c7d3bbca710d49, type: 2}

@@ -7,10 +7,6 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
 
-    [SerializeField]
-    [Tooltip("If rocket laser, will add points to score for a hit")]
-    private bool _isRocketLaser;
-
     private float _currentLifeTime;
 
 
@@ -32,15 +28,7 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-
-        if (_isRocketLaser)
-        {
-            BaseEnemy enemy = collision.gameObject.GetComponent<BaseEnemy>();
-            UIManager.Instance.ChangeScore(enemy.ScorePoints);
-        }
-
-        DoDamage(damageable);
+        DoDamage(collision.gameObject.GetComponent<IDamageable>());
     }
 
     public void DoDamage(IDamageable damageable)

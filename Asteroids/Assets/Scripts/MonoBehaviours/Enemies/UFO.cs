@@ -41,7 +41,7 @@ public class UFO : BaseEnemy, IDamageable
         transform.Translate(_nextPosition);
     }
 
-	#region FSM
+	#region State Machine
 	private IEnumerator StatesSwitch()
     {
         yield return StartCoroutine(FreeFlyHorizontal());
@@ -106,6 +106,7 @@ public class UFO : BaseEnemy, IDamageable
 
         yield return null;
     }
+
     IEnumerator LaserShots()
     {
         while (true)
@@ -130,9 +131,17 @@ public class UFO : BaseEnemy, IDamageable
             DoDamage(player);
     }
 
-    void SetPlayerGameObject(GameObject player) => this._player = player;
+    void SetPlayerGameObject(GameObject player) => _player = player;
 
-    public void TakeDamage() => DecreaseHealth();
+    public void TakeDamage()
+    {
+        UIManager.Instance.ChangeScore(HitScorePoints);
+        DecreaseHealth();
+    }
 
-    protected override void Death() => Destroy(gameObject);
+    protected override void Death()
+    {
+        UIManager.Instance.ChangeScore(DeathScorePoints);
+        Destroy(gameObject);
+    }
 }

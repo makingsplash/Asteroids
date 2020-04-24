@@ -128,7 +128,8 @@ public class EnemySpawner : MonoBehaviour
                 Meteorite metComponent = meteorite.GetComponent<Meteorite>();
                 metComponent.Health = metInfo.health;
                 metComponent.Speed = metInfo.speed;
-                metComponent.ScorePoints = metInfo.scorePoints;
+                metComponent.HitScorePoints = metInfo.hitScorePoints;
+                metComponent.DeathScorePoints = metInfo.deathScorePoints;
                 metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
 
                 metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());

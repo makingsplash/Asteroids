@@ -10,7 +10,8 @@ public class MeteoriteType_SO : ScriptableObject
 
     public byte health;
     public float speed;
-    public byte scorePoints;
+    public byte hitScorePoints;
+    public byte deathScorePoints;
 
     public List<MeteoriteType_SO> smallerMeteoritesSO = new List<MeteoriteType_SO>();
 }
