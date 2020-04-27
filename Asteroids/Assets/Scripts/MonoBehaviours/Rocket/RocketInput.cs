@@ -10,7 +10,6 @@ public class RocketInput : MonoBehaviour
     private bool _left = false;
     private RocketController _rocketController;
 
-
     private void OnEnable()
     {
         _rocketController = GetComponent<RocketController>();

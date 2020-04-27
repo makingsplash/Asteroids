@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
     }
 
     [Header("Top elements")]
-    [SerializeField] private TextMeshProUGUI _messageText;
+    [SerializeField] private TextMeshProUGUI _messageBoxText;
     [SerializeField] private TextMeshProUGUI _currentScore;
     [SerializeField] private EnemyWaveBar _enemyWaveBar;
     [SerializeField] private TextMeshProUGUI _waveCounter;
@@ -48,6 +49,8 @@ public class UIManager : MonoBehaviour
         }
         if (_instance == null)
             _instance = this;
+
+        _shieldTimer.gameObject.SetActive(false);
     }
 
     public void ChangeScore(int points)
@@ -56,64 +59,72 @@ public class UIManager : MonoBehaviour
 
         _currentScore.text = points.ToString();
     }
-
-    public void ShowRespawnMessage()
-    {
-        _messageText.text = "Respawning..";
-        _messageText.gameObject.SetActive(true);
-    }
-    public void DisableMessage() => _messageText.gameObject.SetActive(false);
-
     public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
+
+	#region MessageBox
+	public void ShowRespawnMessage()
+    {
+        _messageBoxText.text = "Respawning..";
+        _messageBoxText.gameObject.SetActive(true);
+    }
+    public void DisableMessage() => _messageBoxText.gameObject.SetActive(false);
 
     public void WinMessage()
     {
-        _messageText.text = "You won";
-        _messageText.gameObject.SetActive(true);
+        _messageBoxText.text = "You won";
+        _messageBoxText.gameObject.SetActive(true);
     }
 
     public void GameOverMessage()
     {
-        _messageText.text = "Game over" + "\n" + "Press R to restart";
-        _messageText.gameObject.SetActive(true);
+        _messageBoxText.text = "Game over" + "\n" + "Press R to restart";
+        _messageBoxText.gameObject.SetActive(true);
     }
+    #endregion
 
-    public void ChangeWaveCounter(byte waveNumber)
-    {
-        _waveCounter.text = "Wave: " + waveNumber;
-    }
+    #region Enemy wave bar
+    public void ChangeWaveCounter(byte waveNumber) => _waveCounter.text = "Wave: " + waveNumber;
 
     public void DecreaseWaveBarCurrentValue() => StartCoroutine(_enemyWaveBar.DecreaseCurrentValue());
 
     public void ResizeWaveBarMaxValue() => _enemyWaveBar.ResizeMaxValue();
+    #endregion
 
-    public void DisableShieldButton()
+    #region Shield button
+    public IEnumerator DisableShieldButton(float disableTimer)
     {
+        StopAllCoroutines();
         _shieldButton.image.color = Color.black;
         _shieldButton.interactable = false;
+        yield return StartCoroutine(StartShieldTimer(disableTimer));
     }
 
-    public void PrepareShieldButton() => _shieldButton.image.color = Color.gray;
+    public IEnumerator PrepareShieldButton(float reloadTimer)
+    {
+        _shieldButton.image.color = Color.gray;
+        yield return StartCoroutine(StartShieldTimer(reloadTimer));
+    }
+
     public void EnableShieldButton()
     {
         _shieldButton.image.color = Color.white;
         _shieldButton.interactable = true;
     }
 
-    private IEnumerator ShieldTimer(float time)
+    private IEnumerator StartShieldTimer(float time)
     {
-        _shieldTimer.text = time.ToString();
         _shieldTimer.gameObject.SetActive(true);
 
-        float oneTick = 0.05f;
+        float oneTick = 0.01f;
         WaitForSeconds wait = new WaitForSeconds(oneTick);
-        
-        while(time != 0)
+
+        while(time > 0)
         {
-            time -= oneTick;
-            _shieldTimer.text = time.ToString();
+            _shieldTimer.text = time.ToString("f2");
             yield return wait;
+            time -= oneTick;
         }
         _shieldTimer.gameObject.SetActive(false);
     }
+    #endregion
 }
