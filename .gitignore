@@ -1,6 +1,8 @@
 
-Asteroids/Library/assetDatabase3
-Asteroids/Library/CurrentLayout.dwlt
-*.dwlt
-Asteroids/Library/StateCache/SceneView/684d54-mainStage.json
-Asteroids/Library/ScriptAssemblies/Assembly-CSharp.dll
+[Aa]ssets/AssetStoreTools*
+[Bb]uild/
+[Ll]ibrary/
+[Ll]ocal[Cc]ache/
+[Oo]bj/
+[Tt]emp/
+[Uu]nityGenerated/
