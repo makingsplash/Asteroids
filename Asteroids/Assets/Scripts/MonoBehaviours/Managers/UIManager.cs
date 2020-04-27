@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -22,15 +23,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    [Header("Top elements")]
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _currentScore;
-
-    [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
-
     [SerializeField] private EnemyWaveBar _enemyWaveBar;
     [SerializeField] private TextMeshProUGUI _waveCounter;
 
+    [Header("Rocket lifes")]
+    [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
+
+    [Header("Shield button")]
     [SerializeField] private Button _shieldButton;
+    [SerializeField] private TextMeshProUGUI _shieldTimer;
 
     private byte _lifesAmount = 3;
 
@@ -94,5 +98,22 @@ public class UIManager : MonoBehaviour
     {
         _shieldButton.image.color = Color.white;
         _shieldButton.interactable = true;
+    }
+
+    private IEnumerator ShieldTimer(float time)
+    {
+        _shieldTimer.text = time.ToString();
+        _shieldTimer.gameObject.SetActive(true);
+
+        float oneTick = 0.05f;
+        WaitForSeconds wait = new WaitForSeconds(oneTick);
+        
+        while(time != 0)
+        {
+            time -= oneTick;
+            _shieldTimer.text = time.ToString();
+            yield return wait;
+        }
+        _shieldTimer.gameObject.SetActive(false);
     }
 }
