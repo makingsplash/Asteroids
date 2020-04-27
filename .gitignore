@@ -12,3 +12,11 @@ Asteroids/Library/CurrentLayout.dwlt
 Asteroids/Library/ScriptAssemblies/Assembly-CSharp.dll
 /[Ll]ibrary/
 Asteroids\Library\
+Asteroids/Library/assetDatabase3
+*.dwlt
+*.dll
+*.cache
+Asteroids/.vs/Asteroids/v16/.suo
+*.ide
+*.ide-shm
+*.ide-wal
