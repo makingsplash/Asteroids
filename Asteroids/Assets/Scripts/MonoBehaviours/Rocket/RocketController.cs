@@ -89,9 +89,7 @@ public class RocketController : MonoBehaviour, IDamageable
         {
             _isShieldReady = false;
 
-            UIManager.Instance.DisableShieldButton();
             yield return ActivateShield();
-            UIManager.Instance.PrepareShieldButton();
             yield return DeactivateShield();
             UIManager.Instance.EnableShieldButton();
 
@@ -99,18 +97,18 @@ public class RocketController : MonoBehaviour, IDamageable
         }
     }
 
-    private WaitForSeconds ActivateShield()
+    private Coroutine ActivateShield()
     {
         _polygonCollider.enabled = false;
         _shieldAnim.SetActive(true);
-        return new WaitForSeconds(_shieldEnabledTimer);
+        return StartCoroutine(UIManager.Instance.DisableShieldButton(_shieldEnabledTimer));
     }
 
-    private WaitForSeconds DeactivateShield()
+    private Coroutine DeactivateShield()
     {
         _polygonCollider.enabled = true;
         _shieldAnim.SetActive(false);
-        return new WaitForSeconds(_shieldReloadTimer);
+        return StartCoroutine(UIManager.Instance.PrepareShieldButton(_shieldReloadTimer));
     }
     #endregion
 
