@@ -10,3 +10,5 @@ Asteroids/Library/
 Asteroids/Library/assetDatabase3
 Asteroids/Library/CurrentLayout.dwlt
 Asteroids/Library/ScriptAssemblies/Assembly-CSharp.dll
+/[Ll]ibrary/
+Asteroids\Library\
