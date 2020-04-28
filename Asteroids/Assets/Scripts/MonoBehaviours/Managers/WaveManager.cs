@@ -108,12 +108,7 @@ public class WaveManager : MonoBehaviour
         {
             if (!_gameOver)
             {
-                float spawnRadius = _camOrtSize * _camAspect * 1.2f;
-                float spawnX = Random.Range(-spawnRadius, spawnRadius);
-                float spawnY = Mathf.Sqrt((spawnRadius * spawnRadius) - (spawnX * spawnX));
-                spawnY *= Random.Range(0, 2) * 2 - 1;
-
-                Vector2 spawnPos = new Vector2(spawnX, spawnY);
+                Vector2 spawnPos = RandomOutsideSpawnPosition();
                 Vector2 lookTo = new Vector2(
                     Random.Range(-_camAspect * _camOrtSize / 2, _camAspect * _camOrtSize / 2),
                     Random.Range(-_camOrtSize / 2, _camOrtSize / 2));
@@ -153,7 +148,7 @@ public class WaveManager : MonoBehaviour
             if (!_gameOver)
             {
                 GameObject ufo = Instantiate(prefab,
-                    CircleSpawnPosition(),
+                    RandomOutsideSpawnPosition(),
                     Quaternion.identity);
 
                 UFO ufoComponent = ufo.GetComponent<UFO>();
@@ -166,7 +161,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private Vector2 CircleSpawnPosition()
+    private Vector2 RandomOutsideSpawnPosition()
     {
         float spawnRadius = _camOrtSize * _camAspect * 1.2f;
         float spawnX = Random.Range(-spawnRadius, spawnRadius);
