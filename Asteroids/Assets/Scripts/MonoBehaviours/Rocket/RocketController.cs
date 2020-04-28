@@ -106,8 +106,13 @@ public class RocketController : MonoBehaviour, IDamageable
 
     private Coroutine DeactivateShield()
     {
-        _polygonCollider.enabled = true;
-        _shieldAnim.SetActive(false);
+        ///// For tests
+        if (!TESTNONHITTABLE)
+        {
+            _polygonCollider.enabled = true;
+            _shieldAnim.SetActive(false);
+        }
+
         return StartCoroutine(UIManager.Instance.PrepareShieldButton(_shieldReloadTimer));
     }
     #endregion

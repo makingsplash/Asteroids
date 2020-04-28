@@ -11,29 +11,30 @@ public class UFO : BaseEnemy, IDamageable
     [SerializeField] private AudioClip _shotSound;
     [SerializeField] private float _fireRate = 0.5f;
     
-    private GameObject _player;
+    private GameObject _rocket;
 
     private const string _playerTag = "Player";
-    private float _horizontalFlyTimer = 2;
-    private Vector2 _horizontalFlyDirection;
-    private float _deadTimer = 12f;
+    private float _nonAngryFlyTimer = 5;
+    private float _selfDestroyTimer = 12f;
     private Vector2 _nextPosition;
+    private Coroutine _laserShots;
 
 
     private void OnEnable()
     {
         Health = _ufoHealth;
 
-        if (_player == null)
-            _player = GameObject.FindGameObjectWithTag(_playerTag);
-        RocketController.OnPlayerEnabled += SetPlayerGameObject;
+        if (_rocket == null)
+            _rocket = GameObject.FindGameObjectWithTag(_playerTag);
+        RocketController.OnPlayerEnabled += OnPlayerEnabled;
 
-        StartCoroutine(StatesSwitch());
+        if (_rocket != null)
+            StartCoroutine(Attack());
     }
 
     private void OnDisable()
     {
-        RocketController.OnPlayerEnabled -= SetPlayerGameObject;
+        RocketController.OnPlayerEnabled -= OnPlayerEnabled;
     }
 
     private void Update()
@@ -42,77 +43,62 @@ public class UFO : BaseEnemy, IDamageable
     }
 
 	#region State Machine
-	private IEnumerator StatesSwitch()
-    {
-        yield return StartCoroutine(FreeFlyHorizontal());
-
-        while (true)
-        {
-            yield return StartCoroutine(Attack());
-            yield return StartCoroutine(FreeFlyUp());
-        }
-    }
-
-    private IEnumerator FreeFlyHorizontal()
-    {
-        if (transform.position.x > 0)
-            _horizontalFlyDirection = -transform.right;
-        else
-            _horizontalFlyDirection = transform.right;
-
-        WaitForEndOfFrame wait = new WaitForEndOfFrame();
-
-        while(_horizontalFlyTimer > 0)
-        {
-            _horizontalFlyTimer -= Time.deltaTime;
-            _nextPosition = _horizontalFlyDirection * Speed * Time.deltaTime;
-            yield return wait;
-        }
-
-        yield return null;
-    }
 
     private IEnumerator Attack()
     {
-        Coroutine shots = StartCoroutine(LaserShots());
-        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        StartCoroutine(NonShootingTimer());
+        yield return StartCoroutine(ChaseRocket());
+        StartCoroutine(FreeFlyUp());
+    }
 
-        while (_player != null && _player.activeSelf)
+    private IEnumerator NonShootingTimer()
+    {
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        while(_nonAngryFlyTimer > 0)
         {
-            _nextPosition = (_player.transform.position - transform.position).normalized * Speed * Time.deltaTime;
+            _nonAngryFlyTimer -= Time.deltaTime;
             yield return wait;
         }
+        _laserShots = StartCoroutine(LaserShots());
+    }
 
-        _player = null;
-        StopCoroutine(shots);
-        
-        yield return null;
+    private IEnumerator ChaseRocket()
+    {
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+
+        while (_rocket != null && _rocket.activeSelf)
+        {
+            _nextPosition = (_rocket.transform.position - transform.position).normalized * Speed * Time.deltaTime;
+            yield return wait;
+        }
+        if (_laserShots != null)
+            StopCoroutine(_laserShots);
     }
 
     private IEnumerator FreeFlyUp()
     {
         WaitForEndOfFrame wait = new WaitForEndOfFrame();
 
-        while (_player == null)
+        while (!_rocket.activeSelf && _rocket != null)
         {
-            _deadTimer -= Time.deltaTime;
-            if (_deadTimer < 0)
+            _selfDestroyTimer -= Time.deltaTime;
+            if (_selfDestroyTimer < 0)
                 Destroy(gameObject);
 
-            _nextPosition = transform.up * Speed * Time.deltaTime;
+            _nextPosition = transform.up * Speed * 1.3f * Time.deltaTime;
 
             yield return wait;
         }
 
-        yield return null;
+        StartCoroutine(Attack());
     }
 
     IEnumerator LaserShots()
     {
-        while (true)
+        while (_rocket.activeSelf)
         {
             Vector3 position = -transform.up / 2.5f + transform.position;
-            Vector3 direction = _player.transform.position - position;
+            Vector3 direction = _rocket.transform.position - position;
             float eulerAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 
             LaserPool.SpawnObject(position, eulerAngle);
@@ -131,7 +117,11 @@ public class UFO : BaseEnemy, IDamageable
             DoDamage(player);
     }
 
-    void SetPlayerGameObject(GameObject player) => _player = player;
+    void OnPlayerEnabled(GameObject player)
+    {
+        _rocket = player;
+        StartCoroutine(Attack());
+    }
 
     public void TakeDamage(byte damage)
     {
