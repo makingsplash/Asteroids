@@ -70,11 +70,11 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\UFO.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\WaveManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Laser\Laser.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\SceneManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\UIManager.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Managers\WaveManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\OverBorderShift.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Rocket\RocketController.cs" />

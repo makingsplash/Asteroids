@@ -507,7 +507,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 98.85
+  m_fontSize: 98.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -925,7 +925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.85071373, y: 0.89457047}
   m_AnchorMax: {x: 0.92800003, y: 0.95034933}
-  m_AnchoredPosition: {x: -1.2399902, y: 1.6000061}
+  m_AnchoredPosition: {x: -1.2399902, y: 1.6000366}
   m_SizeDelta: {x: -0.4000244, y: 0.5999985}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &664676131
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42.55
+  m_fontSize: 42.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 104.35
+  m_fontSize: 104.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2056,7 +2056,7 @@ GameObject:
   - component: {fileID: 1323329020}
   - component: {fileID: 1323329021}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: WaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
