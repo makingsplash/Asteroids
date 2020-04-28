@@ -112,7 +112,7 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
             metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
             metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
 
-            EnemySpawner.EnemiesSpawned++;
+            WaveManager.EnemiesSpawned++;
         }
     }
 }

@@ -68,9 +68,9 @@
     <Compile Include="Assets\Scripts\Interfaces\IPoolObject.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\CameraInfo.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\BaseEnemy.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\UFO.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\WaveManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Laser\Laser.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Managers\SceneManager.cs" />

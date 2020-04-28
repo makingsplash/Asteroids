@@ -12,14 +12,14 @@ public class EnemyWaveBar : MonoBehaviour
 
     public void ResizeMaxValue()
     {
-        _slider.maxValue = EnemySpawner.EnemiesSpawned;
+        _slider.maxValue = WaveManager.EnemiesSpawned;
 
         StartCoroutine(IncreaseCurrentValue());
     }
 
     public IEnumerator DecreaseCurrentValue()
     {
-        while(_slider.value > EnemySpawner.EnemiesSpawned - EnemySpawner.EnemiesKilled)
+        while(_slider.value > WaveManager.EnemiesSpawned - WaveManager.EnemiesKilled)
         {
             _slider.value -= _oneChange;
             yield return _wait;
@@ -28,7 +28,7 @@ public class EnemyWaveBar : MonoBehaviour
 
     private IEnumerator IncreaseCurrentValue()
     {
-        while (_slider.value < EnemySpawner.EnemiesSpawned - EnemySpawner.EnemiesKilled)
+        while (_slider.value < WaveManager.EnemiesSpawned - WaveManager.EnemiesKilled)
         {
             _slider.value += _oneChange;
             yield return _wait;

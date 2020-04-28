@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
     private static byte _enemiesSpawned;
     public static byte EnemiesSpawned
