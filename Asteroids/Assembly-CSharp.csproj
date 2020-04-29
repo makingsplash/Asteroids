@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Common\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Common\OverBorderShift.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\BaseEnemy.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\EnemyWarning.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Ufo.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Laser\Laser.cs" />

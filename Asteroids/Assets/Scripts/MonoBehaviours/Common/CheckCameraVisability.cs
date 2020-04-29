@@ -14,15 +14,12 @@ public class CheckCameraVisability : MonoBehaviour
         _camHeigth = CameraInfo.Instance.CamOrtSize;
         _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
 
-        IsVisible = true;
-
         StartCoroutine(CheckVisability());
     }
 
     public IEnumerator CheckVisability()
     {
         WaitForSeconds wait = new WaitForSeconds(0.1f);
-
         while (true)
         {
             float posX = Mathf.Abs(transform.position.x);
@@ -31,8 +28,10 @@ public class CheckCameraVisability : MonoBehaviour
             if (posX > _camWidth || posY > _camHeigth)
             {
                 IsVisible = false;
-                break;
             }
+
+            else
+                IsVisible = true;
 
             yield return wait;
         }
