@@ -6,6 +6,7 @@ public class UFO : BaseEnemy, IDamageable
     [HideInInspector] public ObjectPool LaserPool;
 
     [SerializeField] private byte _ufoHealth;
+    [SerializeField] private float _noShootTimer = 5;
 
     [Header("Shots")]
     [SerializeField] private AudioClip _shotSound;
@@ -14,7 +15,6 @@ public class UFO : BaseEnemy, IDamageable
     private GameObject _rocket;
 
     private const string _playerTag = "Player";
-    private float _nonAngryFlyTimer = 5;
     private float _selfDestroyTimer = 12f;
     private Vector2 _nextPosition;
     private Coroutine _laserShots;
@@ -48,15 +48,16 @@ public class UFO : BaseEnemy, IDamageable
     {
         StartCoroutine(NonShootingTimer());
         yield return StartCoroutine(ChaseRocket());
+
         StartCoroutine(FreeFlyUp());
     }
 
     private IEnumerator NonShootingTimer()
     {
         WaitForEndOfFrame wait = new WaitForEndOfFrame();
-        while(_nonAngryFlyTimer > 0)
+        while(_noShootTimer > 0)
         {
-            _nonAngryFlyTimer -= Time.deltaTime;
+            _noShootTimer -= Time.deltaTime;
             yield return wait;
         }
         _laserShots = StartCoroutine(LaserShots());

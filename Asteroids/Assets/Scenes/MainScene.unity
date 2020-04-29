@@ -2088,7 +2088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyWaves: {fileID: 11400000, guid: a040a97ba5148ed42862b26227d6f960, type: 2}
+  _enemyWaves: {fileID: 11400000, guid: a8bec994c1d9426428c58597187e13fa, type: 2}
   _meteoritesPool: {fileID: 7223114931024035093}
   _meteoriteWarning: {fileID: 3190825683776134426, guid: f0ac9a333d079094c8833478c68e9fc9,
     type: 3}
@@ -2284,7 +2284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rocket: {fileID: 1963824295}
-  _spawnTime: 1
+  _spawnTime: 2.5
   _spawnPositionsFromUI:
   - {fileID: 489414862}
   - {fileID: 1537010213}

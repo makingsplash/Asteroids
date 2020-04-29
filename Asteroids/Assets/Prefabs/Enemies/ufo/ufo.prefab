@@ -687,5 +687,6 @@ MonoBehaviour:
   _healthBar: {fileID: 685123100}
   LaserPool: {fileID: 0}
   _ufoHealth: 12
+  _noShootTimer: 7
   _shotSound: {fileID: 8300000, guid: a429aace0e22b804dac0a97959e6dc27, type: 3}
   _fireRate: 1

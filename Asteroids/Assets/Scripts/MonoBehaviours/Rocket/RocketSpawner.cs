@@ -12,8 +12,18 @@ public class RocketSpawner : MonoBehaviour
     public IEnumerator SpawnRocket()
     {
         yield return new WaitForSeconds(_spawnTime);
+
         UIManager.Instance.DisableMessage();
 
+        SetPosition();
+
+        UIManager.Instance.DecreaseLifes();
+
+        _positionIndex++;
+    }
+
+    private void SetPosition()
+    {
         RectTransform rectTransform = _spawnPositionsFromUI[_positionIndex];
 
         Vector3[] corners = new Vector3[4];
@@ -25,9 +35,5 @@ public class RocketSpawner : MonoBehaviour
         _rocket.transform.position = spawnPosition;
         _rocket.transform.rotation = Quaternion.identity;
         _rocket.SetActive(true);
-
-        UIManager.Instance.DecreaseLifes();
-
-        _positionIndex++;
     }
 }

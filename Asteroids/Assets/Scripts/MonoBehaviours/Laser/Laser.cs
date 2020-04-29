@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Laser : MonoBehaviour, IDamager, IPoolObject
 {
@@ -8,11 +9,18 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
     private float _currentLifeTime;
+    private float _camHeigth;
+    private float _camWidth;
 
 
     private void OnEnable()
     {
         _currentLifeTime = _lifeTime;
+
+        _camHeigth = CameraInfo.Instance.CamOrtSize;
+        _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
+
+        StartCoroutine(CheckCameraBorders());
     }
 
     private void Update()
@@ -35,9 +43,28 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
         ReturnToPool();
     }
 
-    void ReturnToPool()
+    private void ReturnToPool()
     {
         gameObject.SetActive(false);
         ParentPool.Pool.Enqueue(gameObject);
+    }
+
+    private IEnumerator CheckCameraBorders()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.1f);
+
+        while (true)
+        {
+            float posX = Mathf.Abs(transform.position.x);
+            float posY = Mathf.Abs(transform.position.y);
+
+            if (posX > _camWidth || posY > _camHeigth)
+            {
+                ReturnToPool();
+                break;
+            }
+
+            yield return wait;
+        }
     }
 }
