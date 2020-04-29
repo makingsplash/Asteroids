@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class UFO : BaseEnemy, IDamageable
+public class Ufo : BaseEnemy, IDamageable
 {
     [HideInInspector] public ObjectPool LaserPool;
 
@@ -15,7 +15,7 @@ public class UFO : BaseEnemy, IDamageable
     private GameObject _rocket;
 
     private const string _playerTag = "Player";
-    private float _selfDestroyTimer = 12f;
+    private float _selfDestroyTimer = 15f;
     private Vector2 _nextPosition;
     private Coroutine _laserShots;
 

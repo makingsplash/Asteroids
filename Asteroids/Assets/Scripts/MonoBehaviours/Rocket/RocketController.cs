@@ -76,6 +76,7 @@ public class RocketController : MonoBehaviour, IDamageable
 
         transform.eulerAngles -= Vector3.forward * _input.Horizontal * _rotateSpeed * Time.deltaTime;
     }
+
 	public void TakeDamage(byte damage)
     {
         AudioManager.Instance.PlayOneSound(_rocketExplosionSound);

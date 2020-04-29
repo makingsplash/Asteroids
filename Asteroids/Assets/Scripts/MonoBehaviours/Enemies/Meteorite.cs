@@ -98,6 +98,7 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
                  transform.position + Vector3.right * UnityEngine.Random.Range(-0.2f, 0.2f) + Vector3.up * UnityEngine.Random.Range(-0.2f, 0.2f),
                  transform.rotation.eulerAngles.z + UnityEngine.Random.Range(-15, 15));
 
+            // set properties
             MeteoriteType_SO metInfo = SmallerMeteoritesInfo[UnityEngine.Random.Range(0, SmallerMeteoritesInfo.Count)];
 
             meteorite.transform.localScale = metInfo.transform.localScale;

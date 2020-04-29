@@ -42,6 +42,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
     protected void DecreaseHealth(byte amount)
     {
         Health = (byte) (Health - amount < 0 ? 0 : Health - amount);
+
         if (Health == 0)
         {
             Death();

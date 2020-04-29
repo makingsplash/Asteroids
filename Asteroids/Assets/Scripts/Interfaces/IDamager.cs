@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public interface IDamager
+﻿public interface IDamager
 {
     void DoDamage(IDamageable damageable);
 }

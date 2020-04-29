@@ -8,6 +8,7 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
     [SerializeField] private byte _damage;
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
+
     private float _currentLifeTime;
     private float _camHeigth;
     private float _camWidth;

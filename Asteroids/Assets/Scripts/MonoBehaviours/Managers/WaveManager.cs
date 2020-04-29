@@ -151,7 +151,7 @@ public class WaveManager : MonoBehaviour
                     RandomOutsideSpawnPosition(),
                     Quaternion.identity);
 
-                UFO ufoComponent = ufo.GetComponent<UFO>();
+                Ufo ufoComponent = ufo.GetComponent<Ufo>();
                 ufoComponent.LaserPool = _ufoLaserPool;
 
                 yield return wait;
