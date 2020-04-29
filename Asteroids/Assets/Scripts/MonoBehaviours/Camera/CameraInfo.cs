@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraInfo : MonoBehaviour
 {
@@ -22,8 +20,8 @@ public class CameraInfo : MonoBehaviour
         }
     }
 
-    public float CamOrtSize;
-    public float CamAspect;
+    [HideInInspector] public float CamOrtSize;
+    [HideInInspector] public float CamAspect;
 
 
     private void Awake()

@@ -8,26 +8,23 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
     [SerializeField] private byte _damage;
     [SerializeField] private ushort _speed;
     [SerializeField] private float _lifeTime;
+    [SerializeField] private bool _needToCheckVisability;
 
     private float _currentLifeTime;
-    private float _camHeigth;
-    private float _camWidth;
+    private CheckCameraVisability _checkVisability;
 
 
     private void OnEnable()
     {
         _currentLifeTime = _lifeTime;
 
-        _camHeigth = CameraInfo.Instance.CamOrtSize;
-        _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
-
-        StartCoroutine(CheckCameraBorders());
+        _checkVisability = GetComponent<CheckCameraVisability>();
     }
 
     private void Update()
     {
         _currentLifeTime -= Time.deltaTime;
-        if (_currentLifeTime < 0)
+        if (_currentLifeTime < 0 || _needToCheckVisability && !_checkVisability.IsVisible)
             ReturnToPool();
 
         transform.position += transform.up * _speed * Time.deltaTime;
@@ -46,26 +43,7 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
 
     private void ReturnToPool()
     {
-        gameObject.SetActive(false);
         ParentPool.Pool.Enqueue(gameObject);
-    }
-
-    private IEnumerator CheckCameraBorders()
-    {
-        WaitForSeconds wait = new WaitForSeconds(0.1f);
-
-        while (true)
-        {
-            float posX = Mathf.Abs(transform.position.x);
-            float posY = Mathf.Abs(transform.position.y);
-
-            if (posX > _camWidth || posY > _camHeigth)
-            {
-                ReturnToPool();
-                break;
-            }
-
-            yield return wait;
-        }
+        gameObject.SetActive(false);
     }
 }
