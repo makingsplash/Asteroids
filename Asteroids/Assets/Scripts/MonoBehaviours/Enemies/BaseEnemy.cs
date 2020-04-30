@@ -31,6 +31,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamager
     [SerializeField] protected AudioClip _dieSound;
     [SerializeField] protected EnemyHealthBar _healthBar;
 
+    private EnemyWarning _warning;
+    private CheckCameraVisability _checkVisability;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

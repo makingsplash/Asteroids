@@ -365,7 +365,6 @@ GameObject:
   - component: {fileID: 681355794433723562}
   - component: {fileID: -8808730758651280636}
   - component: {fileID: 681355794433723563}
-  - component: {fileID: 3911062040339717151}
   - component: {fileID: 6831498320002055817}
   m_Layer: 9
   m_Name: ufo
@@ -683,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03df29b15f11eb1468187b365fe4bbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2.5
+  Speed: 1.7
   HitScorePoints: 15
   DeathScorePoints: 50
   _dieSound: {fileID: 8300000, guid: 5afcba6e7b4359a45af41e6a3871ad7d, type: 3}
@@ -693,19 +692,6 @@ MonoBehaviour:
   _noShootTimer: 6
   _shotSound: {fileID: 8300000, guid: a429aace0e22b804dac0a97959e6dc27, type: 3}
   _fireRate: 0.5
---- !u!114 &3911062040339717151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681355794433723574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9efef45d68a818c4bb7b5da5275d5f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WarningObject: {fileID: 4374866460287151052}
 --- !u!114 &6831498320002055817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 3370978782301573954, guid: 2679f698d4d571e40bef0f401ececef9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6174931589615303993, guid: 2679f698d4d571e40bef0f401ececef9,
         type: 3}
@@ -791,14 +777,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4611662983004723466, guid: 2679f698d4d571e40bef0f401ececef9,
+        type: 3}
+      propertyPath: WarningObject
+      value: 
+      objectReference: {fileID: 681355794433723574}
+    - target: {fileID: 4611662983004723466, guid: 2679f698d4d571e40bef0f401ececef9,
+        type: 3}
+      propertyPath: _enemyTransform
+      value: 
+      objectReference: {fileID: 681355794433723572}
+    - target: {fileID: 4611662983004723466, guid: 2679f698d4d571e40bef0f401ececef9,
+        type: 3}
+      propertyPath: _enemyVisability
+      value: 
+      objectReference: {fileID: 6831498320002055817}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2679f698d4d571e40bef0f401ececef9, type: 3}
---- !u!1 &4374866460287151052 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3370978782301573954, guid: 2679f698d4d571e40bef0f401ececef9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1332707643652405390}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5174487653709694391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6174931589615303993, guid: 2679f698d4d571e40bef0f401ececef9,

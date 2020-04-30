@@ -19,10 +19,6 @@ public class Ufo : BaseEnemy, IDamageable
     private Vector2 _nextPosition;
     private Coroutine _laserShots;
 
-    // Переписать в base enemy потом
-    private EnemyWarning _warning;
-    private CheckCameraVisability _checkVisability;
-
 
     private void OnEnable()
     {
@@ -33,13 +29,6 @@ public class Ufo : BaseEnemy, IDamageable
             _rocket = GameObject.FindGameObjectWithTag(_playerTag);
         if (_rocket != null)
             StartCoroutine(Attack());
-
-        if (_warning == null)
-            _warning = GetComponent<EnemyWarning>();
-        if (_checkVisability == null)
-            _checkVisability = GetComponent<CheckCameraVisability>();
-        if (!_checkVisability.IsVisible)
-            StartCoroutine(UseWarning());
     }
 
     private void OnDisable()
@@ -144,18 +133,5 @@ public class Ufo : BaseEnemy, IDamageable
     {
         UIManager.Instance.ChangeScore(DeathScorePoints);
         Destroy(gameObject);
-    }
-
-    private IEnumerator UseWarning()
-    {
-        _warning.WarningObject.SetActive(true);
-
-        WaitForEndOfFrame wait = new WaitForEndOfFrame();
-        while (!_checkVisability.IsVisible)
-        {
-            yield return wait;
-        }
-
-        _warning.WarningObject.SetActive(false);
     }
 }
