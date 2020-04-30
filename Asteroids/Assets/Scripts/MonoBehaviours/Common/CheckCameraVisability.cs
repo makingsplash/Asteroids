@@ -20,8 +20,10 @@ public class CheckCameraVisability : MonoBehaviour
     public IEnumerator CheckVisability()
     {
         WaitForSeconds wait = new WaitForSeconds(0.1f);
+
         while (true)
         {
+            yield return wait;
             float posX = Mathf.Abs(transform.position.x);
             float posY = Mathf.Abs(transform.position.y);
 
@@ -29,11 +31,8 @@ public class CheckCameraVisability : MonoBehaviour
             {
                 IsVisible = false;
             }
-
             else
                 IsVisible = true;
-
-            yield return wait;
         }
     }
 }

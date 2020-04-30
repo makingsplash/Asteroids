@@ -37,7 +37,6 @@ public class WaveManager : MonoBehaviour
     
     [Header("Meteorites")]
     [SerializeField] private ObjectPool _meteoritesPool;
-    [SerializeField] private GameObject _meteoriteWarning;
     
     private ObjectPool _ufoLaserPool;
     private float _camOrtSize;
@@ -120,6 +119,8 @@ public class WaveManager : MonoBehaviour
                 meteorite.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
                 meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
 
+                //meteorite.GetComponentInChildren<EnemyWarning>().gameObject.SetActive(true);
+
                 Meteorite metComponent = meteorite.GetComponent<Meteorite>();
                 metComponent.Health = metInfo.health;
                 metComponent.Speed = metInfo.speed;
@@ -129,8 +130,6 @@ public class WaveManager : MonoBehaviour
 
                 metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
 
-                metComponent.Warning = Instantiate(_meteoriteWarning, spawnPos,
-                    Quaternion.AngleAxis(rotationAngle + 90, Vector3.forward));
             }
             else
                 yield break;

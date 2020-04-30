@@ -15,12 +15,12 @@ MonoBehaviour:
   WavesArray:
   - _name: FirstWaveTest
     meteoriteTypes:
-    - Amount: 0
-      Frequency: 1
+    - Amount: 1
+      Frequency: 2
       meteoriteInfo: {fileID: 11400000, guid: cf63bd18319df0541a5113da6ef5433c, type: 2}
     ufoInfo:
-      Amount: 4
-      Frequency: 1
+      Amount: 1
+      Frequency: 2
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
       UfoLaserPool: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,

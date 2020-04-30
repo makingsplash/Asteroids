@@ -14,7 +14,7 @@ public class EnemyWarning : MonoBehaviour
     private float _warningX;
     private float _warningY;
 
-    private const float _borderOffset = 0.35f;
+    private const float _borderOffset = 0.4f;
     private const float _targetScale = 0.8f;
     private const float _startScale = 0.2f;
 
@@ -30,11 +30,11 @@ public class EnemyWarning : MonoBehaviour
         _transform.localScale = Vector3.one * 0.001f;
 
         StartCoroutine(ScaleObject());
+        StartCoroutine(CorrectRotation());
     }
 
     private void Update()
     {
-        // update position
         if (_enemyTransform.position.x > _camOrtSize * _camAspect)
             _warningX = _camOrtSize * _camAspect - _borderOffset;
         else if (_enemyTransform.position.x < -_camOrtSize * _camAspect)
@@ -66,7 +66,12 @@ public class EnemyWarning : MonoBehaviour
                 _transform.localScale += oneChange;
             yield return wait;
         }
-
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator CorrectRotation()
+    {
+        yield return new WaitForEndOfFrame();
+        _transform.rotation = Quaternion.identity;
     }
 }
