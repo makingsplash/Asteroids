@@ -31,6 +31,9 @@ public class WaveManager : MonoBehaviour
         } 
     }
 
+    [Header("Enemies")]
+    [SerializeField] private ObjectPool _warningsPool;
+
     [Header("EnemyWaves")]
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
     private byte _currentWave = 0;
@@ -119,7 +122,7 @@ public class WaveManager : MonoBehaviour
                 meteorite.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
                 meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
 
-                //meteorite.GetComponentInChildren<EnemyWarning>().gameObject.SetActive(true);
+                AddWarning(meteorite);
 
                 Meteorite metComponent = meteorite.GetComponent<Meteorite>();
                 metComponent.Health = metInfo.health;
@@ -129,7 +132,6 @@ public class WaveManager : MonoBehaviour
                 metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
 
                 metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
-
             }
             else
                 yield break;
@@ -150,6 +152,8 @@ public class WaveManager : MonoBehaviour
                     RandomOutsideSpawnPosition(),
                     Quaternion.identity);
 
+                AddWarning(ufo);
+
                 Ufo ufoComponent = ufo.GetComponent<Ufo>();
                 ufoComponent.LaserPool = _ufoLaserPool;
 
@@ -158,6 +162,12 @@ public class WaveManager : MonoBehaviour
             else
                 yield break;
         }
+    }
+
+    private void AddWarning(GameObject enemy)
+    {
+        EnemyWarning warning = _warningsPool.SpawnObject(Vector2.zero, 0).GetComponent<EnemyWarning>();
+        warning.EnemyObject = enemy;
     }
 
     private Vector2 RandomOutsideSpawnPosition()

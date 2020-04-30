@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class EnemyWarning : MonoBehaviour
+public class EnemyWarning : MonoBehaviour, IPoolObject
 {
-    [SerializeField] private Transform _enemyTransform;
-    [SerializeField] private CheckCameraVisability _enemyVisability;
+    [HideInInspector] public ObjectPool ParentPool { get; set; }
+    public GameObject EnemyObject;
+
+    private Transform _enemyTransform;
+    private CheckCameraVisability _enemyVisability;
+
+    private Transform _transform;
 
     private float _camOrtSize;
     private float _camAspect;
-
-    private Transform _transform;
 
     private float _warningX;
     private float _warningY;
@@ -54,11 +57,16 @@ public class EnemyWarning : MonoBehaviour
 
     private IEnumerator ScaleObject()
     {
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        yield return wait;
+
+        _enemyTransform = EnemyObject.GetComponent<Transform>();
+        _enemyVisability = EnemyObject.GetComponent<CheckCameraVisability>();
+
         _transform.localScale = Vector3.one * _startScale;
 
         Vector3 oneChange = new Vector3(0.05f, 0.05f, 0.05f);
 
-        WaitForEndOfFrame wait = new WaitForEndOfFrame();
 
         while(!_enemyVisability.IsVisible)
         {
@@ -66,12 +74,19 @@ public class EnemyWarning : MonoBehaviour
                 _transform.localScale += oneChange;
             yield return wait;
         }
-        gameObject.SetActive(false);
+
+        ReturnToPool();
     }
 
     private IEnumerator CorrectRotation()
     {
         yield return new WaitForEndOfFrame();
         _transform.rotation = Quaternion.identity;
+    }
+    
+    private void ReturnToPool()
+    {
+        gameObject.SetActive(false);
+        ParentPool.Pool.Enqueue(gameObject);
     }
 }

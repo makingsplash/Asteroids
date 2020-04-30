@@ -2088,10 +2088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _warningsPool: {fileID: 3167269624093701703}
   _enemyWaves: {fileID: 11400000, guid: a8bec994c1d9426428c58597187e13fa, type: 2}
   _meteoritesPool: {fileID: 7223114931024035093}
-  _meteoriteWarning: {fileID: 3190825683776134426, guid: f0ac9a333d079094c8833478c68e9fc9,
-    type: 3}
 --- !u!1 &1537010212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,6 +2628,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087645904}
   m_CullTransparentMesh: 0
+--- !u!1001 &2931695880660014417
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2253857870262527180, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemyWarningsPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.07338278
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6987769
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.96875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932129917886284281, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ac29670b5f94dcf44a7a8826bcdd3afd, type: 3}
+--- !u!114 &3167269624093701703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3167269624093701703, guid: ac29670b5f94dcf44a7a8826bcdd3afd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2931695880660014417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0da0db7e4d33204d987e60eebd27324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5065995283999159741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3000,7 +3080,7 @@ PrefabInstance:
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
