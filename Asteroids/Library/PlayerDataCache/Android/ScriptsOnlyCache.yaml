@@ -3,8 +3,9 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AudioManager
     - CameraInfo
+    - CheckCameraVisability
     - EnemyHealthBar
-    - EnemySpawner
+    - EnemyWarning
     - EnemyWaveBar
     - Laser
     - Meteorite
@@ -15,8 +16,9 @@ ScriptsOnlyBuild:
     - RocketInput
     - RocketSpawner
     - SceneManager
-    - UFO
     - UIManager
+    - Ufo
+    - WaveManager
     - WavesOfEmemies_SO
     - testfps
     Unity.TextMeshPro.dll:
@@ -99,47 +101,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9630}
     - Class: 114
-      Script: {instanceID: 9658}
+      Script: {instanceID: 9642}
     - Class: 114
-      Script: {instanceID: 9708}
+      Script: {instanceID: 9660}
     - Class: 114
-      Script: {instanceID: 9720}
+      Script: {instanceID: 9710}
     - Class: 114
-      Script: {instanceID: 9780}
+      Script: {instanceID: 9722}
     - Class: 114
-      Script: {instanceID: 9820}
+      Script: {instanceID: 9782}
     - Class: 114
-      Script: {instanceID: 9854}
+      Script: {instanceID: 9822}
     - Class: 114
-      Script: {instanceID: 9864}
+      Script: {instanceID: 9856}
     - Class: 114
-      Script: {instanceID: 9870}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 9880}
+      Script: {instanceID: 9872}
     - Class: 114
-      Script: {instanceID: 9898}
+      Script: {instanceID: 9882}
     - Class: 114
-      Script: {instanceID: 9966}
+      Script: {instanceID: 9900}
     - Class: 114
-      Script: {instanceID: 10138}
+      Script: {instanceID: 9968}
     - Class: 114
-      Script: {instanceID: 10148}
+      Script: {instanceID: 10140}
     - Class: 114
-      Script: {instanceID: 10210}
+      Script: {instanceID: 10150}
     - Class: 114
-      Script: {instanceID: 10266}
+      Script: {instanceID: 10212}
     - Class: 114
-      Script: {instanceID: 10302}
+      Script: {instanceID: 10268}
     - Class: 114
-      Script: {instanceID: 10428}
+      Script: {instanceID: 10304}
     - Class: 114
-      Script: {instanceID: 10558}
+      Script: {instanceID: 10430}
     - Class: 114
-      Script: {instanceID: 10636}
+      Script: {instanceID: 10526}
     - Class: 114
-      Script: {instanceID: 10652}
+      Script: {instanceID: 10562}
     - Class: 114
-      Script: {instanceID: 10672}
+      Script: {instanceID: 10640}
+    - Class: 114
+      Script: {instanceID: 10656}
+    - Class: 114
+      Script: {instanceID: 10676}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -207,10 +213,10 @@ ScriptsOnlyBuild:
     className: RocketSpawner
   - hash:
       serializedVersion: 2
-      Hash: 71f54f8211e5d3e55b36239247369028
+      Hash: 0eff3bffba49c6bc21a2382d0b9d9c76
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: UFO
+    className: Ufo
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -627,6 +633,12 @@ ScriptsOnlyBuild:
     className: EnemyHealthBar
   - hash:
       serializedVersion: 2
+      Hash: 77b90973752d682a5a14618699d4d1e6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CheckCameraVisability
+  - hash:
+      serializedVersion: 2
       Hash: 00274a21279f5cb831ce20f895049e38
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -639,7 +651,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 9e0d8d9f8a124e7e56cb897743cc5087
+      Hash: 0695ec1c0bc42811492e412c47c6be41
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Meteorite
@@ -711,7 +723,7 @@ ScriptsOnlyBuild:
     className: Benchmark01
   - hash:
       serializedVersion: 2
-      Hash: 8082e77aa84b55ebf3ca82925eb4966d
+      Hash: 5db26c8b678b6b5a421defec5e692c97
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Laser
@@ -1017,6 +1029,12 @@ ScriptsOnlyBuild:
     className: VertexZoom
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyWarning
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1077,10 +1095,10 @@ ScriptsOnlyBuild:
     className: MeteoriteType_SO
   - hash:
       serializedVersion: 2
-      Hash: aaf5a60bbd9a9f2bccaf9d8a7d13ddd2
+      Hash: c68e128997233b58088038eabacfc902
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: EnemySpawner
+    className: WaveManager
   - hash:
       serializedVersion: 2
       Hash: 8649814970b42d345b89944b862453cc

@@ -172,7 +172,7 @@ public class WaveManager : MonoBehaviour
 
     private Vector2 RandomOutsideSpawnPosition()
     {
-        float spawnRadius = _camOrtSize * _camAspect * 1.2f;
+        float spawnRadius = _camOrtSize * _camAspect * 1.4f;
         float spawnX = Random.Range(-spawnRadius, spawnRadius);
         float spawnY = Mathf.Sqrt((spawnRadius * spawnRadius) - (spawnX * spawnX));
         spawnY *= Random.Range(0, 2) * 2 - 1;

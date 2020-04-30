@@ -7,19 +7,16 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
     [HideInInspector] public List<MeteoriteType_SO> SmallerMeteoritesInfo = new List<MeteoriteType_SO>();
     [HideInInspector] public ObjectPool ParentPool { get ; set; }
     [HideInInspector] public Coroutine ShiftRoutine;
-    [HideInInspector] public GameObject Warning;
 
-    private float _camHeigth;
-    private float _camWidth;
     private OverBorderShift _overBorderShift;
     private PolygonCollider2D _polygonCollider2d;
     private bool _isColliding;
+    private CheckCameraVisability _cameraVisability;
 
 
     private void OnEnable()
     {
-        _camHeigth = CameraInfo.Instance.CamOrtSize;
-        _camWidth = CameraInfo.Instance.CamAspect * _camHeigth;
+        _cameraVisability = GetComponent<CheckCameraVisability>();
 
         _isColliding = false;
     }
@@ -43,15 +40,10 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
 
         while (true)
         {
-            float posX = Mathf.Abs(transform.position.x);
-            float posY = Mathf.Abs(transform.position.y);
-
-            if(posX < _camWidth && posY < _camHeigth)
+            if(_cameraVisability.IsVisible)
             {
                 _overBorderShift.enabled = true;
                 _polygonCollider2d.enabled = true;
-
-                Destroy(Warning);
 
                 break;
             }

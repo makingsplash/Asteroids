@@ -4,7 +4,16 @@ using UnityEngine;
 public class EnemyWarning : MonoBehaviour, IPoolObject
 {
     [HideInInspector] public ObjectPool ParentPool { get; set; }
-    public GameObject EnemyObject;
+
+    private GameObject _enemyObject;
+    [HideInInspector] public GameObject EnemyObject
+    {
+        set
+        {
+            _enemyObject = value;
+            ActivateWarning();
+        }
+    }
 
     private Transform _enemyTransform;
     private CheckCameraVisability _enemyVisability;
@@ -17,9 +26,9 @@ public class EnemyWarning : MonoBehaviour, IPoolObject
     private float _warningX;
     private float _warningY;
 
-    private const float _borderOffset = 0.4f;
-    private const float _targetScale = 0.8f;
-    private const float _startScale = 0.2f;
+    private const float _borderOffset = 0.55f;
+    private const float _targetScale = 0.15f;
+    private const float _startScale = 0.01f;
 
 
     private void OnEnable()
@@ -30,43 +39,31 @@ public class EnemyWarning : MonoBehaviour, IPoolObject
         _camOrtSize = CameraInfo.Instance.CamOrtSize;
         _camAspect = CameraInfo.Instance.CamAspect;
 
-        _transform.localScale = Vector3.one * 0.001f;
-
-        StartCoroutine(ScaleObject());
-        StartCoroutine(CorrectRotation());
+        _transform.localScale = Vector3.one * _startScale;
     }
 
     private void Update()
     {
-        if (_enemyTransform.position.x > _camOrtSize * _camAspect)
-            _warningX = _camOrtSize * _camAspect - _borderOffset;
-        else if (_enemyTransform.position.x < -_camOrtSize * _camAspect)
-            _warningX = -_camOrtSize * _camAspect + _borderOffset;
-        else
-            _warningX = transform.position.x;
-
-        if (_enemyTransform.position.y > _camOrtSize)
-            _warningY = _camOrtSize - _borderOffset;
-        else if (_enemyTransform.position.y < -_camOrtSize)
-            _warningY = -_camOrtSize + _borderOffset;
-        else
-            _warningY = transform.position.y;
-
         _transform.position = new Vector2(_warningX, _warningY);
+    }
+
+    private void ActivateWarning()
+    {
+        PrepareWarning();
+        StartCoroutine(ScaleObject());
+        StartCoroutine(UpdatePosition());
+    }
+
+    private void PrepareWarning()
+    {
+        _enemyTransform = _enemyObject.GetComponent<Transform>();
+        _enemyVisability = _enemyObject.GetComponent<CheckCameraVisability>();
     }
 
     private IEnumerator ScaleObject()
     {
+        Vector3 oneChange = new Vector3(0.0025f, 0.0025f, 0.0025f);
         WaitForEndOfFrame wait = new WaitForEndOfFrame();
-        yield return wait;
-
-        _enemyTransform = EnemyObject.GetComponent<Transform>();
-        _enemyVisability = EnemyObject.GetComponent<CheckCameraVisability>();
-
-        _transform.localScale = Vector3.one * _startScale;
-
-        Vector3 oneChange = new Vector3(0.05f, 0.05f, 0.05f);
-
 
         while(!_enemyVisability.IsVisible)
         {
@@ -78,10 +75,27 @@ public class EnemyWarning : MonoBehaviour, IPoolObject
         ReturnToPool();
     }
 
-    private IEnumerator CorrectRotation()
+    private IEnumerator UpdatePosition()
     {
-        yield return new WaitForEndOfFrame();
-        _transform.rotation = Quaternion.identity;
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        while (true)
+        {
+            if (_enemyTransform.position.x > _camOrtSize * _camAspect)
+                _warningX = _camOrtSize * _camAspect - _borderOffset;
+            else if (_enemyTransform.position.x < -_camOrtSize * _camAspect)
+                _warningX = -_camOrtSize * _camAspect + _borderOffset;
+            else
+                _warningX = _enemyTransform.position.x;
+
+            if (_enemyTransform.position.y > _camOrtSize)
+                _warningY = _camOrtSize - _borderOffset;
+            else if (_enemyTransform.position.y < -_camOrtSize)
+                _warningY = -_camOrtSize + _borderOffset;
+            else
+                _warningY = _enemyTransform.position.y;
+
+            yield return wait;
+        }
     }
     
     private void ReturnToPool()
