@@ -17,10 +17,17 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
     private void OnEnable()
     {
         _cameraVisability = GetComponent<CheckCameraVisability>();
+        _cameraVisability.IsVisible = false;
 
         _isColliding = false;
 
         StartCoroutine(EnableShift());
+    }
+
+    private void OnDisable()
+    {
+        _polygonCollider2d.enabled = false;
+        _overBorderShift.enabled = false;
     }
 
     private void Update()

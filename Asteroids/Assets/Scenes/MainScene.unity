@@ -507,7 +507,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 98.85
+  m_fontSize: 98.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42.55
+  m_fontSize: 42.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 104.35
+  m_fontSize: 104.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1623,10 +1623,10 @@ RectTransform:
   m_Father: {fileID: 982285501}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.28587463, y: 0.904257}
-  m_AnchorMax: {x: 0.28587463, y: 0.904257}
-  m_AnchoredPosition: {x: 12, y: -6.539978}
-  m_SizeDelta: {x: 333.8, y: 85.1}
+  m_AnchorMin: {x: 0.28587463, y: 0.93500006}
+  m_AnchorMax: {x: 0.28587463, y: 0.93500006}
+  m_AnchoredPosition: {x: 0, y: 1.8000183}
+  m_SizeDelta: {x: 215.11, y: 54.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1006594935
 MonoBehaviour:
@@ -1688,7 +1688,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 76.15
+  m_fontSize: 49.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3092,6 +3092,16 @@ PrefabInstance:
       propertyPath: _laserPool
       value: 
       objectReference: {fileID: 6815747179874732980}
+    - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: TESTNONHITTABLE
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
+        type: 3}
+      propertyPath: _fireRate
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}
 --- !u!114 &8877529138627661805 stripped

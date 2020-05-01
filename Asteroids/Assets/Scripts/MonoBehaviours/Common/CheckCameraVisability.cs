@@ -32,7 +32,9 @@ public class CheckCameraVisability : MonoBehaviour
                 IsVisible = false;
             }
             else
+            {
                 IsVisible = true;
+            }
         }
     }
 }

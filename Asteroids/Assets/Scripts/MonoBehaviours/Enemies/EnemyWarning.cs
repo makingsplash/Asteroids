@@ -100,6 +100,7 @@ public class EnemyWarning : MonoBehaviour, IPoolObject
     
     public void ReturnToPool()
     {
+        StopAllCoroutines();
         gameObject.SetActive(false);
         ParentPool.Pool.Enqueue(gameObject);
     }

@@ -22,7 +22,6 @@ public class ObjectPool : MonoBehaviour
             GameObject poolObject = Pool.Dequeue();
             poolObject.SetActive(true);
             poolObject.transform.position = position;
-
             poolObject.transform.eulerAngles = Vector3.forward * rotationEulerAngle;
 
             return poolObject;
