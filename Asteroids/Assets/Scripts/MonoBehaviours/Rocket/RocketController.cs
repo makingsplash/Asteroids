@@ -69,10 +69,6 @@ public class RocketController : MonoBehaviour, IDamageable
 
         if (_input.IsShotTapDown)
             LaserShot();
-
-        ///// SCANNER TEST
-        if (Input.GetKeyDown(KeyCode.Q))
-            StartCoroutine(UseScanner());
     }
 
     private void LateUpdate()
@@ -90,7 +86,7 @@ public class RocketController : MonoBehaviour, IDamageable
     }
 
     #region Scanner usage
-    private IEnumerator UseScanner()
+    public IEnumerator UseScanner()
     {
         AudioManager.Instance.PlayOneSound(_scannerSound);
 

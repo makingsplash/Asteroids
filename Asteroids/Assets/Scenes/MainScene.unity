@@ -2082,6 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4db35fe80bd3cd44a059ec4950cac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rocket: {fileID: 8877529138627661805}
   _warningsPool: {fileID: 3167269624093701703}
   _enemyWaves: {fileID: 11400000, guid: a040a97ba5148ed42862b26227d6f960, type: 2}
   _meteoritesPool: {fileID: 7223114931024035093}
@@ -3093,3 +3094,15 @@ PrefabInstance:
       objectReference: {fileID: 6815747179874732980}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}
+--- !u!114 &8877529138627661805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8877529138627661804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963824295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb2c87b76f971f418dfa26fbdb15d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

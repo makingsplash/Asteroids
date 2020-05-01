@@ -19,6 +19,8 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
         _cameraVisability = GetComponent<CheckCameraVisability>();
 
         _isColliding = false;
+
+        StartCoroutine(EnableShift());
     }
 
     private void Update()
@@ -26,7 +28,7 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
     }
 
-    public IEnumerator EnableShift()
+    private IEnumerator EnableShift()
     {
         if (_polygonCollider2d == null)
             _polygonCollider2d = GetComponent<PolygonCollider2D>();

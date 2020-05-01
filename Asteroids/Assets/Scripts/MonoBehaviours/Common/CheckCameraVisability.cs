@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CheckCameraVisability : MonoBehaviour
 {
-    [HideInInspector] public bool IsVisible;
+    public bool IsVisible;
 
     private float _camHeigth;
     private float _camWidth;

@@ -27,7 +27,7 @@ public class SceneManager : MonoBehaviour
     private byte _lifesAmount = 3;
     private bool _gameOver = false;
     private RocketSpawner _rocketSpawner;
-    private WaveManager _enemySpawner;
+    private WaveManager _waveManager;
 
 
     private void Awake()
@@ -42,7 +42,7 @@ public class SceneManager : MonoBehaviour
 
 
         _rocketSpawner = GetComponentInChildren<RocketSpawner>();
-        _enemySpawner = GetComponentInChildren<WaveManager>();
+        _waveManager = GetComponentInChildren<WaveManager>();
 
         Application.targetFrameRate = 60;
     }
@@ -72,7 +72,7 @@ public class SceneManager : MonoBehaviour
         StartEnemyWaveSpawning();
     }
 
-    private void StartEnemyWaveSpawning() => _enemySpawner.NextWave();
+    private void StartEnemyWaveSpawning() => StartCoroutine(_waveManager.NextWave());
 
 	public void PlayerDead()
     {

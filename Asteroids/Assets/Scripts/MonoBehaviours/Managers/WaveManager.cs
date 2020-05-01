@@ -31,6 +31,9 @@ public class WaveManager : MonoBehaviour
         } 
     }
 
+    [Header("Rocket")]
+    [SerializeField] private RocketController _rocket;
+
     [Header("Enemies")]
     [SerializeField] private ObjectPool _warningsPool;
 
@@ -40,7 +43,8 @@ public class WaveManager : MonoBehaviour
     
     [Header("Meteorites")]
     [SerializeField] private ObjectPool _meteoritesPool;
-    
+
+
     private ObjectPool _ufoLaserPool;
     private float _camOrtSize;
     private float _camAspect;
@@ -130,8 +134,6 @@ public class WaveManager : MonoBehaviour
                 metComponent.HitScorePoints = metInfo.hitScorePoints;
                 metComponent.DeathScorePoints = metInfo.deathScorePoints;
                 metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
-
-                metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
             }
             else
                 yield break;
@@ -181,7 +183,11 @@ public class WaveManager : MonoBehaviour
         return spawnPos;
     }
 
-    public void NextWave() => StartCoroutine(SpawnWave());
+    public IEnumerator NextWave()
+    {
+        yield return StartCoroutine(_rocket.UseScanner());
+        StartCoroutine(SpawnWave());
+    }
 
     private void CheckForNextWave()
     {
@@ -191,7 +197,7 @@ public class WaveManager : MonoBehaviour
             EnemiesKilled = 0;
             EnemiesSpawned = 0;
 
-            NextWave();
+            StartCoroutine(NextWave());
         }
     }
 }
