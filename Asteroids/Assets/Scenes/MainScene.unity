@@ -722,7 +722,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.69882524, g: 0.8078984, b: 0.9811321, a: 0}
+  m_BackGroundColor: {r: 0.43867922, g: 0.6569706, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2039,12 +2039,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287558262}
   m_CullTransparentMesh: 0
---- !u!1 &1315534743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8877529137905684090, guid: 432318c68316f794bbd53f5e0220140b,
-    type: 3}
-  m_PrefabInstance: {fileID: 8877529138627661804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323329019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,11 +3031,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
-    - target: {fileID: 8877529137905684090, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: m_Name
-      value: ShieldAnim
-      objectReference: {fileID: 0}
     - target: {fileID: 8877529137201896259, guid: 432318c68316f794bbd53f5e0220140b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3102,15 +3091,5 @@ PrefabInstance:
       propertyPath: _laserPool
       value: 
       objectReference: {fileID: 6815747179874732980}
-    - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: TESTNONHITTABLE
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8877529137201896262, guid: 432318c68316f794bbd53f5e0220140b,
-        type: 3}
-      propertyPath: _shieldAnim
-      value: 
-      objectReference: {fileID: 1315534743}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432318c68316f794bbd53f5e0220140b, type: 3}

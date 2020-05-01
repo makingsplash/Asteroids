@@ -18,10 +18,12 @@ public class RocketController : MonoBehaviour, IDamageable
     [Header("Sounds")]
     [SerializeField] private AudioClip _shotSound;
     [SerializeField] private AudioClip _rocketExplosionSound;
+    [SerializeField] private AudioClip _scannerSound;
 
     [Header("Animations")]
     [SerializeField] private GameObject _movingFireAnim;
     [SerializeField] private GameObject _shieldAnim;
+    [SerializeField] private GameObject _scannerAnim;
 
     private bool _canShot;
 
@@ -67,6 +69,10 @@ public class RocketController : MonoBehaviour, IDamageable
 
         if (_input.IsShotTapDown)
             LaserShot();
+
+        ///// SCANNER TEST
+        if (Input.GetKeyDown(KeyCode.Q))
+            StartCoroutine(UseScanner());
     }
 
     private void LateUpdate()
@@ -83,8 +89,36 @@ public class RocketController : MonoBehaviour, IDamageable
         SceneManager.Instance.PlayerDead();
     }
 
-	#region Shield usage
-	public IEnumerator UseShield()
+    #region Scanner usage
+    private IEnumerator UseScanner()
+    {
+        AudioManager.Instance.PlayOneSound(_scannerSound);
+
+        float startScale = _scannerAnim.transform.localScale.x;
+        float targetScale = 14f;
+        float scaleSpeed = 25f;
+
+        _scannerAnim.SetActive(true);
+
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+        while(_scannerAnim.transform.localScale.x < targetScale)
+        {
+            _scannerAnim.transform.localScale += Vector3.one * Time.deltaTime * scaleSpeed;
+            yield return wait;
+        }
+
+        while(_scannerAnim.transform.localScale.x > startScale)
+        {
+            _scannerAnim.transform.localScale -= Vector3.one * Time.deltaTime * scaleSpeed * 1.2f;
+            yield return wait;
+        }
+
+        _scannerAnim.SetActive(false);
+    }
+    #endregion
+
+    #region Shield usage
+    public IEnumerator UseShield()
     {
         if (_isShieldReady)
         {
