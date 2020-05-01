@@ -41,7 +41,7 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
         ReturnToPool();
     }
 
-    private void ReturnToPool()
+    public void ReturnToPool()
     {
         ParentPool.Pool.Enqueue(gameObject);
         gameObject.SetActive(false);

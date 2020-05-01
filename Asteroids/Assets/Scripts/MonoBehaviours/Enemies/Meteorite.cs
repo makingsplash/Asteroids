@@ -77,6 +77,11 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
         if (SmallerMeteoritesInfo.Count > 0)
             SpawnSmallerMeteorites();
 
+        ReturnToPool();
+    }
+
+    public void ReturnToPool()
+    {
         gameObject.SetActive(false);
         ParentPool.Pool.Enqueue(gameObject);
     }

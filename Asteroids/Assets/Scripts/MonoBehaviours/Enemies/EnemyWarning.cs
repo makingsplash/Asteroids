@@ -98,7 +98,7 @@ public class EnemyWarning : MonoBehaviour, IPoolObject
         }
     }
     
-    private void ReturnToPool()
+    public void ReturnToPool()
     {
         gameObject.SetActive(false);
         ParentPool.Pool.Enqueue(gameObject);
