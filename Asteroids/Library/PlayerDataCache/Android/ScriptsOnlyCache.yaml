@@ -933,7 +933,7 @@ ScriptsOnlyBuild:
     className: TMP_TextInfoDebugTool
   - hash:
       serializedVersion: 2
-      Hash: 950cdb75d12af84b52eda49442933266
+      Hash: 54ca38e9231be8680a3b3d4bad2d2999
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RocketController
@@ -1095,7 +1095,7 @@ ScriptsOnlyBuild:
     className: MeteoriteType_SO
   - hash:
       serializedVersion: 2
-      Hash: c68e128997233b58088038eabacfc902
+      Hash: e7e898929c76e4e43cee58619ba90490
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WaveManager

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviours\Common\CheckCameraVisability.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Common\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Common\OverBorderShift.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviours\Common\Vibration.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\EnemyWarning.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviours\Enemies\Meteorite.cs" />

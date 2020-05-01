@@ -32,6 +32,8 @@ public class Laser : MonoBehaviour, IDamager, IPoolObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Vibration.Vibrate(1);
+
         DoDamage(collision.gameObject.GetComponent<IDamageable>());
     }
 

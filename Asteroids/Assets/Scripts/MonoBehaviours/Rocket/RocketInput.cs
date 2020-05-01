@@ -28,6 +28,7 @@ public class RocketInput : MonoBehaviour
     }
 
     public void TapShotDown() => IsShotTapDown = true;
+
     public void TapShotUp() => IsShotTapDown = false;
     public void TapForwardDown() => Vertical = 1;
     public void TapForwardUp() => Vertical = 0;
