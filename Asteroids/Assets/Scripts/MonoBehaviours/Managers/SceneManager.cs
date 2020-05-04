@@ -50,8 +50,6 @@ public class SceneManager : MonoBehaviour
     private void Start()
     {
         Screen.fullScreen = false;
-
-        StartCoroutine(StartGame());
     }
 
     private void Update()
@@ -64,11 +62,10 @@ public class SceneManager : MonoBehaviour
             Application.Quit();
     }
 
-    IEnumerator StartGame()
+    public IEnumerator StartGame()
     {
-        StartCoroutine(_rocketSpawner.SpawnRocket());
-        yield return new WaitForSeconds(2.5f);
-
+        yield return StartCoroutine(_rocketSpawner.SpawnRocket());
+        Debug.Log(1);
         StartEnemyWaveSpawning();
     }
 

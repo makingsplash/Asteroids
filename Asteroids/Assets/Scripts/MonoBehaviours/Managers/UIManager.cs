@@ -23,23 +23,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [Header("Top elements")]
-    [SerializeField] private TextMeshProUGUI _messageBoxText;
-    
+    [Header("Upper elements")]
+    [SerializeField] private EnemyWaveBar _enemyWaveBar;
+    [SerializeField] private TextMeshProUGUI _waveCounter;
+
     [SerializeField] private TextMeshProUGUI _currentScore;
     private Transform _scoreTransform;
     private Coroutine _scorePulsing;
     
-    [SerializeField] private EnemyWaveBar _enemyWaveBar;
-    [SerializeField] private TextMeshProUGUI _waveCounter;
+    [Header("Middle elements")]
+    [SerializeField] private TextMeshProUGUI _messageBoxText;
+    [SerializeField] private GameObject _playButton;
 
-    [Header("Rocket lifes")]
-    [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
-
-    [Header("Shield button")]
+    [Header("Lower elements")]
     [SerializeField] private Button _shieldButton;
     [SerializeField] private TextMeshProUGUI _shieldTimer;
 
+    [SerializeField] private GameObject _rocketControllerButtons;
+
+    [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
     private byte _lifesAmount = 3;
 
 
@@ -55,9 +57,51 @@ public class UIManager : MonoBehaviour
 
         _shieldTimer.gameObject.SetActive(false);
         _scoreTransform = _currentScore.gameObject.GetComponent<Transform>();
+
+        // change later to one func with list cycle
+        HideWaveInfo();
+        HideRocketControllerButtons();
+        HideRocketLifes();
     }
 
-	#region Score
+    public void StartGame()
+    {
+        Debug.Log("Чё то там не стартует");
+        StartCoroutine(SceneManager.Instance.StartGame());
+
+        _playButton.SetActive(false);
+        HideMessageBox();
+        ShowRocketControllerButtons();
+        ShowWaveInfo();
+        ShowRocketLifes();
+    }
+
+    #region RocketLifes
+    private void ShowRocketLifes()
+    {
+        foreach (GameObject life in _lifesUI)
+            life.SetActive(true);
+    }
+
+    private void HideRocketLifes()
+    {
+        foreach (GameObject life in _lifesUI)
+            life.SetActive(false);
+    }
+
+    public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
+    #endregion
+
+    #region RocketController buttons
+    private void ShowRocketControllerButtons() => _rocketControllerButtons.SetActive(true);
+
+    private void HideRocketControllerButtons() => _rocketControllerButtons.SetActive(false);
+    #endregion
+
+    #region Score
+    private void ShowScore() => _currentScore.gameObject.SetActive(true);
+    private void HideScore() => _currentScore.gameObject.SetActive(false);
+
 	public void ChangeScore(int points)
     {
         int currentScore = int.Parse(_currentScore.text);
@@ -93,15 +137,13 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
-
 	#region MessageBox
 	public void ShowRespawnMessage()
     {
         _messageBoxText.text = "Respawning..";
         _messageBoxText.gameObject.SetActive(true);
     }
-    public void DisableMessage() => _messageBoxText.gameObject.SetActive(false);
+    public void HideMessageBox() => _messageBoxText.gameObject.SetActive(false);
 
     public void WinMessage()
     {
@@ -117,6 +159,18 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Enemy wave bar
+    private void ShowWaveInfo()
+    {
+        _waveCounter.gameObject.SetActive(true);
+        _enemyWaveBar.gameObject.SetActive(true);
+    }
+
+    private void HideWaveInfo()
+    {
+        _waveCounter.gameObject.SetActive(false);
+        _enemyWaveBar.gameObject.SetActive(false);
+    }
+
     public void ChangeWaveCounter(byte waveNumber) => _waveCounter.text = "Wave: " + waveNumber;
 
     public void DecreaseWaveBarCurrentValue() => StartCoroutine(_enemyWaveBar.DecreaseCurrentValue());

@@ -13,7 +13,7 @@ public class RocketSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(_spawnTime);
 
-        UIManager.Instance.DisableMessage();
+        UIManager.Instance.HideMessageBox();
 
         SetPosition();
 
