@@ -15,7 +15,7 @@ MonoBehaviour:
   WavesArray:
   - _name: FirstWaveTest
     meteoriteTypes:
-    - Amount: 10
+    - Amount: 1
       Frequency: 1
       meteoriteInfo: {fileID: 11400000, guid: cf63bd18319df0541a5113da6ef5433c, type: 2}
     ufoInfo:
@@ -31,7 +31,7 @@ MonoBehaviour:
       Frequency: 3
       meteoriteInfo: {fileID: 11400000, guid: 0633213460c391049935771050ad9870, type: 2}
     ufoInfo:
-      Amount: 2
+      Amount: 10
       Frequency: 1
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}

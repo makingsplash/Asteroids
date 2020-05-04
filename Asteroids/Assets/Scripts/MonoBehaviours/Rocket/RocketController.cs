@@ -27,8 +27,8 @@ public class RocketController : MonoBehaviour, IDamageable
 
     private bool _canShot;
 
-    private readonly float _shieldEnabledTimer = 5f;
-    private readonly float _shieldReloadTimer = 5f;
+    private readonly float _shieldEnabledTimer = 3f;
+    private readonly float _shieldReloadTimer = 3f;
     private bool _isShieldReady;
 
     private RocketInput _input;

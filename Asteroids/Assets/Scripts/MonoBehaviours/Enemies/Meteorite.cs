@@ -9,8 +9,6 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
     [HideInInspector] public Coroutine ShiftRoutine;
 
     private OverBorderShift _overBorderShift;
-    private PolygonCollider2D _polygonCollider2d;
-    private bool _isColliding;
     private CheckCameraVisability _cameraVisability;
 
 
@@ -19,14 +17,11 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
         _cameraVisability = GetComponent<CheckCameraVisability>();
         _cameraVisability.IsVisible = false;
 
-        _isColliding = false;
-
         StartCoroutine(EnableShift());
     }
 
     private void OnDisable()
     {
-        _polygonCollider2d.enabled = false;
         _overBorderShift.enabled = false;
     }
 
@@ -35,12 +30,13 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
         transform.Translate(Vector3.up * Speed * Time.deltaTime);
     }
 
+    private IEnumerator EnableCollider()
+    {
+        yield return new WaitForSeconds(0.05f);
+    }
+
     private IEnumerator EnableShift()
     {
-        if (_polygonCollider2d == null)
-            _polygonCollider2d = GetComponent<PolygonCollider2D>();
-        _polygonCollider2d.enabled = false;
-
         if (_overBorderShift == null)
             _overBorderShift = GetComponent<OverBorderShift>();
         _overBorderShift.enabled = false;
@@ -52,7 +48,7 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
             if(_cameraVisability.IsVisible)
             {
                 _overBorderShift.enabled = true;
-                _polygonCollider2d.enabled = true;
+                StartCoroutine(EnableCollider());
 
                 break;
             }
@@ -69,14 +65,8 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
 
     public void TakeDamage(byte damage)
     {
-        if(!_isColliding)
-        {
-            _isColliding = true;
-
-            UIManager.Instance.ChangeScore(HitScorePoints);
-            DecreaseHealth(damage);
-        }
-        _isColliding = false;
+        UIManager.Instance.ChangeScore(HitScorePoints);
+        DecreaseHealth(damage);
     }
 
     protected override void Death()
@@ -117,7 +107,6 @@ public class Meteorite : BaseEnemy, IPoolObject, IDamageable
             metComponent.HitScorePoints = metInfo.hitScorePoints;
             metComponent.DeathScorePoints = metInfo.deathScorePoints;
             metComponent.SmallerMeteoritesInfo = metInfo.smallerMeteoritesSO;
-            metComponent.ShiftRoutine = StartCoroutine(metComponent.EnableShift());
 
             WaveManager.EnemiesSpawned++;
         }

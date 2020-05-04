@@ -28,7 +28,7 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-            Debug.LogError("В пуле нет свободных объектов для спавна");
+            Debug.LogError("В пуле " + gameObject.name + " нет свободных объектов для спавна");
             return null;
         }
     }
