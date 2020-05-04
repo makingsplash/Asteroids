@@ -126,8 +126,6 @@ public class WaveManager : MonoBehaviour
                 meteorite.GetComponent<SpriteRenderer>().sprite = metInfo.sprite;
                 meteorite.GetComponent<PolygonCollider2D>().points = metInfo.polygonCollider2d.points;
 
-                Debug.Log(meteorite.GetComponent<OverBorderShift>().enabled);
-
                 AddWarning(meteorite);
 
                 Meteorite metComponent = meteorite.GetComponent<Meteorite>();

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -26,7 +25,11 @@ public class UIManager : MonoBehaviour
 
     [Header("Top elements")]
     [SerializeField] private TextMeshProUGUI _messageBoxText;
+    
     [SerializeField] private TextMeshProUGUI _currentScore;
+    private Transform _scoreTransform;
+    private Coroutine _scorePulsing;
+    
     [SerializeField] private EnemyWaveBar _enemyWaveBar;
     [SerializeField] private TextMeshProUGUI _waveCounter;
 
@@ -51,14 +54,45 @@ public class UIManager : MonoBehaviour
             _instance = this;
 
         _shieldTimer.gameObject.SetActive(false);
+        _scoreTransform = _currentScore.gameObject.GetComponent<Transform>();
     }
 
-    public void ChangeScore(int points)
+	#region Score
+	public void ChangeScore(int points)
     {
-        points = Mathf.Clamp((int.Parse(_currentScore.text) + points), 0, int.MaxValue);
-
+        int currentScore = int.Parse(_currentScore.text);
+        points = currentScore + points > 0 ? currentScore + points : 0;
+        if(points > 0)
+        {
+            if (_scorePulsing != null)
+                StopCoroutine(_scorePulsing);
+            _scorePulsing = StartCoroutine(MakeScorePulse());
+        }
         _currentScore.text = points.ToString();
     }
+
+    private IEnumerator MakeScorePulse()
+    {
+        float _startScale = 1;
+        float _targetScale = 1.2f;
+        Vector3 oneScaleChange = Vector3.one * 0.08f;
+
+        WaitForEndOfFrame wait = new WaitForEndOfFrame();
+
+        while (_scoreTransform.localScale.x < _targetScale)
+        {
+            _scoreTransform.localScale += oneScaleChange;
+            yield return wait;
+        }
+
+        while (_scoreTransform.localScale.x > _startScale)
+        {
+            _scoreTransform.localScale -= oneScaleChange;
+            yield return wait;
+        }
+    }
+    #endregion
+
     public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
 
 	#region MessageBox

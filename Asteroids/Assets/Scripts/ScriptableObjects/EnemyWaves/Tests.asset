@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55b2f19c947665c4d88ad11d3b2b1e7c, type: 3}
-  m_Name: EnemyWavesTest
+  m_Name: Tests
   m_EditorClassIdentifier: 
   WavesArray:
   - _name: FirstWaveTest
     meteoriteTypes:
-    - Amount: 20
-      Frequency: 2
+    - Amount: 10
+      Frequency: 1
       meteoriteInfo: {fileID: 11400000, guid: cf63bd18319df0541a5113da6ef5433c, type: 2}
     ufoInfo:
       Amount: 0
