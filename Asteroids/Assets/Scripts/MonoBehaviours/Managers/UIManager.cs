@@ -23,26 +23,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [Header("Upper elements")]
+    [Header("Play elements")]
+    [SerializeField] private GameObject _playElementsParent;
+    [SerializeField] private GameObject _playButton;
     [SerializeField] private EnemyWaveBar _enemyWaveBar;
     [SerializeField] private TextMeshProUGUI _waveCounter;
+    [SerializeField] private Button _shieldButton;
+    [SerializeField] private TextMeshProUGUI _shieldTimer;
+    [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
+    private byte _lifesAmount = 3;
 
+    [Header("Common elements")]
+    [SerializeField] private TextMeshProUGUI _messageBoxText;
     [SerializeField] private TextMeshProUGUI _currentScore;
     private Transform _scoreTransform;
     private Coroutine _scorePulsing;
-    
-    [Header("Middle elements")]
-    [SerializeField] private TextMeshProUGUI _messageBoxText;
-    [SerializeField] private GameObject _playButton;
-
-    [Header("Lower elements")]
-    [SerializeField] private Button _shieldButton;
-    [SerializeField] private TextMeshProUGUI _shieldTimer;
-
-    [SerializeField] private GameObject _rocketControllerButtons;
-
-    [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
-    private byte _lifesAmount = 3;
 
 
     private void Awake()
@@ -58,49 +53,24 @@ public class UIManager : MonoBehaviour
         _shieldTimer.gameObject.SetActive(false);
         _scoreTransform = _currentScore.gameObject.GetComponent<Transform>();
 
-        // change later to one func with list cycle
-        HideWaveInfo();
-        HideRocketControllerButtons();
-        HideRocketLifes();
+        HidePlayElements();
     }
 
     public void StartGame()
     {
-        Debug.Log("Чё то там не стартует");
-        StartCoroutine(SceneManager.Instance.StartGame());
+        SceneManager.Instance.LaunchGame();
 
         _playButton.SetActive(false);
         HideMessageBox();
-        ShowRocketControllerButtons();
-        ShowWaveInfo();
-        ShowRocketLifes();
+        ShowPlayElements();
     }
 
-    #region RocketLifes
-    private void ShowRocketLifes()
-    {
-        foreach (GameObject life in _lifesUI)
-            life.SetActive(true);
-    }
-
-    private void HideRocketLifes()
-    {
-        foreach (GameObject life in _lifesUI)
-            life.SetActive(false);
-    }
+    private void ShowPlayElements() => _playElementsParent.SetActive(true);
+    private void HidePlayElements() => _playElementsParent.SetActive(false);
 
     public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
-    #endregion
-
-    #region RocketController buttons
-    private void ShowRocketControllerButtons() => _rocketControllerButtons.SetActive(true);
-
-    private void HideRocketControllerButtons() => _rocketControllerButtons.SetActive(false);
-    #endregion
 
     #region Score
-    private void ShowScore() => _currentScore.gameObject.SetActive(true);
-    private void HideScore() => _currentScore.gameObject.SetActive(false);
 
 	public void ChangeScore(int points)
     {
@@ -159,17 +129,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Enemy wave bar
-    private void ShowWaveInfo()
-    {
-        _waveCounter.gameObject.SetActive(true);
-        _enemyWaveBar.gameObject.SetActive(true);
-    }
-
-    private void HideWaveInfo()
-    {
-        _waveCounter.gameObject.SetActive(false);
-        _enemyWaveBar.gameObject.SetActive(false);
-    }
 
     public void ChangeWaveCounter(byte waveNumber) => _waveCounter.text = "Wave: " + waveNumber;
 
@@ -179,6 +138,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Shield button
+
     public IEnumerator DisableShieldButton(float disableTimer)
     {
         StopAllCoroutines();

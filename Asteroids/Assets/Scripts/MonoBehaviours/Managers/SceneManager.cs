@@ -55,21 +55,17 @@ public class SceneManager : MonoBehaviour
     private void Update()
     {
         if (_gameOver)
-            if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
     }
 
-    public IEnumerator StartGame()
+    public void LaunchGame() => StartCoroutine(Launch());
+
+    private IEnumerator Launch()
     {
         yield return StartCoroutine(_rocketSpawner.SpawnRocket());
-        Debug.Log(1);
-        StartEnemyWaveSpawning();
+        StartCoroutine(_waveManager.NextWave());
     }
-
-    private void StartEnemyWaveSpawning() => StartCoroutine(_waveManager.NextWave());
 
 	public void PlayerDead()
     {
