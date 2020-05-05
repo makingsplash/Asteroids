@@ -729,7 +729,7 @@ ScriptsOnlyBuild:
     className: Laser
   - hash:
       serializedVersion: 2
-      Hash: f9c93920f203a73410e118d83e8ad400
+      Hash: 31d80940a45c694bee8d849084af29c8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -1120,4 +1120,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/admin/Desktop/2.apk
+  playerPath: C:/Users/admin/Desktop/3.apk

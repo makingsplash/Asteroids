@@ -78,7 +78,7 @@ public class EnemyWarning : MonoBehaviour, IPoolObject
     private IEnumerator UpdatePosition()
     {
         WaitForEndOfFrame wait = new WaitForEndOfFrame();
-        while (_enemyObject != null)
+        while (_enemyObject != null && _enemyObject.activeSelf)
         {
             if (_enemyTransform.position.x > _camOrtSize * _camAspect)
                 _warningX = _camOrtSize * _camAspect - _borderOffset;

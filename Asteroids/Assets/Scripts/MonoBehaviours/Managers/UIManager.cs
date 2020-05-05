@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
     [Header("Play elements")]
     [SerializeField] private GameObject _playElementsParent;
     [SerializeField] private GameObject _playButton;
+    [SerializeField] private Button _pauseButton;
+    private bool _onPause = false;
+    private Color _camDefaultColor;
     [SerializeField] private EnemyWaveBar _enemyWaveBar;
     [SerializeField] private TextMeshProUGUI _waveCounter;
     [SerializeField] private Button _shieldButton;
@@ -69,6 +72,47 @@ public class UIManager : MonoBehaviour
     private void HidePlayElements() => _playElementsParent.SetActive(false);
 
     public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
+
+	#region PauseButton
+	public void UsePauseButton()
+    {
+        if(!_playButton.activeSelf)
+        {
+            if (_onPause)
+                UnPauseGame();
+            else
+                PauseGame();
+        }
+    }
+
+    private void PauseGame()
+    {
+        _pauseButton.image.sprite = _pauseButton.spriteState.disabledSprite;
+        HidePlayElements();
+
+        _messageBoxText.text = "Pause";
+        _messageBoxText.gameObject.SetActive(true);
+
+        _camDefaultColor = Camera.main.backgroundColor;
+        Camera.main.backgroundColor = Color.gray;
+
+        _onPause = true;
+        Time.timeScale = 0;
+    }
+
+    private void UnPauseGame()
+    {
+        _pauseButton.image.sprite = _pauseButton.spriteState.pressedSprite;
+        ShowPlayElements();
+
+        _messageBoxText.gameObject.SetActive(false);
+
+        Camera.main.backgroundColor = _camDefaultColor;
+
+        _onPause = false;
+        Time.timeScale = 1;
+    }
+    #endregion
 
     #region Score
 
