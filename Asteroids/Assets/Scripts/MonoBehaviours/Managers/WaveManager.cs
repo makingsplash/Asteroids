@@ -35,7 +35,7 @@ public class WaveManager : MonoBehaviour
 
     [Header("EnemyWaves")]
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
-    private byte _currentWave = 0;
+    private int _currentWave = 0;
 
     [Header("Pools")]
     [SerializeField] private ObjectPool _warningsPool;
@@ -57,8 +57,9 @@ public class WaveManager : MonoBehaviour
         _enemiesSpawned = 0;
         _enemiesKilled = 0;
 
-        _currentWave = SaveManager.Instance.GetCurrentWaveNumber();
+        _currentWave = SaveManager.Instance.CurrentWave >= 0 ? SaveManager.Instance.CurrentWave : 0;
     }
+
     private void OnDisable()
     {
         BaseEnemy.EnemyKilled -= CheckForNextWave;
@@ -67,11 +68,10 @@ public class WaveManager : MonoBehaviour
     public IEnumerator NextWave()
     {
         yield return StartCoroutine(_rocket.UseScanner());
-        _currentWave++;
-        StartCoroutine(SpawnWave());
+        SpawnWave();
     }
 
-    private IEnumerator SpawnWave()
+    private void SpawnWave()
     {
         if (_currentWave < _enemyWaves.WavesArray.Length)
         {
@@ -104,8 +104,6 @@ public class WaveManager : MonoBehaviour
         }
         else
             SceneManager.Instance.GameWin();
-
-        yield return null;
     }
 
     private IEnumerator StartSpawnMeteorites(byte amount, float frequency, MeteoriteType_SO metInfo)
@@ -194,6 +192,7 @@ public class WaveManager : MonoBehaviour
             EnemiesKilled = 0;
             EnemiesSpawned = 0;
 
+            _currentWave++;
             StartCoroutine(NextWave());
         }
     }

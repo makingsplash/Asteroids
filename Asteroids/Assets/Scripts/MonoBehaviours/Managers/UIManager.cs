@@ -64,7 +64,8 @@ public class UIManager : MonoBehaviour
 
         ShowMenuElements();
 
-        ChangeWaveCounter(SaveManager.Instance.GetCurrentWaveNumber());
+        ChangeWaveCounter(SaveManager.Instance.CurrentWave);
+        ChangeScore(SaveManager.Instance.Score);
     }
 
     public void StartGame()
@@ -73,11 +74,6 @@ public class UIManager : MonoBehaviour
         ShowPlayingElements();
     }
 
-    public void Home()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
-        ShowMenuElements();
-    }
 
 	#region Pages
 	public void ShowMenuElements()
@@ -106,16 +102,24 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    //// загрузка количества оставшихся жизней из сохранений 
     public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
 
-	#region PauseButton
+	#region Pause
 	public void UsePauseButton()
     {
         if (_onPause)
             UnPauseGame();
         else
             PauseGame();
+    }
+    public void HomeButton()
+    {
+        SaveManager.Instance.Score = int.Parse(_currentScore.text);
+        SaveManager.Instance.CurrentWave -= 2;
+        UnPauseGame();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        ShowMenuElements();
     }
 
     private void PauseGame()
@@ -150,18 +154,19 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Score
-
 	public void ChangeScore(int points)
     {
         int currentScore = int.Parse(_currentScore.text);
-        points = currentScore + points > 0 ? currentScore + points : 0;
         if(points > 0)
         {
             if (_scorePulsing != null)
                 StopCoroutine(_scorePulsing);
             _scorePulsing = StartCoroutine(MakeScorePulse());
         }
+        points = currentScore + points > 0 ? currentScore + points : 0;
         _currentScore.text = points.ToString();
+
+        SaveManager.Instance.Score = currentScore;
     }
 
     private IEnumerator MakeScorePulse()
@@ -209,10 +214,9 @@ public class UIManager : MonoBehaviour
 
     #region Enemy wave bar
 
-    public void ChangeWaveCounter(byte waveNumber)
+    public void ChangeWaveCounter(int waveNumber)
     {
-        _waveCounter.text = "Wave: " + waveNumber;
-        SaveManager.Instance.SaveCurrentWaveNumber(waveNumber);
+        _waveCounter.text = "Wave: " + (waveNumber + 1);
     }
 
     public void DecreaseWaveBarCurrentValue() => StartCoroutine(_enemyWaveBar.DecreaseCurrentValue());

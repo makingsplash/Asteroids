@@ -21,16 +21,45 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    public int Score
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Score");
+        }
+        set
+        {
+            PlayerPrefs.SetInt("Score", value);
+        }
+    }
+
+    public int CurrentWave
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("CurrentWave");
+        }
+        set
+        {
+            if (value >= 0)
+                PlayerPrefs.SetInt("CurrentWave", value);
+            else
+                PlayerPrefs.SetInt("CurrentWave", 0);
+        }
+    }
+
+    public void DeleteSaves()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("Сохранения сброшены");
+    }
+
+    ///////// SAVE TESTS
     private void Update()
     {
         if (Input.GetKey(KeyCode.Q))
         {
-            PlayerPrefs.DeleteAll();
-            Debug.LogError("Сохранения сброшены");
+            DeleteSaves();
         }
     }
-
-    public void SaveCurrentWaveNumber(byte waveNumber) => PlayerPrefs.SetInt("CurrentWave", waveNumber);
-    public byte GetCurrentWaveNumber() => (byte) PlayerPrefs.GetInt("CurrentWave"); 
-
 }

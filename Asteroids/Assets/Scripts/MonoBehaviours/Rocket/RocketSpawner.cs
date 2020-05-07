@@ -9,16 +9,15 @@ public class RocketSpawner : MonoBehaviour
 
     private byte _positionIndex = 0;
 
+
     public IEnumerator SpawnRocket()
     {
         yield return new WaitForSeconds(_spawnTime);
 
         UIManager.Instance.HideMessageBox();
-
-        SetPosition();
-
         UIManager.Instance.DecreaseLifes();
 
+        SetPosition();
         _positionIndex++;
     }
 

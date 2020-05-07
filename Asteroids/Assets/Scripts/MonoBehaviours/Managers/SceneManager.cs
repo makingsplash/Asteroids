@@ -38,7 +38,9 @@ public class SceneManager : MonoBehaviour
             return;
         }
         else if (_instance != null)
+        {
             _instance = this;
+        }
 
         Application.targetFrameRate = 60;
     }
@@ -69,7 +71,7 @@ public class SceneManager : MonoBehaviour
         {
             _lifesAmount--;
 
-            UIManager.Instance.ChangeScore(-40);
+            UIManager.Instance.ChangeScore(-225);
             UIManager.Instance.ShowRespawnMessage();
 
             StartCoroutine(_rocketSpawner.SpawnRocket());
@@ -89,5 +91,8 @@ public class SceneManager : MonoBehaviour
         UIManager.Instance.WinMessage();
     }
 
-    void GameOver() => _gameOver = true;
+    void GameOver()
+    {
+        _gameOver = true;
+    }
 }

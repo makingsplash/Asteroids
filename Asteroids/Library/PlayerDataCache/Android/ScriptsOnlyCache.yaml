@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - RocketController
     - RocketInput
     - RocketSpawner
+    - SaveManager
     - SceneManager
     - UIManager
     - Ufo
@@ -99,53 +100,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9414}
     - Class: 114
-      Script: {instanceID: 9630}
+      Script: {instanceID: 9572}
     - Class: 114
-      Script: {instanceID: 9642}
+      Script: {instanceID: 9632}
     - Class: 114
-      Script: {instanceID: 9660}
+      Script: {instanceID: 9644}
     - Class: 114
-      Script: {instanceID: 9710}
+      Script: {instanceID: 9662}
     - Class: 114
-      Script: {instanceID: 9722}
+      Script: {instanceID: 9712}
     - Class: 114
-      Script: {instanceID: 9782}
+      Script: {instanceID: 9724}
     - Class: 114
-      Script: {instanceID: 9822}
+      Script: {instanceID: 9784}
     - Class: 114
-      Script: {instanceID: 9856}
+      Script: {instanceID: 9824}
     - Class: 114
-      Script: {instanceID: 9866}
+      Script: {instanceID: 9858}
     - Class: 114
-      Script: {instanceID: 9872}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9882}
+      Script: {instanceID: 9874}
     - Class: 114
-      Script: {instanceID: 9900}
+      Script: {instanceID: 9884}
     - Class: 114
-      Script: {instanceID: 9968}
+      Script: {instanceID: 9902}
     - Class: 114
-      Script: {instanceID: 10140}
+      Script: {instanceID: 9970}
     - Class: 114
-      Script: {instanceID: 10150}
+      Script: {instanceID: 10142}
     - Class: 114
-      Script: {instanceID: 10212}
+      Script: {instanceID: 10152}
     - Class: 114
-      Script: {instanceID: 10268}
+      Script: {instanceID: 10214}
     - Class: 114
-      Script: {instanceID: 10304}
+      Script: {instanceID: 10270}
     - Class: 114
-      Script: {instanceID: 10430}
+      Script: {instanceID: 10306}
     - Class: 114
-      Script: {instanceID: 10528}
+      Script: {instanceID: 10432}
     - Class: 114
-      Script: {instanceID: 10564}
+      Script: {instanceID: 10530}
     - Class: 114
-      Script: {instanceID: 10642}
+      Script: {instanceID: 10566}
     - Class: 114
-      Script: {instanceID: 10658}
+      Script: {instanceID: 10644}
     - Class: 114
-      Script: {instanceID: 10678}
+      Script: {instanceID: 10660}
+    - Class: 114
+      Script: {instanceID: 10680}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -616,6 +619,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SaveManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalAsset
@@ -729,13 +738,13 @@ ScriptsOnlyBuild:
     className: Laser
   - hash:
       serializedVersion: 2
-      Hash: 31d80940a45c694bee8d849084af29c8
+      Hash: a844202d6d4291a3f08d8aa8436e225e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
   - hash:
       serializedVersion: 2
-      Hash: 7bc4ca0f268cba0c3154ba368934fdd5
+      Hash: 54f9cfc2044c5659e78dd9636c7cf66e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneManager
@@ -1095,7 +1104,7 @@ ScriptsOnlyBuild:
     className: MeteoriteType_SO
   - hash:
       serializedVersion: 2
-      Hash: e7e898929c76e4e43cee58619ba90490
+      Hash: db831fe2a2938be93933a1f18d3adc74
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WaveManager
