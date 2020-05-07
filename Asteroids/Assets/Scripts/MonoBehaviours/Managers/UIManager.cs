@@ -23,24 +23,31 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [Header("Play elements")]
-    [SerializeField] private GameObject _playElementsParent;
-    [SerializeField] private GameObject _playButton;
-    [SerializeField] private Button _pauseButton;
-    private bool _onPause = false;
-    private Color _camDefaultColor;
-    [SerializeField] private EnemyWaveBar _enemyWaveBar;
-    [SerializeField] private TextMeshProUGUI _waveCounter;
+
+    [Header("Playing elements")]
     [SerializeField] private Button _shieldButton;
     [SerializeField] private TextMeshProUGUI _shieldTimer;
     [SerializeField] private GameObject[] _lifesUI = new GameObject[3];
     private byte _lifesAmount = 3;
 
+    [Header("Playing and pause elements")]
+    [SerializeField] private EnemyWaveBar _enemyWaveBar;
+    [SerializeField] private Button _pauseButton;
+    private bool _onPause = false;
+    private Color _camDefaultColor;
+
     [Header("Common elements")]
+    [SerializeField] private TextMeshProUGUI _waveCounter;
     [SerializeField] private TextMeshProUGUI _messageBoxText;
     [SerializeField] private TextMeshProUGUI _currentScore;
     private Transform _scoreTransform;
     private Coroutine _scorePulsing;
+
+    [Header("Pages")]
+    [SerializeField] private GameObject _menuElements;
+    [SerializeField] private GameObject _playingElements;
+    [SerializeField] private GameObject _playingPauseElements;
+    [SerializeField] private GameObject _pauseElements;
 
 
     private void Awake()
@@ -53,42 +60,59 @@ public class UIManager : MonoBehaviour
         if (_instance == null)
             _instance = this;
 
-        _shieldTimer.gameObject.SetActive(false);
         _scoreTransform = _currentScore.gameObject.GetComponent<Transform>();
 
-        HidePlayElements();
+        ShowMenuElements();
     }
-
     public void StartGame()
     {
         SceneManager.Instance.LaunchGame();
-
-        _playButton.SetActive(false);
-        HideMessageBox();
-        ShowPlayElements();
+        ShowPlayingElements();
     }
 
-    private void ShowPlayElements() => _playElementsParent.SetActive(true);
-    private void HidePlayElements() => _playElementsParent.SetActive(false);
+	#region Pages
+	public void ShowMenuElements()
+    {
+        _pauseElements.SetActive(false);
+        _playingElements.SetActive(false);
+        _playingPauseElements.SetActive(false);
+
+        _menuElements.SetActive(true);
+    }
+
+    public void ShowPlayingElements()
+    {
+        _pauseElements.SetActive(false);
+        _menuElements.SetActive(false);
+
+        _playingElements.SetActive(true);
+        _playingPauseElements.SetActive(true);
+    }
+
+    public void ShowPauseElements()
+    {
+        _playingElements.SetActive(false);
+
+        _pauseElements.SetActive(true);
+    }
+    #endregion
 
     public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
 
 	#region PauseButton
 	public void UsePauseButton()
     {
-        if(!_playButton.activeSelf)
-        {
-            if (_onPause)
-                UnPauseGame();
-            else
-                PauseGame();
-        }
+        if (_onPause)
+            UnPauseGame();
+        else
+            PauseGame();
     }
 
     private void PauseGame()
     {
+        ShowPauseElements();
+
         _pauseButton.image.sprite = _pauseButton.spriteState.disabledSprite;
-        HidePlayElements();
 
         _messageBoxText.text = "Pause";
         _messageBoxText.gameObject.SetActive(true);
@@ -102,8 +126,9 @@ public class UIManager : MonoBehaviour
 
     private void UnPauseGame()
     {
+        ShowPlayingElements();
+
         _pauseButton.image.sprite = _pauseButton.spriteState.pressedSprite;
-        ShowPlayElements();
 
         _messageBoxText.gameObject.SetActive(false);
 
@@ -177,7 +202,7 @@ public class UIManager : MonoBehaviour
     public void ChangeWaveCounter(byte waveNumber) => _waveCounter.text = "Wave: " + waveNumber;
 
     public void DecreaseWaveBarCurrentValue() => StartCoroutine(_enemyWaveBar.DecreaseCurrentValue());
-
+    
     public void ResizeWaveBarMaxValue() => _enemyWaveBar.ResizeMaxValue();
     #endregion
 
