@@ -63,11 +63,20 @@ public class UIManager : MonoBehaviour
         _scoreTransform = _currentScore.gameObject.GetComponent<Transform>();
 
         ShowMenuElements();
+
+        ChangeWaveCounter(SaveManager.Instance.GetCurrentWaveNumber());
     }
+
     public void StartGame()
     {
         SceneManager.Instance.LaunchGame();
         ShowPlayingElements();
+    }
+
+    public void Home()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        ShowMenuElements();
     }
 
 	#region Pages
@@ -97,6 +106,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    //// загрузка количества оставшихся жизней из сохранений 
     public void DecreaseLifes() => _lifesUI[--_lifesAmount].SetActive(false);
 
 	#region PauseButton
@@ -199,7 +209,11 @@ public class UIManager : MonoBehaviour
 
     #region Enemy wave bar
 
-    public void ChangeWaveCounter(byte waveNumber) => _waveCounter.text = "Wave: " + waveNumber;
+    public void ChangeWaveCounter(byte waveNumber)
+    {
+        _waveCounter.text = "Wave: " + waveNumber;
+        SaveManager.Instance.SaveCurrentWaveNumber(waveNumber);
+    }
 
     public void DecreaseWaveBarCurrentValue() => StartCoroutine(_enemyWaveBar.DecreaseCurrentValue());
     

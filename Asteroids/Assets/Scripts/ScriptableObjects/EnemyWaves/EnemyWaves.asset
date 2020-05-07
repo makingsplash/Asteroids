@@ -63,7 +63,8 @@ MonoBehaviour:
       Frequency: 7
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
-      UfoLaserPool: {fileID: 0}
+      UfoLaserPool: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}
   - _name: 5
     meteoriteTypes:
     - Amount: 2
@@ -83,7 +84,8 @@ MonoBehaviour:
       Frequency: 4
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
-      UfoLaserPool: {fileID: 0}
+      UfoLaserPool: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}
   - _name: 6
     meteoriteTypes: []
     ufoInfo:
@@ -91,7 +93,8 @@ MonoBehaviour:
       Frequency: 3
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
-      UfoLaserPool: {fileID: 0}
+      UfoLaserPool: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}
   - _name: 7
     meteoriteTypes:
     - Amount: 4
@@ -105,7 +108,8 @@ MonoBehaviour:
       Frequency: 2.5
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
-      UfoLaserPool: {fileID: 0}
+      UfoLaserPool: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}
   - _name: 8
     meteoriteTypes:
     - Amount: 10
@@ -116,4 +120,5 @@ MonoBehaviour:
       Frequency: 3
       Prefab: {fileID: 681355794433723574, guid: 9b1b7617946d9ea4eb5825ec7c5f0996,
         type: 3}
-      UfoLaserPool: {fileID: 0}
+      UfoLaserPool: {fileID: 3995995571900510939, guid: 6618d8d2530f92a4ca4855570329c5ba,
+        type: 3}

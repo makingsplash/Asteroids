@@ -31,19 +31,15 @@ public class WaveManager : MonoBehaviour
         } 
     }
 
-    [Header("Rocket")]
     [SerializeField] private RocketController _rocket;
-
-    [Header("Enemies")]
-    [SerializeField] private ObjectPool _warningsPool;
 
     [Header("EnemyWaves")]
     [SerializeField] private WavesOfEmemies_SO _enemyWaves;
     private byte _currentWave = 0;
-    
-    [Header("Meteorites")]
-    [SerializeField] private ObjectPool _meteoritesPool;
 
+    [Header("Pools")]
+    [SerializeField] private ObjectPool _warningsPool;
+    [SerializeField] private ObjectPool _meteoritesPool;
 
     private ObjectPool _ufoLaserPool;
     private float _camOrtSize;
@@ -60,10 +56,19 @@ public class WaveManager : MonoBehaviour
 
         _enemiesSpawned = 0;
         _enemiesKilled = 0;
+
+        _currentWave = SaveManager.Instance.GetCurrentWaveNumber();
     }
     private void OnDisable()
     {
         BaseEnemy.EnemyKilled -= CheckForNextWave;
+    }
+
+    public IEnumerator NextWave()
+    {
+        yield return StartCoroutine(_rocket.UseScanner());
+        _currentWave++;
+        StartCoroutine(SpawnWave());
     }
 
     private IEnumerator SpawnWave()
@@ -93,8 +98,6 @@ public class WaveManager : MonoBehaviour
                 StartCoroutine(StartSpawnUfos(
                     wave.ufoInfo.Amount, wave.ufoInfo.Frequency, wave.ufoInfo.Prefab));
             }
-
-            _currentWave++;
 
             UIManager.Instance.ResizeWaveBarMaxValue();
             UIManager.Instance.ChangeWaveCounter(_currentWave);
@@ -181,12 +184,6 @@ public class WaveManager : MonoBehaviour
 
         Vector2 spawnPos = new Vector2(spawnX, spawnY);
         return spawnPos;
-    }
-
-    public IEnumerator NextWave()
-    {
-        yield return StartCoroutine(_rocket.UseScanner());
-        StartCoroutine(SpawnWave());
     }
 
     private void CheckForNextWave()

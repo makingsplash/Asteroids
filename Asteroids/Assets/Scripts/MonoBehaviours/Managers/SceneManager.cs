@@ -26,8 +26,8 @@ public class SceneManager : MonoBehaviour
 
     private byte _lifesAmount = 3;
     private bool _gameOver = false;
-    private RocketSpawner _rocketSpawner;
-    private WaveManager _waveManager;
+    [SerializeField] private RocketSpawner _rocketSpawner;
+    [SerializeField] private WaveManager _waveManager;
 
 
     private void Awake()
@@ -39,10 +39,6 @@ public class SceneManager : MonoBehaviour
         }
         else if (_instance != null)
             _instance = this;
-
-
-        _rocketSpawner = GetComponentInChildren<RocketSpawner>();
-        _waveManager = GetComponentInChildren<WaveManager>();
 
         Application.targetFrameRate = 60;
     }
